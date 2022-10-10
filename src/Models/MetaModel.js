@@ -1,12 +1,16 @@
-import connectDatabase from "../Config/mongodb";
 import mongoose from "mongoose";
 
-const meta = mongoose.model('Meta', {
+const metaSchema = new mongoose.Schema({
     id: String,
     name: String,
     value: Float,
     current_quantity: Float,
-    id_institution: String
+    id_institution: String,
+    suspend: Boolean
+}, {
+    timestamps: true
 })
 
-export default meta;
+const MetaModel = mongoose.model('Meta', metaSchema);
+
+export default MetaModel;
