@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const metaSchema = new mongoose.Schema({
     id: String,
     name: String,
-    value: Float,
-    current_quantity: Float,
+    value: Number,
+    current_quantity: Number,
     id_institution: String,
     suspend: Boolean
 }, {

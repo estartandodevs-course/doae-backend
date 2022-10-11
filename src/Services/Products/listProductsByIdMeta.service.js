@@ -6,6 +6,6 @@ export async function listProductByIdMetaService(id_meta) {
 		return products;
 	} catch (e) {
 		console.log(e);
-		return "Não foi possível buscar os produtos.";
+		throw new Error("Não foi possível buscar os produtos.");
 	}
 }

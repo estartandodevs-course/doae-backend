@@ -6,6 +6,6 @@ export async function listAll(){
         return metas;
     } catch (e) {
         console.log(e);
-        return "Não foi possível buscar as metas."
+        throw new Error("Não foi possível buscar as metas.");
     }
 }

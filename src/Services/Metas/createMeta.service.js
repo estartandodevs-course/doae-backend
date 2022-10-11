@@ -9,6 +9,6 @@ export async function createMetaService(name, value, id_institution) {
         return meta;
     } catch (e) {
         console.log(e);
-        return "Não foi possível criar a meta. Favor verificar os dados enviados!"
+        throw new Error("Não foi possível criar a meta. Favor verificar os dados enviados!");
     }
 }

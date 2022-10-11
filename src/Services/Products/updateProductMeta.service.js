@@ -6,6 +6,6 @@ export async function updateProductMetaByIdService(id, name, value){
         return updateMeta;
     } catch(e){
         console.log(e);
-        return "Não foi possível atualizar o produto."
+        throw new Error("Não foi possível atualizar o produto.");
     }
 }

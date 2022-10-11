@@ -6,6 +6,6 @@ export async function listMetasByIdInstitution(){
         return metas;
     } catch (e) {
         console.log(e);
-        return "Não foi possível buscar as metas."
+        throw new Error("Não foi possível buscar as metas.");
     }
 }

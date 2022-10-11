@@ -6,6 +6,6 @@ export async function listProductByIdService(id) {
 		return product;
 	} catch (e) {
 		console.log(e);
-		return "Não foi possível buscar o produto.";
+		throw new Error("Não foi possível buscar o produto.");
 	}
 }

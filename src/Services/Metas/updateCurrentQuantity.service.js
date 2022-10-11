@@ -10,7 +10,7 @@ export async function updateByIdCurrentQuantityService(id, value, productId) {
 		currentValue = await getMetaById(id);
 	} catch (e) {
 		console.log(e);
-		return "Não foi possível atualizar as doações dessa meta. Favor verificar os dados enviados!";
+		throw new Error("Não foi possível atualizar as doações dessa meta. Favor verificar os dados enviados!");
 	}
 
 	if (value) {
@@ -25,6 +25,6 @@ export async function updateByIdCurrentQuantityService(id, value, productId) {
 		return meta;
 	} catch (e) {
 		console.log(e);
-		return "Não foi possível atualizar as doações dessa meta. Favor verificar os dados enviados!";
+		throw new Error("Não foi possível atualizar as doações dessa meta. Favor verificar os dados enviados!");
 	}
 }

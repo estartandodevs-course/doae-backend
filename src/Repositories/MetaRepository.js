@@ -1,4 +1,4 @@
-import MetaModel from "../Models/MetaModel";
+import MetaModel from "../Models/MetaModel.js";
 
 export async function createMeta(
   id,

@@ -6,6 +6,6 @@ export async function deleteMetaService(id) {
         return meta;
     } catch (e) {
         console.log(e);
-        return "Não foi possível excluir a meta. Favor verificar os dados enviados!"
+        throw new Error("Não foi possível excluir a meta. Favor verificar os dados enviados!");
     }
 }
