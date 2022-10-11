@@ -27,7 +27,8 @@
     "mysql2": "^2.3.3",
     "nodemailer": "^6.8.0",
     "sequelize": "^6.24.0",
-    "sucrase": "^3.28.0"
+    "sucrase": "^3.28.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",

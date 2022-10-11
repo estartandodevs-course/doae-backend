@@ -18,7 +18,7 @@ export async function createMeta(
 		});
 		return newMeta;
 	} catch (e) {
-		throw new Error("Não foi possível criar a meta.");
+		throw new Error(e.message);
 	}
 }
 
