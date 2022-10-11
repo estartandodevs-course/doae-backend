@@ -22,6 +22,31 @@ export async function createProductMeta(
 	}
 }
 
+export async function getProductMetaById(id) {
+	try {
+		const productMeta = await ProductMetaModel.findOne({
+			id: id,
+			suspend: false,
+		});
+		return productMeta;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
+export async function getProductMetasByIdMeta(idMeta) {
+	try {
+		const productsMeta = await ProductMetaModel.find({
+			id_meta: idMeta,
+			suspend: false,
+		});
+		return productsMeta;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
+
 export async function updateProductMetaById(id, name, value) {
 	try {
 		const updateProductMeta = await ProductMetaModel.updateOne(
@@ -44,30 +69,6 @@ export async function deleteProductMetaById(id) {
 			{ suspend: true }
 		);
 		return deleteProductMeta;
-	} catch (e) {
-		throw new Error(e.message);
-	}
-}
-
-export async function getProductMetaById(id) {
-	try {
-		const productMeta = await ProductMetaModel.findOne({
-			id: id,
-			suspend: false,
-		});
-		return productMeta;
-	} catch (e) {
-		throw new Error(e.message);
-	}
-}
-
-export async function getProductMetasByIdMeta(idMeta) {
-	try {
-		const productsMeta = await ProductMetaModel.find({
-			id_meta: idMeta,
-			suspend: false,
-		});
-		return productsMeta;
 	} catch (e) {
 		throw new Error(e.message);
 	}
