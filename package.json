@@ -32,6 +32,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "eslint": "^8.25.0",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.1"
   }
