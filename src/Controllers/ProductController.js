@@ -1,8 +1,8 @@
-import { createProductMetaService } from "../Services/Products/createProductMeta.service";
-import { listProductByIdMetaService } from "../Services/Products/listProductsByIdMeta.service";
-import { listProductByIdService } from "../Services/Products/listProductById.service";
-import { updateProductMetaByIdService } from "../Repositories/ProductMetaRepository";
-import { deleteProductMetaByIdService } from "../Repositories/ProductMetaRepository";
+import { createProductMetaService } from "../Services/Products/createProductMeta.service.js";
+import { listProductByIdMetaService } from "../Services/Products/listProductsByIdMeta.service.js";
+import { listProductByIdService } from "../Services/Products/listProductById.service.js";
+import { updateProductMetaByIdService } from "../Services/Products/updateProductMeta.service.js";
+import { deleteProductMetaByIdService } from "../Services/Products/deleteProductById.service.js";
 
 export async function postProduct(request, response){
   const { name, value, id_meta, id_institution } = request.body;
@@ -17,7 +17,7 @@ export async function postProduct(request, response){
 export async function getProductById(request, response){
     const { id } = request.params;
     try {
-      const product = await listProductByIdMetaService(id);
+      const product = await listProductByIdService(id);
       response.status(200).json(product);
     } catch (e) {
       response.status(400).json(e.message);
@@ -27,7 +27,7 @@ export async function getProductById(request, response){
 export async function getProductByIdMeta(request, response){
   const { id_meta } = request.params;
   try {
-    const product = await listProductByIdService(id_meta);
+    const product = await listProductByIdMetaService(id_meta);
     response.status(200).json(product);
   } catch (e) {
     response.status(400).json(e.message);

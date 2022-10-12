@@ -1,4 +1,4 @@
-import ProductMetaModel from "../Models/ProductMetaModel";
+import ProductMetaModel from "../Models/ProductMetaModel.js";
 
 export async function createProductMeta(
 	id,

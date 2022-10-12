@@ -37,6 +37,7 @@ export async function getMetaById(request, response) {
 
 export async function getMetaByIdInstitution(request, response) {
 	const { id_institution } = request.params;
+	console.log(id_institution);
 	try {
 		const meta = await listMetasByIdInstitution(id_institution);
 		response.status(200).json(meta);

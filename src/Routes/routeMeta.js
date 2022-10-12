@@ -15,14 +15,14 @@ routesMeta.post("/metas", postMeta);
 
 routesMeta.get("/metas", getMetas);
 
-routesMeta.get("/metas", getMetaById);
+routesMeta.get("/metas/:id", getMetaById);
 
-routesMeta.get("/metas", getMetaByIdInstitution);
+routesMeta.get("/metas/institution/:id_institution", getMetaByIdInstitution);
 
-routesMeta.put("/metas", putMeta);
+routesMeta.put("/metas/:id", putMeta);
 
-routesMeta.put("/metas", putCurrentQuantity); //i'm crying
+routesMeta.put("/metas/quantity/:id", putCurrentQuantity); //i'm crying
 
-routesMeta.delete("/metas", deleteMeta);
+routesMeta.delete("/metas/:id", deleteMeta);
 
 export default routesMeta;

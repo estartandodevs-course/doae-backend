@@ -55,11 +55,10 @@ export async function getAllMetas() {
 export async function updateMetaById(id, name, value) {
   try {
     const updateMeta = await MetaModel.updateOne({ id }, { name, value });
-
-    if (!meta) {
+    if (!updateMeta) {
       throw new Error(e.message);
     }
-    return meta;
+    return updateMeta;
   } catch (e) {
     throw new Error(e.message);
   }

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const productMetaSchema = new mongoose.Schema({
     id: String,
     name: String,
-    value: Float,
+    value: Number,
     id_meta: String,
     id_institution: String,
     suspend: Boolean
