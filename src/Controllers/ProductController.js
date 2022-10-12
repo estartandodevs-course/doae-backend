@@ -5,7 +5,7 @@ import { updateProductMetaByIdService } from "../Repositories/ProductMetaReposit
 import { deleteProductMetaByIdService } from "../Repositories/ProductMetaRepository";
 
 export async function postProduct(request, response){
-    const { name, value, id_meta, id_institution } = request.body;
+  const { name, value, id_meta, id_institution } = request.body;
   try {
     const product = await createProductMetaService(name, value, id_meta, id_institution);
     response.status(200).json(product);
@@ -25,7 +25,7 @@ export async function getProductById(request, response){
 }
 
 export async function getMetaByIdMeta(request, response){
-    const { id_meta } = request.params;
+  const { id_meta } = request.params;
   try {
     const product = await listProductByIdService(id_meta);
     response.status(200).json(product);
@@ -35,10 +35,10 @@ export async function getMetaByIdMeta(request, response){
 }
 
 export async function putProduct(request, response){
-    const { id } = request.body;
-    const { name, value } = request.body
+  const { id } = request.body;
+  const { name, value } = request.body
   try {
-    const product = await updateProductMetaByIdService(id_meta);
+    const product = await updateProductMetaByIdService(id, name, value);
     response.status(200).json(product);
   } catch (e) {
     response.status(400).json(e.message);
@@ -46,7 +46,7 @@ export async function putProduct(request, response){
 }
 
 export async function deleteProduct(request, response){
-    const { id } = request.params;
+  const { id } = request.params;
   try {
     const product = await deleteProductMetaByIdService(id);
     response.status(200).json(product);
