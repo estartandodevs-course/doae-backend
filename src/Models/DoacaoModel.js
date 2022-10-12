@@ -3,9 +3,9 @@ import databaseConfig from "../Configs/mysql_config.js";
 
 const sequelize = new Sequelize(databaseConfig);
 
-class DoacoesModel extends Model {};
+class DoacaoModel extends Model {};
 
-DoacoesModel.init(
+DoacaoModel.init(
     {
         id: {
             type: Sequelize.UUID,
@@ -45,4 +45,4 @@ DoacoesModel.init(
     }
 );
   
-export default DoacoesModel;
+export default DoacaoModel;
