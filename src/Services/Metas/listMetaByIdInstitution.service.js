@@ -14,7 +14,7 @@ export async function listMetasByIdInstitution(id_institution, page = 1){
 		if (content.length > 0) {
 			return content;
 		} else {
-			return metas;
+			return metas.slice(0, 10);
 		}
 	} catch (e) {
 		console.log(e);

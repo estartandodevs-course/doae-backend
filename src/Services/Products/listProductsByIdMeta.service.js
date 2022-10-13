@@ -14,7 +14,7 @@ export async function listProductByIdMetaService(id_meta, page = 1) {
 		if (content.length > 0) {
 			return content;
 		} else {
-			return products;
+			return products.slice(0, 10);
 		}
 	} catch (e) {
 		console.log(e);
