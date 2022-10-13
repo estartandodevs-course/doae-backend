@@ -26,8 +26,9 @@ export async function getProductById(request, response){
 
 export async function getProductByIdMeta(request, response){
 	const { id_meta } = request.params;
+	const { page } = request.query;
 	try {
-		const product = await listProductByIdMetaService(id_meta);
+		const product = await listProductByIdMetaService(id_meta, page);
 		response.status(200).json(product);
 	} catch (e) {
 		response.status(400).json(e.message);
