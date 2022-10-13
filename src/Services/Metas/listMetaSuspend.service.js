@@ -9,7 +9,7 @@ export async function listSuspendMetas(page = 1){
 		if (response.length > 0) {
 			return response;
 		} else {
-			metas.slice(0, 10);
+			return metas.slice(0, 10);
 		}
 	} catch (e) {
 		console.log(e);

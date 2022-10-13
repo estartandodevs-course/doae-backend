@@ -9,7 +9,7 @@ export async function listProductByIdMetaService(id_meta, page = 1) {
 		if (response.length > 0) {
 			return response;
 		} else {
-			products.slice(0, 10);
+			return products.slice(0, 10);
 		}
 	} catch (e) {
 		console.log(e);
