@@ -5,6 +5,8 @@ import { listMetasByIdInstitution } from "../Services/Metas/listMetaByIdInstitut
 import { updateMetaService } from "../Services/Metas/updateMeta.service.js";
 import { updateByIdCurrentQuantityService } from "../Services/Metas/updateCurrentQuantity.service.js";
 import { deleteMetaService } from "../Services/Metas/deleteMeta.service.js";
+import { listSuspendMetas } from "../Services/Metas/listMetaSuspend.service.js";
+import { recoverMetaService } from "../Services/Metas/recoverMeta.service.js";
 
 export async function postMeta(request, response) {
 	const { name, value, id_institution } = request.body;
@@ -19,6 +21,15 @@ export async function postMeta(request, response) {
 export async function getMetas(request, response) {
 	try {
 		const meta = await listAll();
+		response.status(200).json(meta);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
+
+export async function getSuspendMetas(request, response) {
+	try {
+		const meta = await listSuspendMetas();
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -59,7 +70,7 @@ export async function putMeta(request, response) {
 
 export async function putCurrentQuantity(request, response) {
 	const { id } = request.params;
-	const { value, productId } = req.body;
+	const { value, productId } = request.body;
 	try {
 		const meta = await updateByIdCurrentQuantityService(id, value, productId);
 		response.status(200).json(meta);
@@ -72,6 +83,16 @@ export async function deleteMeta(request, response) {
 	const { id } = request.params;
 	try {
 		const meta = await deleteMetaService(id);
+		response.status(200).json(meta);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
+
+export async function recoverMeta(request, response) {
+	const { id } = request.params;
+	try {
+		const meta = await recoverMetaService(id);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);

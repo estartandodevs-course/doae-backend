@@ -1,7 +1,7 @@
 import express from "express";
 import routes from "./Routes/index.js";
-import connectDatabase from "./Config/mongodb.js";
-import initDatabase from "./Config/mysql_init.js";
+import connectDatabase from "./Configs/mongodb.js";
+import initDatabase from "./Configs/mysql_init.js";
 class App {
 	server;
 
