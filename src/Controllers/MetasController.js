@@ -19,8 +19,9 @@ export async function postMeta(request, response) {
 }
 
 export async function getMetas(request, response) {
+	const { page } = request.query;
 	try {
-		const meta = await listAll();
+		const meta = await listAll(page);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -28,8 +29,9 @@ export async function getMetas(request, response) {
 }
 
 export async function getSuspendMetas(request, response) {
+	const { page } = request.query;
 	try {
-		const meta = await listSuspendMetas();
+		const meta = await listSuspendMetas(page);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -47,10 +49,11 @@ export async function getMetaById(request, response) {
 }
 
 export async function getMetaByIdInstitution(request, response) {
+	const { page } = request.query;
 	const { id_institution } = request.params;
 	console.log(id_institution);
 	try {
-		const meta = await listMetasByIdInstitution(id_institution);
+		const meta = await listMetasByIdInstitution(id_institution, page);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
