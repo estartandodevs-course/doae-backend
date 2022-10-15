@@ -32,6 +32,10 @@ module.exports = {
       id_product: {
         type: Sequelize.STRING,
         allowNull: true,
+      },
+      suspend: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
       }
 		});
 	},
