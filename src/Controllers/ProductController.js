@@ -36,7 +36,7 @@ export async function getProductByIdMeta(request, response){
 }
 
 export async function putProduct(request, response){
-	const { id } = request.body;
+	const { id } = request.params;
 	const { name, value } = request.body;
 	try {
 		const product = await updateProductMetaByIdService(id, name, value);
