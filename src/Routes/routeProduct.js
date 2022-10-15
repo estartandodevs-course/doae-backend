@@ -11,7 +11,7 @@ import {
 	getProductIdMetaMidd,
 	getIdProductsMidd,
 	putProductMidd
-} from "../Middlewares/productMiddlewares";
+} from "../Middlewares/productMiddlewares.js";
 
 const routesProduct = Router();
 
