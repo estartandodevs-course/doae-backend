@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start": "nodemon",
+    "prestart": "npx sequelize db:migrate"
   },
   "repository": {
     "type": "git",
@@ -27,9 +28,12 @@
     "mysql2": "^2.3.3",
     "nodemailer": "^6.8.0",
     "sequelize": "^6.24.0",
-    "sucrase": "^3.28.0"
+    "sucrase": "^3.28.0",
+    "uuid": "^9.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
+    "eslint": "^8.25.0",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.1"
   }
