@@ -10,25 +10,33 @@ import {
 	recoverMeta
 } from "../Controllers/MetasController.js";
 import { Router } from "express";
+import {
+	postMetaMidd,
+	getMetasMidd,
+	getIdMetasMidd,
+	getIdMetasInsMidd,
+	putMetasMidd,
+	putCurrentQuantMidd
+} from "../Middlewares/metaMiddlewares";
 
 const routesMeta = Router();
 
-routesMeta.post("/metas", postMeta);
+routesMeta.post("/metas", postMetaMidd, postMeta);
 
-routesMeta.get("/metas/", getMetas);
+routesMeta.get("/metas/", getMetasMidd, getMetas);
 
-routesMeta.get("/metas/suspend", getSuspendMetas);
+routesMeta.get("/metas/suspend", getMetasMidd, getSuspendMetas);
 
-routesMeta.get("/metas/:id", getMetaById);
+routesMeta.get("/metas/:id", getIdMetasMidd, getMetaById);
 
-routesMeta.get("/metas/institution/:id_institution", getMetaByIdInstitution);
+routesMeta.get("/metas/institution/:id_institution", getIdMetasInsMidd, getMetaByIdInstitution);
 
-routesMeta.put("/metas/:id", putMeta);
+routesMeta.put("/metas/:id", putMetasMidd, putMeta);
 
-routesMeta.put("/metas/quantity/:id", putCurrentQuantity);
+routesMeta.put("/metas/quantity/:id", putCurrentQuantMidd, putCurrentQuantity);
 
-routesMeta.put("/metas/recover/:id", recoverMeta);
+routesMeta.put("/metas/recover/:id", getIdMetasMidd, recoverMeta);
 
-routesMeta.delete("/metas/:id", deleteMeta);
+routesMeta.delete("/metas/:id", getIdMetasMidd, deleteMeta);
 
 export default routesMeta;
