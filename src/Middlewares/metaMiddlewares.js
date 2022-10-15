@@ -31,7 +31,7 @@ export async function getMetasMidd(req, res, next)
 		page: yup.number("Valor deve ser um número.").required("Valor é obrigatório.")
 	});
 
-		await schemaGet.validate(req.query).catch(err => {
+	await schemaGet.validate(req.query).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
@@ -54,7 +54,7 @@ export async function getIdMetasMidd(req, res, next)
 		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
 	});
 
-		await schemaId.validate(req.params).catch(err => {
+	await schemaId.validate(req.params).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
@@ -76,7 +76,7 @@ export async function getIdMetasInsMidd(req, res, next)
 		id_institution: yup.string("Id da instituição deve ser uma string.").required("Id da instituição é obrigatório.")
 	});
 
-		await schemaIdIns.validate(req.query, req.params).catch(err => {
+	await schemaIdIns.validate(req.query, req.params).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
@@ -99,7 +99,7 @@ export async function putMetasMidd(req, res, next)
 		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
 	});
 
-		await schemaPut.validate(req.params, req.body).catch(err => {
+	await schemaPut.validate(req.params, req.body).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
@@ -122,7 +122,7 @@ export async function putCurrentQuantMidd(req, res, next)
 		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
 	});
 
-		await schemaPutCurrentQuant.validate(req.params, req.body).catch(err => {
+	await schemaPutCurrentQuant.validate(req.params, req.body).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
