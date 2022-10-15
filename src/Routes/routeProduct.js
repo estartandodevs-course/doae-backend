@@ -6,17 +6,23 @@ import {
 	deleteProduct,
 } from "../Controllers/ProductController.js";
 import { Router } from "express";
+import {
+	postProductMidd,
+	getProductIdMetaMidd,
+	getIdProductsMidd,
+	putProductMidd
+} from "../Middlewares/productMiddlewares";
 
 const routesProduct = Router();
 
-routesProduct.post("/product", postProduct);
+routesProduct.post("/product", postProductMidd, postProduct);
 
-routesProduct.get("/product/:id", getProductById);
+routesProduct.get("/product/:id", getIdProductsMidd, getProductById);
 
-routesProduct.get("/product/meta/:id_meta", getProductByIdMeta);
+routesProduct.get("/product/meta/:id_meta", getProductIdMetaMidd, getProductByIdMeta);
 
-routesProduct.put("/product/:id", putProduct);
+routesProduct.put("/product/:id", putProductMidd, putProduct);
 
-routesProduct.delete("/product/:id", deleteProduct);
+routesProduct.delete("/product/:id", getIdProductsMidd, deleteProduct);
 
 export default routesProduct;
