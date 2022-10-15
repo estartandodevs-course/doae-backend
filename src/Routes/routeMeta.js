@@ -17,7 +17,7 @@ import {
 	getIdMetasInsMidd,
 	putMetasMidd,
 	putCurrentQuantMidd
-} from "../Middlewares/metaMiddlewares";
+} from "../Middlewares/metaMiddlewares.js";
 
 const routesMeta = Router();
 
