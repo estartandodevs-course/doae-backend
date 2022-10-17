@@ -1,20 +1,33 @@
 import transporter from "../config/smtp.js";
 
-async function mailto(event, email){
+export async function mailto(event, email) {
+	let html;
+	let text;
+	let title;
+
+	if (event === "doacao_realizada") {
+		html = "<p>Doação realizada!</p>";
+		text = "Doação realizada!";
+		title = "Doação realizada!";
+	} else {
+		throw new Error("Esse template não está configurado");
+	}
+
 	try {
 		const mailto = await transporter.sendMail({
-			from: "\"Relpimi\" <noreply@relpimi.com>",
+			from: "noreply@doae.com",
 			to: email,
-			subject: "Hello ✔",
-			text: "Hello world?",
-			html: "<b>Hello world?</b>",
+			subject: title,
+			text: text,
+			html: html,
 		});
 		return mailto;
 	} catch (e) {
-		throw new Error("Not connected");
+		throw new Error("Email não está concectado.");
 	}
 }
 
+/*
 
 //testes
 try {
@@ -38,3 +51,5 @@ const resonse = {
 
 //erro
 "Not connected";
+
+*/
