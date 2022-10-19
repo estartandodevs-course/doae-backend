@@ -8,25 +8,25 @@ import { updateStatusDoacaoService } from "../Services/Doacoes/updateDoacao.serv
 
 //cria doacao
 export async function postDoacao(request, response) {
-  const {
-    id_institution,
-    value,
-    email_doador,
-    id_meta,
-    id_product,
-  } = request.body;
-  try {
-    const doacao = await createDoacaoService(
-      id_institution,
-      value,
-      email_doador,
-      id_meta,
-      id_product
-    );
-    response.status(200).json(doacao);
-  } catch (e) {
-    response.status(400).json(e.message);
-  }
+	const {
+		id_institution,
+		value,
+		email_doador,
+		id_meta,
+		id_product,
+	} = request.body;
+	try {
+		const doacao = await createDoacaoService(
+			id_institution,
+			value,
+			email_doador,
+			id_meta,
+			id_product
+		);
+		response.status(200).json(doacao);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
 }
 
 //lista todas

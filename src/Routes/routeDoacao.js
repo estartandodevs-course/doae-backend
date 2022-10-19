@@ -1,17 +1,16 @@
 import {
-  postDoacao,
-  getDoacao,
-  getDoacaoById,
-  getDoacaoByIdInstitution,
-  getDoacaoByIdMeta,
-  putDoacao,
-  deleteDoacao,
+	postDoacao,
+	getDoacao,
+	getDoacaoById,
+	getDoacaoByIdInstitution,
+	getDoacaoByIdMeta,
+	putDoacao,
+	deleteDoacao,
 } from "../Controllers/DoacaoController";
 
-import { Router } from 'express';
-import { updateDoacao } from "../Repositories/DoacaoRepository";
+import { Router } from "express";
 
-const routesDoacao = Router()
+const routesDoacao = Router();
 
 routesDoacao.post("/doacoes",  postDoacao);
 
