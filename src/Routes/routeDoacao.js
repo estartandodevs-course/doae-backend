@@ -10,20 +10,29 @@ import {
 
 import { Router } from "express";
 
+import {
+	postDoacaoMidd,
+	getDoacaoMidd,
+	getIdDoacaoMidd,
+	getIdDoacaoInsMidd,
+	getIdDoacaoMetaMidd,
+	putDoacaoMidd
+} from '../Middlewares/doacaoMiddlewares'
+
 const routesDoacao = Router();
 
-routesDoacao.post("/doacoes",  postDoacao);
+routesDoacao.post("/doacoes", postDoacaoMidd, postDoacao);
 
-routesDoacao.get("/doacoes", getDoacao);
+routesDoacao.get("/doacoes", getDoacaoMidd, getDoacao);
 
-routesDoacao.get("/doacoes", getDoacaoById);
+routesDoacao.get("/doacoes", getIdDoacaoMidd, getDoacaoById);
 
-routesDoacao.get("/doacoes", getDoacaoByIdInstitution);
+routesDoacao.get("/doacoes", getIdDoacaoInsMidd, getDoacaoByIdInstitution);
 
-routesDoacao.get("/doacoes", getDoacaoByIdMeta);
+routesDoacao.get("/doacoes", getIdDoacaoMetaMidd, getDoacaoByIdMeta);
 
-routesDoacao.put("/doacoes", putDoacao);
+routesDoacao.put("/doacoes", putDoacaoMidd, putDoacao);
 
-routesDoacao.delete("/doacoes", deleteDoacao);
+routesDoacao.delete("/doacoes", getIdDoacaoMidd, deleteDoacao);
 
 export default routesDoacao;
