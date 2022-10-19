@@ -3,7 +3,7 @@ import { getMetaById } from "../../Repositories/MetaRepository.js";
 export async function listMetaById(id) {
 	try {
 		const meta = await getMetaById(id);
-		//vai ficar aqui o código
+		//o código vai ficar aqui
 		return meta;
 	} catch (e) {
 		console.log(e);
