@@ -7,11 +7,12 @@ import { updateByIdCurrentQuantityService } from "../Services/Metas/updateCurren
 import { deleteMetaService } from "../Services/Metas/deleteMeta.service.js";
 import { listSuspendMetas } from "../Services/Metas/listMetaSuspend.service.js";
 import { recoverMetaService } from "../Services/Metas/recoverMeta.service.js";
+import { listAllWithFilters } from "../Services/Metas/listMetaWithFilter.service.js";
 
 export async function postMeta(request, response) {
-	const { name, value, id_institution } = request.body;
+	const { name, value, id_institution, description, day_limit } = request.body;
 	try {
-		const meta = await createMetaService(name, value, id_institution);
+		const meta = await createMetaService(name, value, id_institution, description, day_limit);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -19,10 +20,15 @@ export async function postMeta(request, response) {
 }
 
 export async function getMetas(request, response) {
-	const { page } = request.query;
+	const { page, q } = request.query;
 	try {
-		const meta = await listAll(page);
-		response.status(200).json(meta);
+		if(q){
+			const meta = await listAllWithFilters(page, q);
+			response.status(200).json(meta);
+		} else {
+			const meta = await listAll(page);
+			response.status(200).json(meta);
+		}
 	} catch (e) {
 		response.status(400).json(e.message);
 	}

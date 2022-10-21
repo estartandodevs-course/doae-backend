@@ -6,6 +6,8 @@ const metaSchema = new mongoose.Schema({
     value: Number,
     current_quantity: Number,
     id_institution: String,
+    description: String,
+    day_limit: Date,
     suspend: Boolean
 }, {
     timestamps: true

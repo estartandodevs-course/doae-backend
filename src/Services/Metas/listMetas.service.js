@@ -1,39 +1,41 @@
 import { getAllMetas } from "../../Repositories/MetaRepository.js";
 import { getInstitutionById } from "../Institutions/getInstitutionById.service.js";
 
-export async function listAll(page = 1) {
-  const perPage = 10;
-  let initPage = page * perPage - perPage;
-  try {
-    const metas = await getAllMetas();
-    const pagination = metas.slice(0, 10);
-    const newPagination = [];
+export async function listAll(page = 1, query = "") {
+	const perPage = 10;
 
-    for (let i = 0; i < pagination.length; i++) {
-      /*const response  = metas.slice(initPage, (initPage + perPage));
-		if (response.length > 0) {
-			return response;
-		} else {
-			return metas.slice(0, 10);
-		} */
+	let initPage = page * perPage - perPage;
 
-      const institution = await getInstitutionById(metas.id_institution);
-	  const percent = (current_quantity * 100) / target_value;
+	try {
+		const metas = await getAllMetas();
+		const newPagination = [];
+
+		let response = metas.slice(initPage, initPage + perPage);
+  
+		if (response.length <= 0) {
+      response = metas.slice(0, 10);
+    }
+    
+    for (let i = 0; i < response.length; i++) {
+      const institution = await getInstitutionById(response[i].id_institution);
+      const percent = (response[i].current_quantity * 100) / response[i].target_value;
 
       const newObjectMetaFormat = {
-        id: metas.id,
-        name: metas.name,
-        target_value: metas.value,
-        current_quantity: metas.current_value,
+        id: response[i].id,
+        name: response[i].name,
+        target_value: response[i].value,
+        current_quantity: response[i].current_value,
         institution: institution.name, 
-        createdAt: metas.createdAt,
-        day_limit: metas.day_limit,
+        createdAt: response[i].createdAt,
+        day_limit: response[i].day_limit,
         percent: percent,
       };
       newPagination.push(newObjectMetaFormat);
     }
-  } catch (e) {
-    console.log(e);
-    throw new Error("Não foi possível buscar as metas.");
-  }
+
+    return newPagination;
+	} catch (e) {
+		console.log(e);
+		throw new Error("Não foi possível buscar as metas.");
+	}
 }

@@ -5,7 +5,9 @@ export async function createMeta(
 	name,
 	value,
 	current_quantity,
-	id_institution
+	id_institution,
+	description,
+	day_limit
 ) {
 	try {
 		const newMeta = await MetaModel.create({
@@ -14,6 +16,8 @@ export async function createMeta(
 			value,
 			current_quantity,
 			id_institution,
+			description,
+			day_limit,
 			suspend: false,
 		});
 		return newMeta;
