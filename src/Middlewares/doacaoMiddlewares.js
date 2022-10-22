@@ -6,8 +6,8 @@ export async function postDoacaoMidd(req, res, next)
 	const schemaPost = yup.object().shape({
 		email_doador: yup.string("Nome deve ser uma string.").required("Nome é obrigatório."),
 		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
-    id_meta: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório."),
-    id_product: yup.string("Id do produto deve ser uma string.").required("Id do produto é obrigatório."),
+		id_meta: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório."),
+		id_product: yup.string("Id do produto deve ser uma string.").required("Id do produto é obrigatório."),
 		id_institution: yup.string("Id da instituição deve ser uma string.").required("Id da instituição é obrigatório.")
 	});
 
