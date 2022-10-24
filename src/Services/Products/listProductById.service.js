@@ -1,9 +1,9 @@
-import { getProductMetaById } from "../../Repositories/ProductMetaRepository.js";
+import { getProdutoMetaById } from "../../Repositories/ProdutoMetaRepository.js";
 
-export async function listProductByIdService(id) {
+export async function listProdutoByIdService(id) {
 	try {
-		const product = await getProductMetaById(id);
-		return product;
+		const produto = await getProdutoMetaById(id);
+		return produto;
 	} catch (e) {
 		console.log(e);
 		throw new Error("Não foi possível buscar o produto.");

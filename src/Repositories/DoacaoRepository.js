@@ -7,7 +7,7 @@ export async function createDoacao(
 	value,
 	email_doador,
 	id_meta,
-	id_product,
+	id_produto,
 	suspend
 ) {
 	try {
@@ -18,7 +18,7 @@ export async function createDoacao(
 			value,
 			email_doador,
 			id_meta,
-			id_product,
+			id_produto,
 			suspend,
 		});
 		return doacao;

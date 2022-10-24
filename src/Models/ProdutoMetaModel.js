@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const productMetaSchema = new mongoose.Schema({
+const produtoMetaSchema = new mongoose.Schema({
     id: String,
     name: String,
     value: Number,
@@ -11,6 +11,6 @@ const productMetaSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const ProductMetaModel = mongoose.model('Product', productMetaSchema);
+const ProdutoMetaModel = mongoose.model('Produto', produtoMetaSchema);
 
-export default ProductMetaModel;
+export default ProdutoMetaModel;

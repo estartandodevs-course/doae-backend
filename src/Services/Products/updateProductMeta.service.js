@@ -1,8 +1,8 @@
-import { updateProductMetaById } from "../../Repositories/ProductMetaRepository.js";
+import { updateProdutoMetaById } from "../../Repositories/ProdutoMetaRepository.js";
 
-export async function updateProductMetaByIdService(id, name, value){
+export async function updateProdutoMetaByIdService(id, name, value){
     try {
-        const updateMeta = await updateProductMetaById(id, name, value);
+        const updateMeta = await updateProdutoMetaById(id, name, value);
         return updateMeta;
     } catch(e){
         console.log(e);

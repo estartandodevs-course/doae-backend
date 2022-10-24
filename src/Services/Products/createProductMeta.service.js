@@ -1,8 +1,8 @@
-import { createProductMeta } from "../../Repositories/ProductMetaRepository.js";
+import { createProdutoMeta } from "../../Repositories/ProdutoMetaRepository.js";
 import { listMetaById } from "../Metas/listMetaById.service.js"; 
 import { v4 as uuid } from "uuid";
 
-export async function createProductMetaService(
+export async function createProdutoMetaService(
 	name,
 	value,
 	id_meta
@@ -11,8 +11,8 @@ export async function createProductMetaService(
 	const meta = await listMetaById(id_meta);
 	const id_institution = meta.id_institution;
 	try {
-		const product = await createProductMeta(id, name, value, id_meta, id_institution);
-		return product;
+		const produto = await createProdutoMeta(id, name, value, id_meta, id_institution);
+		return produto;
 	} catch (e) {
 		console.log(e);
 		throw new Error("Não foi possível adicionar o produto. Favor verifique os parametros!");

@@ -1,56 +1,56 @@
-import { createProductMetaService } from "../Services/Products/createProductMeta.service.js";
-import { listProductByIdMetaService } from "../Services/Products/listProductsByIdMeta.service.js";
-import { listProductByIdService } from "../Services/Products/listProductById.service.js";
-import { updateProductMetaByIdService } from "../Services/Products/updateProductMeta.service.js";
-import { deleteProductMetaByIdService } from "../Services/Products/deleteProductById.service.js";
+import { createProdutoMetaService } from "../Services/Produtos/createProdutoMeta.service.js";
+import { listProdutosByIdMetaService } from "../Services/Produtos/listProdutossByIdMeta.service.js";
+import { listProdutosByIdService } from "../Services/Produtos/listProdutosById.service.js";
+import { updateProdutoMetaByIdService } from "../Services/Produtos/updateProdutoMeta.service.js";
+import { deleteProdutoMetaByIdService } from "../Services/Produtos/deleteProdutoById.service.js";
 
-export async function postProduct(request, response){
+export async function postProdutos(request, response){
 	const { name, value, id_meta } = request.body;
 	try {
-		const product = await createProductMetaService(name, value, id_meta);
-		response.status(200).json(product);
+		const produtos = await createProdutoMetaService(name, value, id_meta);
+		response.status(200).json(produtos);
 	} catch (e) {
 		response.status(400).json(e.message);
 	}
 }
 
-export async function getProductById(request, response){
+export async function getProdutosById(request, response){
 	const { id } = request.params;
 	try {
-		const product = await listProductByIdService(id);
-		response.status(200).json(product);
+		const produtos = await listProdutosByIdService(id);
+		response.status(200).json(produtos);
 	} catch (e) {
 		response.status(400).json(e.message);
 	}
 }
 
-export async function getProductByIdMeta(request, response){
+export async function getProdutosByIdMeta(request, response){
 	const { id_meta } = request.params;
 	const { page } = request.query;
 	try {
-		const product = await listProductByIdMetaService(id_meta, page);
-		response.status(200).json(product);
+		const produtos = await listProdutosByIdMetaService(id_meta, page);
+		response.status(200).json(produtos);
 	} catch (e) {
 		response.status(400).json(e.message);
 	}
 }
 
-export async function putProduct(request, response){
+export async function putProdutos(request, response){
 	const { id } = request.params;
 	const { name, value } = request.body;
 	try {
-		const product = await updateProductMetaByIdService(id, name, value);
-		response.status(200).json(product);
+		const produto = await updateProdutoMetaByIdService(id, name, value);
+		response.status(200).json(produto);
 	} catch (e) {
 		response.status(400).json(e.message);
 	}
 }
 
-export async function deleteProduct(request, response){
+export async function deleteProduto(request, response){
 	const { id } = request.params;
 	try {
-		const product = await deleteProductMetaByIdService(id);
-		response.status(200).json(product);
+		const produtos = await deleteProdutoMetaByIdService(id);
+		response.status(200).json(produtos);
 	} catch (e) {
 		response.status(400).json(e.message);
 	}
