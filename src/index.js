@@ -23,7 +23,7 @@ class App {
 
 	routes() {
 		this.server.use(routes.routesMeta);
-		this.server.use(routes.routesProduct);
+		this.server.use(routes.routesProduto);
 	}
 }
 

@@ -1,8 +1,8 @@
 import { deleteMetaById } from "../../Repositories/MetaRepository.js";
-import { getProductMetaById } from "../Products/listProductsByIdMeta.service.js";
+import { getProdutoMetaById } from "../Produtos/listProdutosByIdMeta.service.js";
 
 export async function deleteMetaService(id) {
-	const temProduto = await getProductMetaById(id);
+	const temProduto = await getProdutoMetaById(id);
 	if(temProduto = true){
 		throw new Error("Não podemos deletar uma meta com produtos")
 	}

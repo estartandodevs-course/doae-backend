@@ -1,6 +1,6 @@
 import { createProdutoMetaService } from "../Services/Produtos/createProdutoMeta.service.js";
-import { listProdutosByIdMetaService } from "../Services/Produtos/listProdutossByIdMeta.service.js";
-import { listProdutosByIdService } from "../Services/Produtos/listProdutosById.service.js";
+import { listProdutosByIdMetaService } from "../Services/Produtos/listProdutosByIdMeta.service.js";
+import { listProdutosByIdService } from "../Services/Produtos/listProdutoById.service.js";
 import { updateProdutoMetaByIdService } from "../Services/Produtos/updateProdutoMeta.service.js";
 import { deleteProdutoMetaByIdService } from "../Services/Produtos/deleteProdutoById.service.js";
 

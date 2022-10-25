@@ -1,6 +1,6 @@
 import { getProdutoMetasByIdMeta } from "../../Repositories/ProdutoMetaRepository.js";
 
-export async function listProdutoByIdMetaService(id_meta, page = 1) {
+export async function listProdutosByIdMetaService(id_meta, page = 1) {
 	const perPage = 10;
 	let initPage  = (page * perPage) - perPage;
 	try {
