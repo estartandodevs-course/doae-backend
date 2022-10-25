@@ -15,14 +15,14 @@ import {
 
 const routesProduto = Router();
 
-routesProduto.post("/produto", postProdutoMidd, postProdutos);
+routesProduto.post("/produtos", postProdutoMidd, postProdutos);
 
-routesProduto.get("/produto/:id", getIdProdutosMidd, getProdutosById);
+routesProduto.get("/produtos/:id", getIdProdutosMidd, getProdutosById);
 
-routesProduto.get("/produto/meta/:id_meta", getProdutoIdMetaMidd, getProdutosByIdMeta);
+routesProduto.get("/produtos/meta/:id_meta", getProdutoIdMetaMidd, getProdutosByIdMeta);
 
-routesProduto.put("/produto/:id", putProdutoMidd, putProdutos);
+routesProduto.put("/produtos/:id", putProdutoMidd, putProdutos);
 
-routesProduto.delete("/produto/:id", getIdProdutosMidd, deleteProduto);
+routesProduto.delete("/produtos/:id", getIdProdutosMidd, deleteProduto);
 
 export default routesProduto;

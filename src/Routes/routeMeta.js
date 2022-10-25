@@ -7,7 +7,7 @@ import {
 	putCurrentQuantity,
 	deleteMeta,
 	getSuspendMetas,
-	recoverMeta
+	recoverMeta,
 } from "../Controllers/MetasController.js";
 import { Router } from "express";
 import {
@@ -16,7 +16,7 @@ import {
 	getIdMetasMidd,
 	getIdMetasInsMidd,
 	putMetasMidd,
-	putCurrentQuantMidd
+	putCurrentQuantMidd,
 } from "../Middlewares/metaMiddlewares.js";
 
 const routesMeta = Router();
@@ -29,7 +29,11 @@ routesMeta.get("/metas/suspend", getMetasMidd, getSuspendMetas);
 
 routesMeta.get("/metas/:id", getIdMetasMidd, getMetaById);
 
-routesMeta.get("/metas/institution/:id_institution", getIdMetasInsMidd, getMetaByIdInstitution);
+routesMeta.get(
+	"/metas/institution/:id_institution",
+	getIdMetasInsMidd,
+	getMetaByIdInstitution
+);
 
 routesMeta.put("/metas/:id", putMetasMidd, putMeta);
 
