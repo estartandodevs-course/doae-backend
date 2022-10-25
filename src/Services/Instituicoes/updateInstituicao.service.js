@@ -27,6 +27,6 @@ export async function updateInstituicaoByIdService(
 		);
         return instituicao;
 	} catch (e) {
-		throw new Error("Não foi possível atualizar a instituição.");
+		throw new Error(e.message);
 	}
 }

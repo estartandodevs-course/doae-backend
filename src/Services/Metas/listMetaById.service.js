@@ -20,6 +20,6 @@ export async function listMetaById(id) {
 		return newObjectMetaFormat;
 	} catch (e) {
 		console.log(e);
-		throw new Error("Não foi possível buscar a meta.");
+		throw new Error(e.message);
 	}
 }

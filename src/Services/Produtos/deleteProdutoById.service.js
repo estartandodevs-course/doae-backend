@@ -6,6 +6,6 @@ export async function deleteProdutoMetaByIdService(id){
         return deleteMeta;
     } catch(e){
         console.log(e);
-        throw new Error("Não foi possível excluir o produto.");
+        throw new Error(e.message);
     }
 }

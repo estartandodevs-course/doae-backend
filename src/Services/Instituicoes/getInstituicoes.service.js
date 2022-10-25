@@ -25,6 +25,6 @@ export async function getInstitutionService(page = 1) {
         })
         return newPagination;
 	} catch (e) {
-		throw new Error("Não foi possível buscar a instituição.");
+		throw new Error(e.message);
 	}
 }

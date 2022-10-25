@@ -65,6 +65,6 @@ export async function listAllWithFilters(page = 1, query) {
         return newPagination;
     } catch (e) {
         console.log(e);
-        throw new Error("Não foi possível buscar as metas com o filtro passado.");
+        throw new Error(e.message);
     }
 }

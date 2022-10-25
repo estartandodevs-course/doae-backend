@@ -34,6 +34,6 @@ export async function listSuspendMetas(page = 1){
     }
 	} catch (e) {
 		console.log(e);
-		throw new Error("Não foi possível buscar as metas.");
+		throw new Error(e.message);
 	}
 }

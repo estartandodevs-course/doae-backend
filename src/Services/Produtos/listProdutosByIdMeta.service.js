@@ -13,6 +13,6 @@ export async function listProdutosByIdMetaService(id_meta, page = 1) {
 		}
 	} catch (e) {
 		console.log(e);
-		throw new Error("Não foi possível buscar os produtos.");
+		throw new Error(e.message);
 	}
 }

@@ -5,6 +5,6 @@ export async function deleteInstituicaoByIdService(id){
         const instituicao = await deleteInstituicao(id);
         return instituicao;
     } catch (e) {
-        throw new Error('Não foi possível deletar a instituição.');
+        throw new Error(e.message);
     }
 }

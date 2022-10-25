@@ -13,6 +13,6 @@ export async function getInstitutionByIdService(id) {
 			estado: endereco.uf,
 		};
 	} catch (e) {
-		throw new Error("Não foi possível buscar a instituição.");
+		throw new Error(e.message);
 	}
 }
