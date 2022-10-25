@@ -25,11 +25,11 @@ routesDoacao.post("/doacoes", postDoacaoMidd, postDoacao);
 
 routesDoacao.get("/doacoes", getDoacaoMidd, getDoacao);
 
-routesDoacao.get("/doacoes", getIdDoacaoMidd, getDoacaoById);
+routesDoacao.get("/doacoes/:id", getIdDoacaoMidd, getDoacaoById);
 
-routesDoacao.get("/doacoes", getIdDoacaoInsMidd, getDoacaoByIdInstitution);
+routesDoacao.get("/doacoes/instituicao/:id_instituicao", getIdDoacaoInsMidd, getDoacaoByIdInstitution);
 
-routesDoacao.get("/doacoes", getIdDoacaoMetaMidd, getDoacaoByIdMeta);
+routesDoacao.get("/doacoes/metas/:id_meta", getIdDoacaoMetaMidd, getDoacaoByIdMeta);
 
 routesDoacao.put("/doacoes", putDoacaoMidd, putDoacao);
 

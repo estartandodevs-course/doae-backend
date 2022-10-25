@@ -1,5 +1,5 @@
 import routesMeta from "./routeMeta.js";
-import routesProduto from "./routeProduct.js";
+import routesProduto from "./routeProduto.js";
 
 const routes = {
     routesMeta,

@@ -1,5 +1,5 @@
 import { getAllMetas } from "../../Repositories/MetaRepository.js";
-import { getInstitutionByIdService } from "../Institutions/getInstitutionById.service.js";
+import { getInstitutionByIdService } from "../Instituicoes/getInstituicaoById.service.js";
 import { filterMetasByNameOfInstitution } from "../../Funcs/filterMetasByName.js";
 
 export async function listAllWithFilters(page = 1, query) {

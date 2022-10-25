@@ -1,6 +1,6 @@
 import { createProdutoMetaService } from "../Services/Produtos/createProdutoMeta.service.js";
 import { listProdutosByIdMetaService } from "../Services/Produtos/listProdutosByIdMeta.service.js";
-import { listProdutosByIdService } from "../Services/Produtos/listProdutoById.service.js";
+import { listProdutoByIdService } from "../Services/Produtos/listProdutoById.service.js";
 import { updateProdutoMetaByIdService } from "../Services/Produtos/updateProdutoMeta.service.js";
 import { deleteProdutoMetaByIdService } from "../Services/Produtos/deleteProdutoById.service.js";
 
@@ -17,7 +17,7 @@ export async function postProdutos(request, response){
 export async function getProdutosById(request, response){
 	const { id } = request.params;
 	try {
-		const produtos = await listProdutosByIdService(id);
+		const produtos = await listProdutoByIdService(id);
 		response.status(200).json(produtos);
 	} catch (e) {
 		response.status(400).json(e.message);

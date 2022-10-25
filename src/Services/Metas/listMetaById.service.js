@@ -1,5 +1,5 @@
 import { getMetaById } from "../../Repositories/MetaRepository.js";
-import { getInstitutionByIdService } from "../Institutions/getInstitutionById.service.js";
+import { getInstitutionByIdService } from "../Instituicoes/getInstituicaoById.service.js";
 
 export async function listMetaById(id) {
 	try {
