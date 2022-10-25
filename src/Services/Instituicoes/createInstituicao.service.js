@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import shortid from "shortid";
 import { uploadImage } from "../../Libs/uploadCloud.js";
 
-export async function createInstitutionService(
+export async function createInstituicaoService(
 	nome,
 	cnpj,
 	descricao,

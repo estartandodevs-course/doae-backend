@@ -1,7 +1,7 @@
 import { getInstituicaoById } from "../../Repositories/InstituticaoRepository.js";
 import { getAddressByZipCode } from "../../Funcs/getAddressByZipCode.js";
 
-export async function getInstitutionByIdService(id) {
+export async function listInstituicaoByIdService(id) {
 	try {
 		const instituicao = await getInstituicaoById(id);
 		const endereco = await getAddressByZipCode(instituicao.cep);

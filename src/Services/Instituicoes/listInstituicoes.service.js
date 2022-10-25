@@ -1,7 +1,7 @@
 import { getInstituicoes } from "../../Repositories/InstituticaoRepository.js";
 import { getAddressByZipCode } from "../../Funcs/getAddressByZipCode.js";
 
-export async function getInstitutionService(page = 1) {
+export async function listInstituicaoService(page = 1) {
 	const perPage = 10;
 	let initPage = page * perPage - perPage;
 	try {
