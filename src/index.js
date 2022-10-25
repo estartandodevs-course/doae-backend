@@ -24,6 +24,7 @@ class App {
 	routes() {
 		this.server.use(routes.routesMeta);
 		this.server.use(routes.routesProduto);
+		this.server.use(routes.routesDoacao);
 	}
 }
 
