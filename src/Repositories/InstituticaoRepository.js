@@ -64,6 +64,20 @@ export async function getInstituicaoById(id) {
 	}
 }
 
+export async function getInstituicaoByIdExternal(identificador) {
+	try {
+		const instituicao = await InstituicaoModel.findAll({
+			where: {
+				identificador: identificador,
+				suspend: false,
+			},
+		});
+		return instituicao;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
 export async function updateInstituicao(
 	id,
 	nome,
