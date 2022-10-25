@@ -38,6 +38,6 @@ export async function createInstituicaoService(
 		);
 		return instituicao;
 	} catch (e) {
-		throw new Error("Não foi possível criar a instituição.");
+		throw new Error(e.message);
 	}
 }

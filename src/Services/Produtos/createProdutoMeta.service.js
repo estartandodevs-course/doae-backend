@@ -15,6 +15,6 @@ export async function createProdutoMetaService(
 		return produto;
 	} catch (e) {
 		console.log(e);
-		throw new Error("Não foi possível adicionar o produto. Favor verifique os parametros!");
+		throw new Error(e.message);
 	}
 }

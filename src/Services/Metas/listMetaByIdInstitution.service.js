@@ -34,6 +34,6 @@ export async function listMetasByIdInstitution(id_institution, page = 1) {
     return newPagination;
   } catch (e) {
     console.log(e);
-    throw new Error("Não foi possível buscar as metas.");
+    throw new Error(e.message);
   }
 }
