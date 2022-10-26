@@ -10,14 +10,14 @@ import { Router } from "express";
 
 const routesInstituicao = Router();
 
-routesInstituicao.post("instituicao", postInstituicao);
+routesInstituicao.post("/instituicao", postInstituicao);
 
-routesInstituicao.get("instituicao", getInstituicao);
+routesInstituicao.get("/instituicao", getInstituicao);
 
-routesInstituicao.get("instituicao/:id", getInstituicaoById);
+routesInstituicao.get("/instituicao/:id", getInstituicaoById);
 
-routesInstituicao.put("instituicao", putInstituicao);
+routesInstituicao.put("/instituicao/:id", putInstituicao);
 
-routesInstituicao.delete("instituicao", deleteInstituicaoByIdService);
+routesInstituicao.delete("/instituicao/:id", deleteInstituicaoByIdService);
 
 export default routesInstituicao;

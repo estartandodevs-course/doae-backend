@@ -23,7 +23,7 @@ const routesDoacao = Router();
 
 routesDoacao.post("/doacoes", postDoacaoMidd, postDoacao);
 
-routesDoacao.get("/doacoes", getDoacaoMidd, getDoacao);
+routesDoacao.get("/doacoes/list", getDoacaoMidd, getDoacao);
 
 routesDoacao.get("/doacoes/:id", getIdDoacaoMidd, getDoacaoById);
 

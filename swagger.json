@@ -1,16 +1,18 @@
  {
     "openapi": "3.0.0",
     "info" : {
-        "title": "Conta Mais",
-        "description": "Api de fluxo de caixa",
+        "title": "Doaê",
+        "description": "Api de doação para instituições sociais",
         "version": "1.0.0"
     },
+    "basePath" : "/",
+
     "paths": {
-        "/user": {
+        "/instituicao/": {
             "post": {
-                "tags": ["User"],
-                "sumary": "Cria um usuário",
-                "description": "Esta rota é responsável por criar um novo usuário",
+                "tags": ["Instituição"],
+                "sumary": "Cria o perfil de uma instituicao",
+                "description": "Esta rota é responsável por criar um novo perfil de instituição",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -23,16 +25,49 @@
                                     "email": {
                                         "type": "string"
                                     },
-                                    "cpf": {
+                                    "cnpj": {
                                         "type": "string"
                                     },
-                                    "password": "string"
+                                    "cep": {
+                                        "type": "string"
+                                    },
+                                    "telefone": {
+                                        "type": "string"
+                                    },
+                                    "agência": {
+                                        "type": "string"
+                                    },
+                                    "conta": {
+                                        "type": "string"
+                                    },
+                                    "pix": {
+                                        "type": "string"
+                                    },
+                                    "descrição": {
+                                        "type": "string"
+                                    },
+                                    "site": {
+                                        "type": "string"
+                                    },
+                                    "logomarca": {
+                                        "type": "string"
+                                    },
+                                    "verificado": {
+                                        "type": "string"
+                                    }
                                 },
                                 "example": {
-                                    "name": "user name sample",
-                                    "email": "user@email.com",
-                                    "cpf": "00000000000",
-                                    "password": "yourpassword" 
+                                    "name": "institution name sample",
+                                    "email": "institution@email.com",
+                                    "cnpj": "00000000000000",
+                                    "agência": "0000",
+                                    "conta": "00000000000000000000",
+                                    "pix": "chavepix@email.com",
+                                    "telefone": "00 0000 0000",
+                                    "descrição": "essa é a descrição de uma instituição social fictícia",
+                                    "site": "https://www.instituiçãoficticia.com.br",
+                                    "logomarca": "foto.png",
+                                    "verificado": "verdadeiro"
                                 }
                             }
                         }
@@ -40,34 +75,45 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Usuário criado com sucesso!"
+                        "description": "Instituição criada com sucesso!"
                     }
                 }
             }
         },
-        "/user/list": {
+        "/instituicao": {
             "get": {
-                "tags": ["User"],
-                "sumary": " Lista os usuários",
-                "description": "Esta rota é reponsável por listar os usuários",
+                "tags": ["Instituição"],
+                "sumary": " Lista as instituições",
+                "description": "Esta rota é reponsável por listar as instituições",
                 "responses": {
                     "201": {
-                        "description": "Lista de usuários encontrada!"
+                        "description": "Lista de instituições encontrada!"
                     }
                 }
             }
         },
-        "/updateUser/{id}": {
+        "/instituicao/{id}": {
+            "get": {
+                "tags": ["Instituição"],
+                "sumary": " Lista as instituições por id específico",
+                "description": "Esta rota é reponsável por listar as instituições por seus respectivos id",
+                "responses": {
+                    "201": {
+                        "description": "Instituição encontrada!"
+                    }
+                }
+            }
+        },
+        "/updateInstituicao/{id}": {
             "put": {
-                "tags": ["User"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Atualiza um usuário",
-                "description": "Esta rota é responsável por atualizar dados de um usuário",
+                "tags": ["Instituição"],
+                "sumary": "Atualiza uma instituição",
+                "description": "Esta rota é responsável por atualizar dados de uma instituição",
                 "parameters": [
                     {
                         "in":"path",
-                        "name": "id",
-                        "description": "Id do usuário que será atualizado",
+                        "id": "nome, cep, telefone, email, pix, descrição, site, logomarca",
+                        "description": "Atributos acima serão atualizados",
                         "required": true
                     }
                 ],
@@ -83,113 +129,49 @@
                                     "email": {
                                         "type": "string"
                                     },
-                                    "cpf": {
-                                        "type": "string"
-                                    },
-                                    "password": "string"
-                                },
-                                "example": {
-                                    "name": "user name sample",
-                                    "email": "user@email.com",
-                                    "cpf": "00000000000",
-                                    "password": "yourpassword" 
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Usuário atualizado com sucesso!"
-                    }
-                }
-            }
-        },
-        "/deleteUser/{id}": {
-            "delete": {
-                "tags": ["User"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Deleta um usuário",
-                "description": "Esta rota é responsável por deletar dados de um usuário",
-                "parameters": [
-                    {
-                        "in":"path",
-                        "name": "id",
-                        "description": "Id do usuário que será deletado",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Usuário deletado com sucesso!"
-                    }
-                }
-            }
-        },
-        "/auth/token": {
-            "post": {
-              "tags": ["Authentication"],
-              "summary": "Realizar login na API",
-              "description": "Esta rota é responsável por gerar um token JWT para visualização de rotas protegidas",
-              "requestBody": {
-                "content": {
-                  "application/json": {
-                    "schema": { "$ref": "#/components/schemas/session-request" },
-                    "examples": {
-                      "session-sucess": {
-                        "value": {
-                          "email": "email@email.com",
-                          "password": "123456"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "responses": {
-                "200": {
-                  "description": "Login realizado com sucesso"
-                },
-                "400": {
-                  "description": "Dados inválidos / Usuário não encontrado",
-                  "content": {
-                    "application/json": {
-                      "value": {
-                        "error": { "type": "string" }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-        },
-        "/business": {
-            "post": {
-                "tags": ["Business"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Cadastra uma empresa",
-                "description": "Esta rota é responsável por cadastrar empresas",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
                                     "cnpj": {
                                         "type": "string"
                                     },
-                                    "company": {
+                                    "cep": {
                                         "type": "string"
                                     },
-                                    "user_id": {
-                                        "type": "string"    
+                                    "telefone": {
+                                        "type": "string"
+                                    },
+                                    "agência": {
+                                        "type": "string"
+                                    },
+                                    "conta": {
+                                        "type": "string"
+                                    },
+                                    "pix": {
+                                        "type": "string"
+                                    },
+                                    "descrição": {
+                                        "type": "string"
+                                    },
+                                    "site": {
+                                        "type": "string"
+                                    },
+                                    "logomarca": {
+                                        "type": "string"
+                                    },
+                                    "verificado": {
+                                        "type": "string"
                                     }
                                 },
                                 "example": {
-                                    "cnpj": "90888777000100",
-                                    "company": "Softwares S.A",
-                                    "bank_stock": 1000,
-                                    "user_id": "5ca74a74-29a6-468a-ae96-3263d1d2634c" 
+                                    "name": "institution name sample",
+                                    "email": "institution@email.com",
+                                    "cnpj": "00000000000000",
+                                    "agência": "0000",
+                                    "conta": "00000000000000000000",
+                                    "pix": "chavepix@email.com",
+                                    "telefone": "00 0000 0000",
+                                    "descrição": "essa é a descrição de uma instituição social fictícia",
+                                    "site": "https://www.instituiçãoficticia.com.br",
+                                    "logomarca": "foto.png",
+                                    "verificado": "verdadeiro"
                                 }
                             }
                         }
@@ -197,57 +179,64 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Empresa cadastrada com sucesso!"
+                        "description": "Instituição atualizada com sucesso!"
                     }
                 }
             }
         },
-        "/business/list": {
-            "get": {
-                "tags": ["Business"],
-                "security": [{"bearerAuth": []}],
-                "sumary": " Lista as empresas cadastradas",
-                "description": "Esta rota é reponsável por listar as empresas cadastradas",
-                "responses": {
-                    "201": {
-                        "description": "Lista de empresas encontrada!"
-                    }
-                }
-            }
-        },
-        "/updateBusiness/{id}": {
-            "put": {
-                "tags": ["Business"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Atualiza uma empresa",
-                "description": "Esta rota é responsável por atualizar dados de uma empresa",
+        "/deleteInstituicao/{id}": {
+            "delete": {
+                "tags": ["Instituicao"],
+                "sumary": "Deleta uma instituição",
+                "description": "Esta rota é responsável por deletar dados de uma instituição",
                 "parameters": [
                     {
                         "in":"path",
                         "name": "id",
-                        "description": "Id da empresa que será atualizada",
+                        "description": "Id da instituição que será deletada",
                         "required": true
                     }
                 ],
+                "responses": {
+                    "201": {
+                        "description": "Instituição deletada com sucesso!"
+                    }
+                }
+            }
+        },
+        "/doacoes": {
+            "post": {
+                "tags": ["Doações"],
+                "sumary": "Cadastra uma doação",
+                "description": "Esta rota é responsável por cadastrar doações",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "cnpj": {
+                                    "id_instituicao": {
                                         "type": "string"
                                     },
-                                    "company": {
-                                        "type": "string"
-                                    },
-                                    "bank_stock": {
+                                    "value": {
                                         "type": "number"
+                                    },
+                                    "email_doador": {
+                                        "type": "string"    
+                                    },
+                                    "id_meta": {
+                                        "type": "string"
+                                    },
+                                    "id_produto": {
+                                        "type": "string"
                                     }
                                 },
                                 "example": {
-                                    "cnpj": "90888777000100",
-                                    "company": "Softwares S.A"
+                                    "id_instituicao": "6co83a74-29a9-468a-ae96-3256d1d2634",
+                                    "value": 35.00,
+                                    "email_doador": "doador@email.com",
+                                    "id_meta": "5wo43a74-29a6-478a-ve96-3263d1d9429c",
+                                    "id_produto": "8ca92p71-99l6-468a-ae96-0329d1d2634"
                                 }
                             }
                         }
@@ -255,98 +244,69 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Empresa atualizado com sucesso!"
+                        "description": "Doação cadastrada com sucesso!"
                     }
                 }
             }
         },
-        "/deleteBusiness/{id}": {
-            "delete": {
-                "tags": ["Business"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Deleta uma empresa",
-                "description": "Esta rota é responsável por deletar dados de uma empresa",
-                "parameters": [
-                    {
-                        "in":"path",
-                        "name": "id",
-                        "description": "Id da empresa que será deletada",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Empresa deletada com sucesso!"
-                    }
-                }
-            }
-        },
-        "/bank": {
-            "post": {
-                "tags": ["BankAccount"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Cadastra uma conta bancária",
-                "description": "Esta rota é responsável por cadastrar contas bancárias",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "financial_institution": {
-                                        "type": "string"
-                                    },
-                                    "cash": {
-                                        "type": "number"    
-                                    },
-                                    "limit": {
-                                        "type": "number"    
-                                    },
-                                    "id_business": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-	                                "financial_institution": "nomeBanco",
-	                                "cash": 5000,
-	                                "limit": 1000,
-	                                "id_business": "efcd6d29-d0a1-432b-a149-3c5da22c7c1d" 
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Conta bancária cadastrada com sucesso!"
-                    }
-                }
-            }
-        },
-        "/bank/list": {
+        "/doacoes/list": {
             "get": {
-                "tags": ["BankAccount"],
-                "security": [{"bearerAuth": []}],
-                "sumary": " Lista as contas cadastradas",
-                "description": "Esta rota é reponsável por listar as contas cadastradas",
+                "tags": ["Doações"],
+                "sumary": " Lista as doações cadastradas",
+                "description": "Esta rota é reponsável por listar as doações cadastradas",
                 "responses": {
                     "201": {
-                        "description": "Lista de contas encontrada!"
+                        "description": "Lista de doações encontrada!"
                     }
                 }
             }
         },
-        "/updateBank/{id}": {
+        "/doacoes/{id}": {
+            "get": {
+                "tags": ["Doações"],
+                "sumary": " Lista as doações por id específico",
+                "description": "Esta rota é reponsável por listar as doações de um id específico",
+                "responses": {
+                    "201": {
+                        "description": "Doação encontrada!"
+                    }
+                }
+            }
+        },
+        "/doacoes/instituicao/{id_instituicao}": {
+            "get": {
+                "tags": ["Doações"],
+                "sumary": " Lista as doações de uma instituição",
+                "description": "Esta rota é reponsável por listar as doações de uma instituição",
+                "responses": {
+                    "201": {
+                        "description": "Lista de doações encontrada!"
+                    }
+                }
+            }
+        },
+        "/doacoes/metas/{id_meta}": {
+            "get": {
+                "tags": ["Doações"],
+                "sumary": " Lista as doações por id de meta",
+                "description": "Esta rota é reponsável por listar as doações de uma meta es´pecífica",
+                "responses": {
+                    "201": {
+                        "description": "Lista de doações encontrada!"
+                    }
+                }
+            }
+        },
+        "/updateDoacoes": {
             "put": {
-                "tags": ["BankAccount"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Atualiza uma conta",
-                "description": "Esta rota é responsável por atualizar dados de uma conta",
+                "tags": ["Doações"],
+                "sumary": "Atualiza uma doação",
+                "description": "Esta rota é responsável por atualizar dados de uma doação",
                 "parameters": [
                     {
                         "in":"path",
                         "name": "id",
-                        "description": "Id da conta que será atualizada",
+                        "description": "Id da doação que será atualizada",
                         "required": true
                     }
                 ],
@@ -356,20 +316,28 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "financial_institution": {
+                                    "id_instituicao": {
                                         "type": "string"
                                     },
-                                    "cash": {
-                                        "type": "number"    
+                                    "value": {
+                                        "type": "number"
                                     },
-                                    "limit": {
-                                        "type": "number"    
+                                    "email_doador": {
+                                        "type": "string"    
+                                    },
+                                    "id_meta": {
+                                        "type": "string"
+                                    },
+                                    "id_produto": {
+                                        "type": "string"
                                     }
                                 },
                                 "example": {
-	                                "financial_institution": "nomeBanco",
-	                                "cash": 5000,
-	                                "limit": 1000
+                                    "id_instituicao": "6co83a74-29a9-468a-ae96-3256d1d2634",
+                                    "value": 35.00,
+                                    "email_doador": "doador@email.com",
+                                    "id_meta": "5wo43a74-29a6-478a-ve96-3263d1d9429c",
+                                    "id_produto": "8ca92p71-99l6-468a-ae96-0329d1d2634"
                                 }
                             }
                         }
@@ -377,38 +345,200 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Conta atualizado com sucesso!"
+                        "description": "Doação atualizada com sucesso!"
                     }
                 }
             }
         },
-        "/deleteBank/{id}": {
+        "/deleteDoacoes": {
             "delete": {
-                "tags": ["BankAccount"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Deleta uma conta",
-                "description": "Esta rota é responsável por deletar dados de uma conta",
+                "tags": ["Doações"],
+                "sumary": "Deleta uma doação",
+                "description": "Esta rota é responsável por deletar dados de uma doação",
                 "parameters": [
                     {
                         "in":"path",
                         "name": "id",
-                        "description": "Id da conta que será deletada",
+                        "description": "Id da doação que será deletada",
                         "required": true
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "Conta deletada com sucesso!"
+                        "description": "Doação deletada com sucesso!"
                     }
                 }
             }
         },
-        "/moviments": {
+        "/metas": {
             "post": {
-                "tags": ["Moviments"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Cadastra uma movimentação bancária",
-                "description": "Esta rota é responsável por cadastrar movimentações bancárias",
+                "tags": ["Metas"],
+                "sumary": "Cadastra uma meta",
+                "description": "Esta rota é responsável por cadastrar metas",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "number"    
+                                    },
+                                    "day_limit": {
+                                        "type": "string"    
+                                    },
+                                    "id_instituicao": {
+                                        "type": "string"
+                                    },
+                                    "descrição": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+	                                "nome": "cesta básica",
+	                                "value": 5000,
+	                                "limit": "10 de março de 2023",
+	                                "descrição": "Nosso alvo é distribuir cestas básicas para pelo menos 10 famílias em situação de carÊncia econômica" 
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Meta cadastrada com sucesso!"
+                    }
+                }
+            }
+        },
+        "/metas/list": {
+            "get": {
+                "tags": ["Metas"],
+                "sumary": " Lista as metas cadastradas",
+                "description": "Esta rota é reponsável por listar as metas cadastradas",
+                "responses": {
+                    "201": {
+                        "description": "Lista de metas encontrada!"
+                    }
+                }
+            }
+        },
+        "/metas/suspend": {
+            "get": {
+                "tags": ["Metas"],
+                "sumary": " Lista as metas ativas",
+                "description": "Esta rota é reponsável por listar as metas ativas",
+                "responses": {
+                    "201": {
+                        "description": "Lista de metas encontrada!"
+                    }
+                }
+            }
+        },
+        "/metas/{id}": {
+            "get": {
+                "tags": ["Metas"],
+                "sumary": " Lista as metas por id específico",
+                "description": "Esta rota é reponsável por listar as metas por seus respectivos ids",
+                "responses": {
+                    "201": {
+                        "description": "Meta encontrada!"
+                    }
+                }
+            }
+        },
+        "/metas/instituicao/{id_instituicao}": {
+            "get": {
+                "tags": ["Metas"],
+                "sumary": " Lista as metas por id da instituição",
+                "description": "Esta rota é reponsável por listar as metas pelo id de sua instituição",
+                "responses": {
+                    "201": {
+                        "description": "Lista de metas encontrada!"
+                    }
+                }
+            }
+        },
+        "/updateMetas/{id}": {
+            "put": {
+                "tags": ["Metas"],
+                "sumary": "Atualiza uma meta",
+                "description": "Esta rota é responsável por atualizar dados de uma meta",
+                "parameters": [
+                    {
+                        "in":"path",
+                        "name": "id",
+                        "description": "Id da meta que será atualizada",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "number"    
+                                    },
+                                    "day_limit": {
+                                        "type": "string"    
+                                    },
+                                    "id_instituicao": {
+                                        "type": "string"
+                                    },
+                                    "descrição": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+	                                "nome": "cesta básica",
+	                                "value": 5000,
+	                                "limit": "10 de março de 2023",
+	                                "descrição": "Nosso alvo é distribuir cestas básicas para pelo menos 10 famílias em situação de carÊncia econômica" 
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Meta atualizado com sucesso!"
+                    }
+                }
+            }
+        },
+        "/deleteMeta/{id}": {
+            "delete": {
+                "tags": ["BankAccount"],
+                "sumary": "Deleta uma meta",
+                "description": "Esta rota é responsável por deletar dados de uma meta",
+                "parameters": [
+                    {
+                        "in":"path",
+                        "name": "id",
+                        "description": "Id da meta que será deletada",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Meta deletada com sucesso!"
+                    }
+                }
+            }
+        },
+        "/produtos": {
+            "post": {
+                "tags": ["Produtos"],
+                "sumary": "Cadastra um produto",
+                "description": "Esta rota é responsável por cadastrar produtos",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -418,25 +548,17 @@
                                     "name": {
                                         "type": "string"
                                     },
-                                    "description": {
+                                    "id_meta": {
                                         "type": "string"
                                     },
                                     "value": {
                                         "type": "number"
-                                    },
-                                    "type": {
-                                        "type": "string"    
-                                    },
-                                    "id_bankAccount": {
-                                        "type": "string"
                                     }
                                 },
                                 "example": {
-                                    "name": "Pagamento funcionário",
-	                                "description": "Banco Itau",
-	                                "value": 2000,
-	                                "type": "Saida",
-	                                "id_bankAccount": "c68e87b4-cd5d-4fd2-bad5-cb9e9388ee2a"
+                                    "name": "Arroz",
+                                    "id_meta": "5wo43a74-29a6-478a-ve96-23798kj3k549c",
+	                                "value": 5
                                 }
                             }
                         }
@@ -444,35 +566,45 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Movimentação cadastrada com sucesso!"
+                        "description": "Produto cadastrado com sucesso!"
                     }
                 }
             }
         },
-        "/moviments/list": {
+        "/produtos/{id}": {
             "get": {
-                "tags": ["Moviments"],
-                "security": [{"bearerAuth": []}],
-                "sumary": " Lista as movimentações financeiras",
-                "description": "Esta rota é reponsável por listar as movimentações financeiras",
+                "tags": ["Produtos"],
+                "sumary": " Lista os produtos por seus respectivos ids",
+                "description": "Esta rota é reponsável por listar os produtos por seus respectivos ids",
                 "responses": {
                     "201": {
-                        "description": "Lista de movimentações encontrada!"
+                        "description": "Produtos encontrado!"
                     }
                 }
             }
         },
-        "/updateMoviments/{id}": {
+        "/produtos/meta/{id_meta}": {
+            "get": {
+                "tags": ["Produtos"],
+                "sumary": " Lista os produtos pelo id da meta",
+                "description": "Esta rota é reponsável por listar os produtos pelo id da meta",
+                "responses": {
+                    "201": {
+                        "description": "Lista os produtos encontrada!"
+                    }
+                }
+            }
+        },
+        "/updateProdutos/{id}": {
             "put": {
-                "tags": ["Moviments"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Atualiza uma movimentação",
-                "description": "Esta rota é responsável por atualizar uma movimentação",
+                "tags": ["Produtos"],
+                "sumary": "Atualiza o produto",
+                "description": "Esta rota é responsável por atualizar um produto",
                 "parameters": [
                     {
                         "in":"path",
                         "name": "id",
-                        "description": "Id da movimentação que será atualizada",
+                        "description": "Id do produto que será atualizado",
                         "required": true
                     }
                 ],
@@ -482,24 +614,27 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "description": {
+                                    "nome": {
                                         "type": "string"
                                     },
                                     "value": {
-                                        "type": "number"
+                                        "type": "number"    
                                     },
-                                    "type": {
+                                    "day_limit": {
                                         "type": "string"    
+                                    },
+                                    "id_instituicao": {
+                                        "type": "string"
+                                    },
+                                    "descrição": {
+                                        "type": "string"
                                     }
                                 },
                                 "example": {
-                                    "name": "Pagamento funcionário",
-	                                "description": "Banco Itau",
-	                                "value": 2000,
-	                                "type": "Saida"
+	                                "nome": "cesta básica",
+	                                "value": 5000,
+	                                "limit": "10 de março de 2023",
+	                                "descrição": "Nosso alvo é distribuir cestas básicas para pelo menos 10 famílias em situação de carÊncia econômica" 
                                 }
                             }
                         }
@@ -507,22 +642,21 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Conta atualizado com sucesso!"
+                        "description": "Produto atualizado com sucesso!"
                     }
                 }
             }
         },
-        "/deleteMoviments/{id}": {
+        "/deleteProduto/{id}": {
             "delete": {
-                "tags": ["Moviments"],
-                "security": [{"bearerAuth": []}],
-                "sumary": "Deleta uma movimentação",
-                "description": "Esta rota é responsável por deletar uma movimentação financeira",
+                "tags": ["Produtos"],
+                "sumary": "Deleta um produção",
+                "description": "Esta rota é responsável por deletar um produto",
                 "parameters": [
                     {
                         "in":"path",
                         "name": "id",
-                        "description": "Id da movimentação que será deletada",
+                        "description": "Id do produto que será deletado",
                         "required": true
                     }
                 ],
