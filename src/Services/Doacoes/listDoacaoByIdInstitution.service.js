@@ -1,10 +1,10 @@
-import { getDoacoesByIdInstitution } from "../../Repositories/DoacaoRepository.js";
+import { getDoacoesByIdInstituicao } from "../../Repositories/DoacaoRepository.js";
 
-export async function listDoacaoByIdInstitutionService(id_institution, page = 1){
+export async function listDoacaoByIdInstituicaoService(id_instituicao, page = 1){
 	const perPage = 10;
 	let initPage  = (page * perPage) - perPage;
 	try {
-		const doacoes = await getDoacoesByIdInstitution(id_institution);
+		const doacoes = await getDoacoesByIdInstituicao(id_instituicao);
 		const response  = doacoes.slice(initPage, (initPage + perPage));
 		if (response.length > 0) {
 			return response;

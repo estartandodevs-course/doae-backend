@@ -1,11 +1,11 @@
-import { getMetasByIdInstitution } from "../../Repositories/MetaRepository.js";
-import { getInstitutionByIdService } from "../Instituicoes/getInstituicaoById.service.js";
+import { getMetasByIdInstituicao } from "../../Repositories/MetaRepository.js";
+import { getInstituicaoByIdService } from "../Instituicoes/getInstituicaoById.service.js";
 
-export async function listMetasByIdInstitution(id_institution, page = 1) {
+export async function listMetasByIdInstituicao(id_instituicao, page = 1) {
   const perPage = 10;
   let initPage = page * perPage - perPage;
   try {
-    const metas = await getMetasByIdInstitution(id_institution);
+    const metas = await getMetasByIdInstituicao(id_instituicao);
     const newPagination = [];
 
 		let response = metas.slice(initPage, initPage + perPage);
@@ -15,7 +15,7 @@ export async function listMetasByIdInstitution(id_institution, page = 1) {
     }
     
     for (let i = 0; i < response.length; i++) {
-      const institution = await getInstitutionByIdService(response[i].id_institution);
+      const instituicao = await getInstituicaoByIdService(response[i].id_instituicao);
       const percent = (response[i].current_quantity * 100) / response[i].target_value;
 
       const newObjectMetaFormat = {
@@ -23,7 +23,7 @@ export async function listMetasByIdInstitution(id_institution, page = 1) {
         name: response[i].name,
         target_value: response[i].value,
         current_quantity: response[i].current_value,
-        institution: institution.name, 
+        instituicao: instituicao.name, 
         createdAt: response[i].createdAt,
         day_limit: response[i].day_limit,
         percent: percent,

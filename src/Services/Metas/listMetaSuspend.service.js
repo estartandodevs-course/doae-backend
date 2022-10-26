@@ -1,5 +1,5 @@
 import { getMetasSuspend } from "../../Repositories/MetaRepository.js";
-import { getInstitutionByIdService } from "../Instituicoes/getInstituicaoById.service.js";
+import { getInstituicaoByIdService } from "../Instituicoes/getInstituicaoById.service.js";
 
 export async function listSuspendMetas(page = 1){
 	const perPage = 10;
@@ -17,7 +17,7 @@ export async function listSuspendMetas(page = 1){
 			return metas.slice(0, 10);
 		} */
 
-      const institution = await getInstitutionByIdService(metas.id_institution);
+      const instituicao = await getInstituicaoByIdService(metas.id_instituicao);
 	  const percent = (current_quantity * 100) / target_value;
 
       const newObjectMetaFormat = {
@@ -25,7 +25,7 @@ export async function listSuspendMetas(page = 1){
         name: metas.name,
         target_value: metas.value,
         current_quantity: metas.current_value,
-        institution: institution.name, 
+        instituicao: instituicao.name, 
         createdAt: metas.createdAt,
         day_limit: metas.day_limit,
         percent: percent,
