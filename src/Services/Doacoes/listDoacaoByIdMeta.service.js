@@ -1,6 +1,6 @@
 import { getDoacoesByIdMeta } from "../../Repositories/DoacaoRepository.js";
 
-export async function getDoacoesByIdMetaService(id_meta, page = 1){
+export async function listDoacoesByIdMetaService(id_meta, page = 1){
 	const perPage = 10;
 	let initPage  = (page * perPage) - perPage;
 	try {

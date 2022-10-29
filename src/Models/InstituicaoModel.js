@@ -3,9 +3,9 @@ import databaseConfig from "../Configs/mysql_config.js";
 
 const sequelize = new Sequelize(databaseConfig);
 
-class InstituicaModel extends Model {}
+class InstituicaoModel extends Model {}
 
-InstituicaModel.init(
+InstituicaoModel.init(
 	{
         id: {
             type: Sequelize.UUID,
@@ -46,7 +46,7 @@ InstituicaModel.init(
         },
         logomarca: {
             type: Sequelize.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         descricao: {
             type: Sequelize.STRING,
@@ -60,6 +60,16 @@ InstituicaModel.init(
             type: Sequelize.STRING,
             allowNull: true,
         },
+        createdAt: {
+            type: Sequelize.DATE
+        },
+        updatedAt: {
+            type: Sequelize.DATE
+        },
+        suspend: {
+            type: Sequelize.BOOLEAN,
+            allowNull: false,
+        }
 	},
 	{
 		sequelize,
@@ -68,4 +78,4 @@ InstituicaModel.init(
 	}
 );
 
-export default InstituicaModel;
+export default InstituicaoModel;

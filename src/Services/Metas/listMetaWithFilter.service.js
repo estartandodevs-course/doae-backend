@@ -1,6 +1,6 @@
 import { getAllMetas } from "../../Repositories/MetaRepository.js";
-import { getInstituicaoByIdService } from "../Instituicoes/getInstituicaoById.service.js";
-import { filterMetasByNameOfInstituicao } from "../../Funcs/filterMetasByName.js";
+import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.service.js";
+import { filterMetasByNameOfInstitution } from "../../Funcs/filterMetasByName.js";
 
 export async function listAllWithFilters(page = 1, query) {
     const perPage = 10;

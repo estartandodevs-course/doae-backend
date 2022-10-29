@@ -2,8 +2,8 @@ import { createDoacaoService } from "../Services/Doacoes/createDoacao.service.js
 import { deleteDoacaoService } from "../Services/Doacoes/deleteDoacao.service.js";
 import { listDoacaoService } from "../Services/Doacoes/listDoacao.service.js";
 import { listDoacaoByIdService } from "../Services/Doacoes/listDoacaoById.service.js";
-import { listDoacaoByIdinstituicaoService } from "../Services/Doacoes/listDoacaoByIdinstituicao.service.js";
-import { listDoacaoByIdMetaService } from "../Services/Doacoes/listDoacaoByIdMeta.service.js";
+import { listDoacaoByIdInstituicaoService } from "../Services/Doacoes/listDoacaoByIdinstituicao.service.js";
+import { listDoacoesByIdMetaService } from "../Services/Doacoes/listDoacaoByIdMeta.service.js";
 import { updateStatusDoacaoService } from "../Services/Doacoes/updateDoacao.service.js";
 
 //cria doacao
@@ -52,10 +52,10 @@ export async function getDoacaoById(request, response) {
 }
 
 //lista por id da instituição
-export async function getDoacaoByIdinstituicao(request, response) {
+export async function getDoacaoByIdInstituicao(request, response) {
 	const { id_instituicao } = request.params;
 	try {
-		const doacao = await listDoacaoByIdinstituicaoService(id_instituicao);
+		const doacao = await listDoacaoByIdInstituicaoService(id_instituicao);
 		response.status(200).json(doacao);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -66,7 +66,7 @@ export async function getDoacaoByIdinstituicao(request, response) {
 export async function getDoacaoByIdMeta(request, response) {
 	const { id_meta } = request.params;
 	try {
-		const doacao = await listDoacaoByIdMetaService(id_meta);
+		const doacao = await listDoacoesByIdMetaService(id_meta);
 		response.status(200).json(doacao);
 	} catch (e) {
 		response.status(400).json(e.message);

@@ -62,7 +62,7 @@ export async function getDoacoesByIdMeta(id_meta) {
 	}
 }
 
-export async function getDoacoesByIdInstitution(id_institution) {
+export async function getDoacoesByIdInstituicao(id_institution) {
 	try {
 		const doacoes = await DoacaoModel.findAll({
 			where: {

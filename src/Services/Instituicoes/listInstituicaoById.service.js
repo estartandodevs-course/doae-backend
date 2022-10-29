@@ -3,10 +3,11 @@ import { getAddressByZipCode } from "../../Funcs/getAddressByZipCode.js";
 
 export async function listInstituicaoByIdService(id) {
 	try {
-		const instituicao = await getInstituicaoById(id);
-		const endereco = await getAddressByZipCode(instituicao.cep);
+		const [ instituicao ] = await getInstituicaoById(id);
+		const json = instituicao.toJSON();
+		const endereco = await getAddressByZipCode(json.cep);
 		return {
-			...instituicao,
+			...json,
 			rua: endereco.logradouro,
 			bairro: endereco.bairro,
 			cidade: endereco.localidade,

@@ -1,7 +1,6 @@
 import { createInstituicao } from "../../Repositories/InstituticaoRepository.js";
 import { v4 as uuid } from "uuid";
 import shortid from "shortid";
-import { uploadImage } from "../../Libs/uploadCloud.js";
 
 export async function createInstituicaoService(
 	nome,
@@ -13,13 +12,11 @@ export async function createInstituicaoService(
 	telefone,
 	cep,
 	site,
-    logomarca,
-	verificado = false
+	verificado = false,
 ) {
-    const logoImage = await uploadImage(logomarca);
-    const urlLogo = logoImage.url;
 	const id = uuid();
 	const identificador = shortid();
+	const suspend = false;
 	try {
 		const instituicao = await createInstituicao(
             id,
@@ -32,9 +29,9 @@ export async function createInstituicaoService(
             telefone,
             cep,
             identificador,
-            urlLogo,
             site,
-            verificado
+            verificado,
+			suspend
 		);
 		return instituicao;
 	} catch (e) {

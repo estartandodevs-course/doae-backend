@@ -1,5 +1,5 @@
 import { getMetasSuspend } from "../../Repositories/MetaRepository.js";
-import { getInstituicaoByIdService } from "../Instituicoes/getInstituicaoById.service.js";
+import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.service.js";
 
 export async function listSuspendMetas(page = 1){
 	const perPage = 10;

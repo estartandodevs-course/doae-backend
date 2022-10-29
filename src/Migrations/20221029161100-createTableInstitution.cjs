@@ -43,7 +43,7 @@ module.exports = {
 			},
 			logomarca: {
 				type: Sequelize.STRING,
-				allowNull: false,
+				allowNull: true,
 			},
 			descricao: {
 				type: Sequelize.STRING,
@@ -57,6 +57,16 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: true,
 			},
+			createdAt: {
+				type: Sequelize.DATE
+			},
+			updatedAt: {
+				type: Sequelize.DATE
+			},
+			suspend: {
+				type: Sequelize.BOOLEAN,
+				allowNull: false,
+			}
 		});
 	},
 

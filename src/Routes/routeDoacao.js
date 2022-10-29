@@ -2,11 +2,11 @@ import {
 	postDoacao,
 	getDoacao,
 	getDoacaoById,
-	getDoacaoByIdInstitution,
+	getDoacaoByIdInstituicao,
 	getDoacaoByIdMeta,
 	putDoacao,
 	deleteDoacao,
-} from "../Controllers/DoacaoController";
+} from "../Controllers/DoacaoController.js";
 
 import { Router } from "express";
 
@@ -14,10 +14,10 @@ import {
 	postDoacaoMidd,
 	getDoacaoMidd,
 	getIdDoacaoMidd,
-	getIdDoacaoInsMidd,
+	getIdDocaoInsMidd,
 	getIdDoacaoMetaMidd,
 	putDoacaoMidd
-} from '../Middlewares/doacaoMiddlewares'
+} from '../Middlewares/doacaoMiddlewares.js'
 
 const routesDoacao = Router();
 
@@ -27,7 +27,7 @@ routesDoacao.get("/doacoes/list", getDoacaoMidd, getDoacao);
 
 routesDoacao.get("/doacoes/:id", getIdDoacaoMidd, getDoacaoById);
 
-routesDoacao.get("/doacoes/instituicao/:id_instituicao", getIdDoacaoInsMidd, getDoacaoByIdInstitution);
+routesDoacao.get("/doacoes/instituicao/:id_instituicao", getIdDocaoInsMidd, getDoacaoByIdInstituicao);
 
 routesDoacao.get("/doacoes/metas/:id_meta", getIdDoacaoMetaMidd, getDoacaoByIdMeta);
 

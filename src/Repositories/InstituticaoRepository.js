@@ -11,9 +11,9 @@ export async function createInstituicao(
 	telefone,
 	cep,
 	identificador,
-	logomarca,
 	site,
-	verificado
+	verificado,
+	suspend
 ) {
 	try {
 		const instituicao = await InstituicaoModel.create({
@@ -27,9 +27,9 @@ export async function createInstituicao(
 			telefone,
 			cep,
 			identificador,
-			logomarca,
 			site,
 			verificado,
+			suspend
 		});
 		return instituicao;
 	} catch (e) {
@@ -84,7 +84,6 @@ export async function updateInstituicao(
 	descricao,
 	telefone,
 	cep,
-	logomarca,
 	site,
 	pix,
 	agencia,
@@ -93,20 +92,37 @@ export async function updateInstituicao(
 	try {
 		const instituicao = await InstituicaoModel.update(
 			{
-				where: {
-					id: id,
-				},
-			},
-			{
 				nome,
 				descricao,
 				telefone,
 				cep,
-				logomarca,
 				site,
 				pix,
 				agencia,
 				conta,
+			},
+			{
+				where: {
+					id: id,
+				},
+			}
+		);
+		return instituicao;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
+export async function updateInstituicaoFoto(id, logomarca) {
+	try {
+		const instituicao = await InstituicaoModel.update(
+			{
+				logomarca,
+			},
+			{
+				where: {
+					id: id,
+				},
 			}
 		);
 		return instituicao;
@@ -119,12 +135,12 @@ export async function deleteInstituicao(id) {
 	try {
 		const instituicao = await InstituicaoModel.update(
 			{
+				suspend: true,
+			},
+			{
 				where: {
 					id: id,
 				},
-			},
-			{
-				suspend: true,
 			}
 		);
 		return instituicao;

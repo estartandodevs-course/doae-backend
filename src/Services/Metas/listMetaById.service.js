@@ -1,10 +1,10 @@
 import { getMetaById } from "../../Repositories/MetaRepository.js";
-import { getInstitutionByIdService } from "../Instituicoes/getInstituicaoById.service.js";
+import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.service.js";
 
 export async function listMetaById(id) {
 	try {
 		const meta = await getMetaById(id);
-        const institution = getInstitutionByIdService(meta.id_institution);
+        const institution = getInstitutionByIdService(meta.id_instituicao);
         const percent = (current_quantity * 100) / target_value;
         const newObjectMetaFormat = {
                 "id": meta.id,

@@ -89,7 +89,7 @@ export async function getIdDocaoInsMidd(req, res, next)
 
 }
 
-export async function getIdDocaoMetaMidd(req, res, next)
+export async function getIdDoacaoMetaMidd(req, res, next)
 {
 	let response = true;
 	const schemaIdMeta = yup.object().shape({

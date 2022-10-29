@@ -1,7 +1,7 @@
 import { createMetaService } from "../Services/Metas/createMeta.service.js";
 import { listAll } from "../Services/Metas/listMetas.service.js";
 import { listMetaById } from "../Services/Metas/listMetaById.service.js";
-import { listMetasByIdInstitution } from "../Services/Metas/listMetaByIdInstitution.service.js";
+import { listMetasByIdInstituicao } from "../Services/Metas/listMetaByIdInstitution.service.js";
 import { updateMetaService } from "../Services/Metas/updateMeta.service.js";
 import { updateByIdCurrentQuantityService } from "../Services/Metas/updateCurrentQuantity.service.js";
 import { deleteMetaService } from "../Services/Metas/deleteMeta.service.js";
@@ -54,12 +54,12 @@ export async function getMetaById(request, response) {
 	}
 }
 
-export async function getMetaByIdInstitution(request, response) {
+export async function getMetaByIdInstituicao(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	console.log(id_institution);
 	try {
-		const meta = await listMetasByIdInstitution(id_institution, page);
+		const meta = await listMetasByIdInstituicao(id_institution, page);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);

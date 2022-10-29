@@ -1,4 +1,4 @@
-import transporter from "../config/smtp.js";
+import transporter from "../Configs/smtp.js";
 import fs from "fs";
 
 export async function mailto(event, email) {

@@ -3,6 +3,7 @@ import { deleteInstituicaoByIdService } from "../Services/Instituicoes/deleteIns
 import { listInstituicaoService } from "../Services/Instituicoes/listInstituicoes.service.js";
 import { listInstituicaoByIdService } from "../Services/Instituicoes/listInstituicaoById.service.js";
 import { updateInstituicaoByIdService } from "../Services/Instituicoes/updateInstituicao.service.js";
+import { updateFotoInstituicaoService } from "../Services/Instituicoes/updatePhoto.service.js";
 
 export async function postInstituicao(request, response) {
   const {
@@ -15,8 +16,7 @@ export async function postInstituicao(request, response) {
     telefone,
     cep,
     site,
-    logomarca,
-    verificado = false,
+    verificado
   } = request.body;
   try {
     const instituicao = await createInstituicaoService(
@@ -29,9 +29,20 @@ export async function postInstituicao(request, response) {
       telefone,
       cep,
       site,
-      logomarca,
-      (verificado = false)
+      verificado
     );
+    response.status(200).json(instituicao);
+  } catch (e) {
+    response.status(400).json(e.message);
+  }
+}
+
+export async function updateFotoInstituicao(request, response) {
+  const { id } = request.query;
+  const logomarca = request.file;
+  const path = logomarca.path;
+  try {
+    const instituicao = await updateFotoInstituicaoService(id, path);
     response.status(200).json(instituicao);
   } catch (e) {
     response.status(400).json(e.message);
@@ -68,7 +79,6 @@ export async function putInstituicao(request, response) {
     descricao,
     telefone,
     cep,
-    logomarca,
     site,
     pix,
     agencia,
@@ -81,7 +91,6 @@ export async function putInstituicao(request, response) {
       descricao,
       telefone,
       cep,
-      logomarca,
       site,
       pix,
       agencia,
@@ -94,7 +103,7 @@ export async function putInstituicao(request, response) {
 }
 
 //deleta instituicao
-export async function deleteInstituicaoByIdService(request, response) {
+export async function deleteInstituicaoById(request, response) {
 	const { id } = request.params;
 	try {
 		const instituicao = await deleteInstituicaoByIdService(id);

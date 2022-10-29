@@ -1,5 +1,5 @@
 import { getMetasByIdInstituicao } from "../../Repositories/MetaRepository.js";
-import { getInstituicaoByIdService } from "../Instituicoes/getInstituicaoById.service.js";
+import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.service.js";
 
 export async function listMetasByIdInstituicao(id_instituicao, page = 1) {
   const perPage = 10;
