@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import { mailto } from "../../Libs/mailto.js";
 
 export async function createDoacaoService(
-	id_instituicao,
+	id_institution,
 	value,
 	email_doador,
 	id_meta,
@@ -21,7 +21,7 @@ export async function createDoacaoService(
 	try {
 		const doacao = await createDoacao(
 			id,
-			id_instituicao,
+			id_institution,
 			status,
 			value,
 			email_doador,

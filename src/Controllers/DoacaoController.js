@@ -9,7 +9,7 @@ import { updateStatusDoacaoService } from "../Services/Doacoes/updateDoacao.serv
 //cria doacao
 export async function postDoacao(request, response) {
 	const {
-		id_instituicao,
+		id_institution,
 		value,
 		email_doador,
 		id_meta,
@@ -17,7 +17,7 @@ export async function postDoacao(request, response) {
 	} = request.body;
 	try {
 		const doacao = await createDoacaoService(
-			id_instituicao,
+			id_institution,
 			value,
 			email_doador,
 			id_meta,
@@ -53,9 +53,9 @@ export async function getDoacaoById(request, response) {
 
 //lista por id da instituição
 export async function getDoacaoByIdInstituicao(request, response) {
-	const { id_instituicao } = request.params;
+	const { id_institution } = request.params;
 	try {
-		const doacao = await listDoacaoByIdInstituicaoService(id_instituicao);
+		const doacao = await listDoacaoByIdInstituicaoService(id_institution);
 		response.status(200).json(doacao);
 	} catch (e) {
 		response.status(400).json(e.message);

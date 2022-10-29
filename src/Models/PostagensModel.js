@@ -4,7 +4,7 @@ const postagensSchema = new mongoose.Schema({
     id: String,
     midia: String,
     descricao: String,
-    id_instituicao: String,
+    id_institution: String,
     suspend: Boolean
 }, {
     timestamps: true

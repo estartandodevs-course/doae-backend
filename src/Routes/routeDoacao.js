@@ -27,7 +27,7 @@ routesDoacao.get("/doacoes/list", getDoacaoMidd, getDoacao);
 
 routesDoacao.get("/doacoes/:id", getIdDoacaoMidd, getDoacaoById);
 
-routesDoacao.get("/doacoes/instituicao/:id_instituicao", getIdDocaoInsMidd, getDoacaoByIdInstituicao);
+routesDoacao.get("/doacoes/instituicao/:id_institution", getIdDocaoInsMidd, getDoacaoByIdInstituicao);
 
 routesDoacao.get("/doacoes/metas/:id_meta", getIdDoacaoMetaMidd, getDoacaoByIdMeta);
 

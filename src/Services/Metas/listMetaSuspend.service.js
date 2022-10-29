@@ -17,7 +17,7 @@ export async function listSuspendMetas(page = 1){
 			return metas.slice(0, 10);
 		} */
 
-      const instituicao = await getInstituicaoByIdService(metas.id_instituicao);
+      const instituicao = await getInstituicaoByIdService(metas.id_institution);
 	  const percent = (current_quantity * 100) / target_value;
 
       const newObjectMetaFormat = {

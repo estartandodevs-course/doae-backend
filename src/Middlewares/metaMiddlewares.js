@@ -28,7 +28,7 @@ export async function getMetasMidd(req, res, next)
 {
 	let response = true;
 	const schemaGet = yup.object().shape({
-		page: yup.number("Valor deve ser um número.").required("Valor é obrigatório.")
+		page: yup.number("Valor deve ser um número.")
 	});
 
 	await schemaGet.validate(req.query).catch(err => {

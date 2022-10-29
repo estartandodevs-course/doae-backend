@@ -1,11 +1,11 @@
 import { getMetasByIdInstituicao } from "../../Repositories/MetaRepository.js";
 import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.service.js";
 
-export async function listMetasByIdInstituicao(id_instituicao, page = 1) {
+export async function listMetasByIdInstituicao(id_institution, page = 1) {
   const perPage = 10;
   let initPage = page * perPage - perPage;
   try {
-    const metas = await getMetasByIdInstituicao(id_instituicao);
+    const metas = await getMetasByIdInstituicao(id_institution);
     const newPagination = [];
 
 		let response = metas.slice(initPage, initPage + perPage);
@@ -15,7 +15,7 @@ export async function listMetasByIdInstituicao(id_instituicao, page = 1) {
     }
     
     for (let i = 0; i < response.length; i++) {
-      const instituicao = await getInstituicaoByIdService(response[i].id_instituicao);
+      const instituicao = await getInstituicaoByIdService(response[i].id_institution);
       const percent = (response[i].current_quantity * 100) / response[i].target_value;
 
       const newObjectMetaFormat = {

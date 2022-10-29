@@ -26,7 +26,7 @@ export async function getProdutoIdMetaMidd(req, res, next)
 {
 	let response = true;
 	const schemaGet = yup.object().shape({
-		page: yup.number("Valor deve ser um número.").required("Valor é obrigatório."),
+		page: yup.number("Valor deve ser um número."),
 		id_meta: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
 	});
 

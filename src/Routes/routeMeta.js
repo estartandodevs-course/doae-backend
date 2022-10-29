@@ -30,7 +30,7 @@ routesMeta.get("/metas/suspend", getMetasMidd, getSuspendMetas);
 routesMeta.get("/metas/:id", getIdMetasMidd, getMetaById);
 
 routesMeta.get(
-  "/metas/instituicao/:id_instituicao",
+  "/metas/instituicao/:id_institution",
   getIdMetasInsMidd,
   getMetaByIdInstituicao
 );

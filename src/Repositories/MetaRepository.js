@@ -5,7 +5,7 @@ export async function createMeta(
 	name,
 	value,
 	current_quantity,
-	id_instituicao,
+	id_institution,
 	description,
 	day_limit
 ) {
@@ -15,7 +15,7 @@ export async function createMeta(
 			name,
 			value,
 			current_quantity,
-			id_instituicao,
+			id_institution,
 			description,
 			day_limit,
 			suspend: false,
@@ -35,10 +35,10 @@ export async function getMetaById(id) {
 	}
 }
 
-export async function getMetasByIdInstituicao(id_instituicao) {
+export async function getMetasByIdInstituicao(id_institution) {
 	try {
 		const metaInstution = await MetaModel.find({
-			id_instituicao,
+			id_institution,
 			suspend: false,
 		});
 		return metaInstution;

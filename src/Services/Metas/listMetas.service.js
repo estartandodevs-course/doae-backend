@@ -17,7 +17,7 @@ export async function listAll(page = 1, query = "") {
     }
     
     for (let i = 0; i < response.length; i++) {
-      const instituicao = await getInstituicaoByIdService(response[i].id_instituicao);
+      const instituicao = await listInstituicaoByIdService(response[i].id_institution);
       const percent = (response[i].current_quantity * 100) / response[i].target_value;
 
       const newObjectMetaFormat = {
