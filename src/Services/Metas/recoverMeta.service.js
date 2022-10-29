@@ -6,6 +6,6 @@ export async function recoverMetaService(id) {
 		return meta;
 	} catch (e) {
 		console.log(e);
-		throw new Error("Não foi possível recuperar a meta. Favor verificar os dados enviados!");
+		throw new Error(e.message);
 	}
 }

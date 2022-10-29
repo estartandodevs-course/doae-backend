@@ -7,7 +7,7 @@ export async function createDoacao(
 	value,
 	email_doador,
 	id_meta,
-	id_product,
+	id_produto,
 	suspend
 ) {
 	try {
@@ -18,7 +18,7 @@ export async function createDoacao(
 			value,
 			email_doador,
 			id_meta,
-			id_product,
+			id_produto,
 			suspend,
 		});
 		return doacao;
@@ -62,7 +62,7 @@ export async function getDoacoesByIdMeta(id_meta) {
 	}
 }
 
-export async function getDoacoesByIdInstitution(id_institution) {
+export async function getDoacoesByIdInstituicao(id_institution) {
 	try {
 		const doacoes = await DoacaoModel.findAll({
 			where: {

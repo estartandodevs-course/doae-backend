@@ -1,22 +1,23 @@
-import config from "../Config/cloudnary.js";
+import config from "../Configs/cloudnary.js";
 import { v2 as cloudinary } from "cloudinary";
 
-async function uploadImage(path){
-    cloudinary.config(config)
-    let source;
-    await cloudinary.uploader
-        .upload(path)
-        .then(res=>{
-            source = res;
-            //console.log(res)
-        })
-        .catch(e=>console.error(e))
-    return source;
+export async function uploadImage(path) {
+	cloudinary.config(config);
+	let source;
+	await cloudinary.uploader
+		.upload(path)
+		.then((res) => {
+			source = res;
+		})
+		.catch((e) => {
+			throw new Error("Não foi possível fazer upload da foto.");
+		});
+	return source;
 }
 
-
+/*
 // testes
-const result = await uploadImage('src/img/foto.jpg')
+const result = await uploadImage('src/Uploads/foto.jpg');
 console.log(result)
 
 // error
@@ -52,4 +53,4 @@ const sucess = {
     folder: '',
     original_filename: 'foto',
     api_key: '541318163912287'
-}
+}*/

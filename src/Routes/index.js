@@ -1,9 +1,13 @@
 import routesMeta from "./routeMeta.js";
-import routesProduct from "./routeProduct.js";
+import routesProduto from "./routeProduto.js";
+import routesDoacao from "./routeDoacao.js";
+import routesInstituicao from "./routeInstituicao.js";
 
 const routes = {
     routesMeta,
-    routesProduct
+    routesProduto,
+    routesDoacao,
+    routesInstituicao
 }
 
 export default routes;
