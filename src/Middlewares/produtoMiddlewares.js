@@ -26,22 +26,32 @@ export async function getProdutoIdMetaMidd(req, res, next)
 {
 	let response = true;
 	const schemaGet = yup.object().shape({
-		page: yup.number("Valor deve ser um número."),
+		page: yup.number("Valor deve ser um número.")
+	});
+
+	const schemaGet2 = yup.object().shape({
 		id_meta: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
 	});
 
-	await schemaGet.validate(req.query, req.params).catch(err => {
+	await schemaGet.validate(req.query).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
 		});
 	});
+
+	await schemaGet2.validate(req.params).catch(err => {
+		response = false;
+		return res.status(400).json({
+			error: err.errors
+		});
+	});
+
 	if(response){
 		next();
 	} else {
 		return;
 	}
-
 }
 
 //Essa função servirá tanto para getProductById como para deleteProduct
@@ -73,10 +83,20 @@ export async function putProdutoMidd(req, res, next)
 	const schemaPut = yup.object().shape({
 		name: yup.string("Nome deve ser uma string.").required("Nome é obrigatório."),
 		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
+	});
+
+	const schemaPut2 = yup.object().shape({
 		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
 	});
 
-	await schemaPut.validate(req.body, req.params).catch(err => {
+	await schemaPut.validate(req.body).catch(err => {
+		response = false;
+		return res.status(400).json({
+			error: err.errors
+		});
+	});
+
+	await schemaPut2.validate(req.params).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
@@ -87,5 +107,4 @@ export async function putProdutoMidd(req, res, next)
 	} else {
 		return;
 	}
-
 }

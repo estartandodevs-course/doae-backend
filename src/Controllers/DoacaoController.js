@@ -2,7 +2,7 @@ import { createDoacaoService } from "../Services/Doacoes/createDoacao.service.js
 import { deleteDoacaoService } from "../Services/Doacoes/deleteDoacao.service.js";
 import { listDoacaoService } from "../Services/Doacoes/listDoacao.service.js";
 import { listDoacaoByIdService } from "../Services/Doacoes/listDoacaoById.service.js";
-import { listDoacaoByIdInstituicaoService } from "../Services/Doacoes/listDoacaoByIdinstituicao.service.js";
+import { listDoacaoByIdInstituicaoService } from "../Services/Doacoes/listDoacaoByIdInstituicao.service.js";
 import { listDoacoesByIdMetaService } from "../Services/Doacoes/listDoacaoByIdMeta.service.js";
 import { updateStatusDoacaoService } from "../Services/Doacoes/updateDoacao.service.js";
 
@@ -13,7 +13,6 @@ export async function postDoacao(request, response) {
 		value,
 		email_doador,
 		id_meta,
-		id_product,
 	} = request.body;
 	try {
 		const doacao = await createDoacaoService(
@@ -21,7 +20,6 @@ export async function postDoacao(request, response) {
 			value,
 			email_doador,
 			id_meta,
-			id_product
 		);
 		response.status(200).json(doacao);
 	} catch (e) {

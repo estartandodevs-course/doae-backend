@@ -31,8 +31,8 @@ routesDoacao.get("/doacoes/instituicao/:id_institution", getIdDocaoInsMidd, getD
 
 routesDoacao.get("/doacoes/metas/:id_meta", getIdDoacaoMetaMidd, getDoacaoByIdMeta);
 
-routesDoacao.put("/doacoes", putDoacaoMidd, putDoacao);
+routesDoacao.put("/doacoes/:id", putDoacaoMidd, putDoacao);
 
-routesDoacao.delete("/doacoes", getIdDoacaoMidd, deleteDoacao);
+routesDoacao.delete("/doacoes/:id", getIdDoacaoMidd, deleteDoacao);
 
 export default routesDoacao;

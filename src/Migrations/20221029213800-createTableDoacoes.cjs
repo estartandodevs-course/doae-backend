@@ -36,7 +36,13 @@ module.exports = {
       suspend: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-      }
+      },
+      createdAt: {
+				type: Sequelize.DATE
+			},
+			updatedAt: {
+				type: Sequelize.DATE
+			}
 		});
 	},
 

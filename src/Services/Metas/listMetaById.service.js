@@ -4,7 +4,7 @@ import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.
 export async function listMetaById(id) {
 	try {
 		const meta = await getMetaById(id);
-        const institution = getInstitutionByIdService(meta.id_institution);
+        const institution = listInstituicaoByIdService(meta.id_institution);
         const percent = (current_quantity * 100) / target_value;
         const newObjectMetaFormat = {
                 "id": meta.id,

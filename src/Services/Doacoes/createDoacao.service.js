@@ -8,15 +8,19 @@ export async function createDoacaoService(
 	value,
 	email_doador,
 	id_meta,
-	id_product
 ) {
 	const id = uuid();
 	const status = null;
 	const suspend = false;
-	const meta = await getMetaById(id_meta);
-	const dateNow = new Date();
-	if(dateNow > meta.day_limit){
-		throw new Error("Essa meta já encerrou.");
+	if(id_meta){
+		const meta = await getMetaById(id_meta);
+		if(!meta){
+			throw new Error('Não foi possível encontrar essa meta associada.')
+		}
+		const dateNow = new Date();
+		if(dateNow > meta.day_limit){
+			throw new Error("Essa meta já encerrou.");
+		}
 	}
 	try {
 		const doacao = await createDoacao(
@@ -26,7 +30,6 @@ export async function createDoacaoService(
 			value,
 			email_doador,
 			id_meta,
-			id_product,
 			suspend
 		);
 		try {

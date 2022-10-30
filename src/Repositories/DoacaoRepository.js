@@ -7,7 +7,6 @@ export async function createDoacao(
 	value,
 	email_doador,
 	id_meta,
-	id_produto,
 	suspend
 ) {
 	try {
@@ -18,7 +17,6 @@ export async function createDoacao(
 			value,
 			email_doador,
 			id_meta,
-			id_produto,
 			suspend,
 		});
 		return doacao;
@@ -79,13 +77,13 @@ export async function updateDoacao(id, status) {
 	try {
 		const doacoes = await DoacaoModel.update(
 			{
+				status: status,
+			},
+			{
 				where: {
 					id: id,
 				},
 			},
-			{
-				status: status,
-			}
 		);
 		return doacoes;
 	} catch (e) {
@@ -97,13 +95,13 @@ export async function deleteDoacao(id) {
 	try {
 		const doacoes = await DoacaoModel.update(
 			{
+				suspend: true,
+			},
+			{
 				where: {
 					id: id,
 				},
 			},
-			{
-				suspend: true,
-			}
 		);
 		return doacoes;
 	} catch (e) {
