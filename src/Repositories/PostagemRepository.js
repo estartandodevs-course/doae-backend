@@ -2,6 +2,7 @@ import PostagensModel from "../Models/PostagensModel.js";
 
 export async function createPostagem(
 	id,
+	descricao,
 	midia,
 	instituicao,
 	id_instituicao
@@ -10,8 +11,9 @@ export async function createPostagem(
 		const newPostagem = await PostagensModel.create({
 			id,
 			midia,
-      instituicao,
-      id_instituicao,
+			descricao,
+			instituicao,
+			id_instituicao,
 			suspend: false,
 		});
 		return newPostagem;
@@ -45,14 +47,14 @@ export async function getPostagemByIdInstituicao(idInstituicao) {
 }
 
 
-export async function updatePostagemById(id, midia) {
+export async function updatePostagemById(id, descricao) {
 	try {
 		const updatePostagem = await PostagensModel.updateOne(
 			{
 				id: id,
 				suspend: false,
 			},
-			{ midia }
+			{ descricao }
 		);
 		return updatePostagem;
 	} catch (e) {
