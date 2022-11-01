@@ -7,6 +7,10 @@ import {
     deletePostagem
 } from "../Controllers/PostagensController.js";
 
+import { uploadFile } from "../Middlewares/multerMiddlewares.js";
+
+const upload = uploadFile();
+
 import { Router } from 'express'; 
 
 const routesPostagem = Router();
@@ -19,7 +23,7 @@ routesPostagem.get("/postagens/:id_instituicao", getPostagemByIdInstituicao);
 
 routesPostagem.put("postagens/:id", putPostagem);
 
-routesPostagem.put("postagens/midia/:id", putMidiaPostagem);
+routesPostagem.patch("postagens/midia/:id",  upload.single('midia'), putMidiaPostagem);
 
 routesPostagem.delete("postagens/:id", deletePostagem);
 

@@ -16,7 +16,7 @@ const routesInstituicao = Router();
 
 routesInstituicao.patch('/instituicao/logomarca', upload.single('logomarca'), updateFotoInstituicao);
 
-routesInstituicao.post("/instituicao", upload.single('logomarca'), postInstituicao);
+routesInstituicao.post("/instituicao", postInstituicao);
 
 routesInstituicao.get("/instituicao", getInstituicao);
 
