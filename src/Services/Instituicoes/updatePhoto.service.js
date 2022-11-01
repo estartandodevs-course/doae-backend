@@ -1,5 +1,6 @@
 import { updateInstituicaoFoto } from "../../Repositories/InstituticaoRepository.js";
 import { uploadImage } from "../../Libs/uploadCloud.js";
+import fs from "fs";
 
 export async function updateFotoInstituicaoService(id, logomarca) {
     const logoImage = await uploadImage(logomarca);
@@ -9,5 +10,7 @@ export async function updateFotoInstituicaoService(id, logomarca) {
 		return instituicao;
 	} catch (e) {
 		throw new Error(e.message);
+	} finally {
+		fs.unlinkSync(logomarca);
 	}
 }

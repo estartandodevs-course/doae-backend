@@ -5,7 +5,7 @@ export async function listPostagemByIdInstituicaoService(id_instituicao, page = 
 	let initPage  = (page * perPage) - perPage;
 	try {
 		const postagens = await getPostagemByIdInstituicao(id_instituicao);
-		const response  = products.slice(initPage, (initPage + perPage));
+		const response  = postagens.slice(initPage, (initPage + perPage));
 		if (response.length > 0) {
 			return response;
 		} else {

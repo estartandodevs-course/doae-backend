@@ -3,19 +3,36 @@ import PostagensModel from "../Models/PostagensModel.js";
 export async function createPostagem(
 	id,
 	descricao,
-	midia,
 	instituicao,
 	id_instituicao
 ) {
 	try {
 		const newPostagem = await PostagensModel.create({
 			id,
-			midia,
 			descricao,
 			instituicao,
 			id_instituicao,
 			suspend: false,
 		});
+		return newPostagem;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
+export async function updateMidiaPostagem(
+	id,
+	midia
+) {
+	try {
+		const newPostagem = await PostagensModel.updateOne(
+		{
+			id: id	
+		},
+		{
+			midia: midia
+		}
+		);
 		return newPostagem;
 	} catch (e) {
 		throw new Error(e.message);
