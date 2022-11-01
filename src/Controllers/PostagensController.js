@@ -41,7 +41,7 @@ export async function putPostagem(request, response) {
 	const { id } = request.params;
 	const { midia, descricao } = request.body;
 	try {
-		const postagem = await updatePostagemByIdService(midia, descricao);
+		const postagem = await updatePostagemByIdService(id, midia, descricao);
 		response.status(200).json(postagem);
 	} catch (e) {
 		response.status(400).json(e.message);
