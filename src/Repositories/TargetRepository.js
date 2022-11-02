@@ -1,4 +1,4 @@
-import MetaModel from "../Models/MetaModel.js";
+import TargetModel from "../Models/TargetModel.js";
 
 export async function createTarget(
 	id,
@@ -10,7 +10,7 @@ export async function createTarget(
 	day_limit
 ) {
 	try {
-		const newMeta = await MetaModel.create({
+		const newTarget = await TargetModel.create({
 			id,
 			name,
 			target_value: value,
@@ -20,7 +20,7 @@ export async function createTarget(
 			day_limit,
 			suspend: false,
 		});
-		return newMeta;
+		return newTrget;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -28,29 +28,29 @@ export async function createTarget(
 
 export async function getTargetById(id) {
 	try {
-		const meta = await MetaModel.findOne({ id, suspend: false });
-		return meta;
+		const target = await TargetModel.findOne({ id, suspend: false });
+		return target;
 	} catch (e) {
 		throw new Error(e.message);
 	}
 }
 
-export async function getTargetByIdInstitution(id_institution) {
+export async function getTargetsByIdInstitution(id_institution) {
 	try {
-		const metaInstution = await MetaModel.find({
+		const targetsInstution = await TargetModel.find({
 			id_institution,
 			suspend: false,
 		});
-		return metaInstution;
+		return targetsInstution;
 	} catch (e) {
 		throw new Error(e.message);
 	}
 }
 
-export async function getAllTarget() {
+export async function getAllTargets() {
 	try {
-		const allMetas = await MetaModel.find({ suspend: false });
-		return allMetas;
+		const allTargets = await TargetModel.find({ suspend: false });
+		return allTargets;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -58,8 +58,8 @@ export async function getAllTarget() {
 
 export async function updateTargetById(id, name, value) {
 	try {
-		const updateMeta = await MetaModel.updateOne({ id }, { name, value });
-		return updateMeta;
+		const updateTarget = await TargetModel.updateOne({ id }, { name, value });
+		return updateTarget;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -67,11 +67,11 @@ export async function updateTargetById(id, name, value) {
 
 export async function updateByIdCurrentQuantity(id, newCurrentQuantity) {
 	try {
-		const meta = await MetaModel.updateOne(
+		const target = await TargetModel.updateOne(
 			{ id, suspend: false },
 			{ current_quantity: newCurrentQuantity }
 		);
-		return meta;
+		return target;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -79,11 +79,11 @@ export async function updateByIdCurrentQuantity(id, newCurrentQuantity) {
 
 export async function deleteTargetById(id) {
 	try {
-		const metaDelete = await MetaModel.updateOne(
+		const targetDelete = await TargetModel.updateOne(
 			{ id, suspend: false },
 			{ suspend: true }
 		);
-		return metaDelete;
+		return targetDelete;
 	} catch (e) {
 		throw new Error(e.message);
 	}

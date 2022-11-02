@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const metaSchema = new mongoose.Schema({
+const targetSchema = new mongoose.Schema({
     id: String,
     name: String,
     target_value: Number,
@@ -13,6 +13,6 @@ const metaSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const MetaModel = mongoose.model('Meta', metaSchema);
+const TargetModel = mongoose.model('Target', metaSchema);
 
-export default MetaModel;
+export default TargetModel;

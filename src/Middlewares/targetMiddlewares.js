@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export async function postMetaMidd(req, res, next)
+export async function postTargetMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({
@@ -26,7 +26,7 @@ export async function postMetaMidd(req, res, next)
 
 //Essa função servirá tanto para getMetas como para getSuspendMetas
 
-export async function getMetasMidd(req, res, next)
+export async function getTargetsMidd(req, res, next)
 {
 	let response = true;
 	const schemaGet = yup.object().shape({
@@ -48,7 +48,7 @@ export async function getMetasMidd(req, res, next)
 
 //Essa função servirá tanto para getMetaById, recoverMetaa e deleteMeta
 
-export async function getIdMetasMidd(req, res, next)
+export async function getIdTargetMidd(req, res, next)
 {
 	let response = true;
 	const schemaId = yup.object().shape({
@@ -68,7 +68,7 @@ export async function getIdMetasMidd(req, res, next)
 	}
 }
 
-export async function getIdMetasInsMidd(req, res, next)
+export async function getIdTargetInsMidd(req, res, next)
 {
 	let response = true;
 	const schemaIdIns = yup.object().shape({
@@ -100,7 +100,7 @@ export async function getIdMetasInsMidd(req, res, next)
 	}
 }
 
-export async function putMetasMidd(req, res, next)
+export async function putTargetMidd(req, res, next)
 {
 	let response = true;
 	const schemaPut = yup.object().shape({

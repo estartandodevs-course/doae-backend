@@ -1,9 +1,9 @@
 import { updateTargetById } from "../../Repositories/TargetRepository.js";
 
-export async function updateMetaService(id, name, value) {
+export async function updateTargetService(id, name, value) {
 	try {
-        const meta = await updateTargetById(id, name, value);
-        return meta;
+        const target = await updateTargetById(id, name, value);
+        return target;
     } catch (e) {
         console.log(e);
         throw new Error(e.message);

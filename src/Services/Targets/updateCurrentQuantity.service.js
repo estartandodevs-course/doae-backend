@@ -21,8 +21,8 @@ export async function updateByIdCurrentQuantityService(id, value, productId) {
     }
 
 	try {
-		const meta = await updateByIdCurrentQuantity(id, newValue);
-		return meta;
+		const target = await updateByIdCurrentQuantity(id, newValue);
+		return target;
 	} catch (e) {
 		console.log(e);
 		throw new Error(e.message);

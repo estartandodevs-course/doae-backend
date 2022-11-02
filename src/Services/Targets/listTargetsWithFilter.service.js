@@ -1,6 +1,6 @@
 import { getAllTarget } from "../../Repositories/TargetRepository.js";
-import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.service.js";
-import { filterMetasByNameOfInstitution } from "../../Funcs/filterMetasByName.js";
+import { listInstitutionByIdService } from "../Institutions/listInstitutionById.service.js";
+import { filterTargetsByNameOfInstitution } from "../../Funcs/filterTargetsByName.js";
 
 export async function listAllWithFilters(page = 1, query) {
     const perPage = 10;
@@ -8,12 +8,12 @@ export async function listAllWithFilters(page = 1, query) {
 	let initPage = page * perPage - perPage;
 
 	try {
-        const metas = await getAllTarget();
+        const targets = await getAllTarget();
 
-        const newMetas = [];
+        const newTargets = [];
 
-        for (let i = 0; i < metas.length; i++) {
-            const arr_bool = filterMetasByNameOfInstitution(query, metas.name);
+        for (let i = 0; i < targets.length; i++) {
+            const arr_bool = filterTargetsByNameOfInstitution(query, targets.name);
             const words = query.length;
             let trues;
             arr_bool.map((item)=>{
@@ -23,15 +23,15 @@ export async function listAllWithFilters(page = 1, query) {
             })
             const percents = (trues * 100) / words;
             if(percents === 100){
-                newMetas.splice(0, 0, metas[i]);
+                newTargets.splice(0, 0, targets[i]);
             } else if (percents < 100 && percents >= 75) {
-                newMetas.splice(1, 0, metas[i]);
+                newTargets.splice(1, 0, targets[i]);
             } else if (percents < 75 && percents >= 50) {
-                newMetas.splice(2, 0, metas[i]);
+                newTargets.splice(2, 0, targets[i]);
             } else if (percents < 50 && percents >= 25) {
-                newMetas.splice(3, 0, metas[i]);
+                newTargets.splice(3, 0, targets[i]);
             } else if (percents < 25 && percents > 0) {
-                newMetas.splice(4, 0, metas[i]);
+                newTargets.splice(4, 0, targets[i]);
             } else {
                 return;
             }
@@ -39,27 +39,27 @@ export async function listAllWithFilters(page = 1, query) {
 
         const newPagination = [];
 
-		let response = newMetas.slice(initPage, initPage + perPage);
+		let response = newTargets.slice(initPage, initPage + perPage);
   
 		if (response.length <= 0) {
-            response = metas.slice(0, 10);
+            response = targets.slice(0, 10);
         }
         
         for (let i = 0; i < response.length; i++) {
-            const instituicao = await listInstituicaoByIdService(response[i].id_institution);
+            const institution = await listInstitutionByIdService(response[i].id_institution);
             const percent = (response[i].current_quantity * 100) / response[i].target_value;
 
-            const newObjectMetaFormat = {
+            const newObjectTargetFormat = {
                 id: response[i].id,
                 name: response[i].name,
                 target_value: response[i].value,
                 current_quantity: response[i].current_value,
-                instituicao: instituicao.name, 
+                institution: institution.name, 
                 createdAt: response[i].createdAt,
                 day_limit: response[i].day_limit,
                 percent: percent,
             };
-            newPagination.push(newObjectMetaFormat);
+            newPagination.push(newObjectTargetFormat);
         }
 
         return newPagination;
