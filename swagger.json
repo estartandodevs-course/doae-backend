@@ -852,7 +852,6 @@
                 "tags": [
                     "Publicação"
                 ],
-                "security": [{"bearerAuth": []}],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -875,7 +874,6 @@
                 "tags": [
                     "Publicação"
                 ],
-                "security": [{"bearerAuth": []}],
                 "parameters": [
                     {
                         "name": "id",
@@ -906,7 +904,6 @@
                 "tags": [
                     "Publicação"
                 ],
-                "security": [{"bearerAuth": []}],
                 "parameters": [
                     {
                         "name": "id",
