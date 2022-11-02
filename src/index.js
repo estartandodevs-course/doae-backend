@@ -23,6 +23,7 @@ class App {
 		this.server.use((req, res, next) => {
 			res.header("Access-Control-Allow-Origin", "*");
 			res.header("Access-Control-Allow-Methods", "*");
+			res.header("Access-Control-Allow-Headers", true);
 			this.server.use(cors());
 			next();
 		});
