@@ -30,10 +30,11 @@ class App {
 	}
 
 	routes() {
-		this.server.use(routes.routesMeta);
-		this.server.use(routes.routesProduto);
-		this.server.use(routes.routesDoacao);
-		this.server.use(routes.routesInstituicao);
+		this.server.use(routes.routesTarget);
+		this.server.use(routes.routesProduct);
+		this.server.use(routes.routesDonation);
+		this.server.use(routes.routesInstitution);
+		this.server.use(routes.routesPublication);
 	}
 }
 

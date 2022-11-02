@@ -1,7 +1,7 @@
-import { getTargetByIdInstitution } from "../../Repositories/TargetRepository.js";
+import { getTargetsByIdInstitution } from "../../Repositories/TargetRepository.js";
 import { getInstitutionByIdExternal } from "../../Repositories/InstitutionRepository.js";
 
-export async function listTargetByIdInstitution(id_institution, page = 1) {
+export async function listTargetsByIdInstitution(id_institution, page = 1) {
   const perPage = 10;
   let initPage = page * perPage - perPage;
   try {

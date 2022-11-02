@@ -1,4 +1,4 @@
-import { getAllTarget } from "../../Repositories/TargetRepository.js";
+import { getAllTargets } from "../../Repositories/TargetRepository.js";
 import { listInstitutionByIdService } from "../Institutions/listInstitutionById.service.js";
 import { filterTargetsByNameOfInstitution } from "../../Funcs/filterTargetsByName.js";
 
@@ -8,7 +8,7 @@ export async function listAllWithFilters(page = 1, query) {
 	let initPage = page * perPage - perPage;
 
 	try {
-        const targets = await getAllTarget();
+        const targets = await getAllTargets();
 
         const newTargets = [];
 

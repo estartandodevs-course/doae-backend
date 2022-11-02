@@ -1,11 +1,11 @@
-import { createTargetService } from "../Services/Targets/createTargets.service.js";
+import { createTargetService } from "../Services/Targets/createTarget.service.js";
 import { listAll } from "../Services/Targets/listTargets.service.js";
 import { listTargetById } from "../Services/Targets/listTargetById.service.js";
 import { listTargetsByIdInstitution } from "../Services/Targets/listTargetByIdInstitution.service.js";
-import { updateTargetService } from "../Services/Target/updateTarget.service.js";
+import { updateTargetService } from "../Services/Targets/updateTarget.service.js";
 import { updateByIdCurrentQuantityService } from "../Services/Targets/updateCurrentQuantity.service.js";
 import { deleteTargetService } from "../Services/Targets/deleteTarget.service.js";
-import { listAllWithFilters } from "../Services/Targets/listTargetWithFilter.service.js";
+import { listAllWithFilters } from "../Services/Targets/listTargetsWithFilter.service.js";
 
 export async function postTarget(request, response) {
 	const { name, value, id_institution, description, day_limit } = request.body;

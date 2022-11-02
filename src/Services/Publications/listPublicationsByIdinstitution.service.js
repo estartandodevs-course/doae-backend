@@ -1,10 +1,10 @@
-import { getPublicationsByIdInstituicao } from "../../Repositories/PublicationRepository.js";
+import { getPublicationsByIdInstitution } from "../../Repositories/PublicationRepository.js";
 
 export async function listPublicationsByIdInstitutionService(id_institution, page = 1) {
 	const perPage = 10;
 	let initPage  = (page * perPage) - perPage;
 	try {
-		const publications = await getPublicationsByIdInstituicao(id_institution);
+		const publications = await getPublicationsByIdInstitution(id_institution);
 		const response = publications.slice(initPage, (initPage + perPage));
 		if (response.length > 0) {
 			return response;

@@ -13,6 +13,6 @@ const targetSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const TargetModel = mongoose.model('Target', metaSchema);
+const TargetModel = mongoose.model('Target', targetSchema);
 
 export default TargetModel;

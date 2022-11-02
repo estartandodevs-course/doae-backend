@@ -1,4 +1,4 @@
-import { getAllTarget } from "../../Repositories/TargetRepository.js";
+import { getAllTargets } from "../../Repositories/TargetRepository.js";
 import { getInstitutionByIdExternal } from "../../Repositories/InstitutionRepository.js";
 
 export async function listAll(page = 1, query = "") {
@@ -7,7 +7,7 @@ export async function listAll(page = 1, query = "") {
 	let initPage = page * perPage - perPage;
 
 	try {
-		const targets = await getAllTarget();
+		const targets = await getAllTargets();
 		const newPagination = [];
 
 		let response = targets.slice(initPage, initPage + perPage);
