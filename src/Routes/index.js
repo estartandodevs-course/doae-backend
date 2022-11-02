@@ -1,15 +1,15 @@
-import routesMeta from "./routeMeta.js";
-import routesProduto from "./routeProduto.js";
-import routesDoacao from "./routeDonation.js";
-import routesInstituicao from "./routeInstituicao.js";
-import routesPostagem from "./routePostagem.js";
+import routesTarget from "./routeTarget.js";
+import routesProduct from "./routeProduct.js";
+import routesDonation from "./routeDonation.js";
+import routesInstitution from "./routeInstitution.js";
+import routesPublication from "./routePublication.js";
 
 const routes = {
-    routesMeta,
-    routesProduto,
-    routesDoacao,
-    routesInstituicao,
-    routesPostagem
+    routesTarget,
+    routesProduct,
+    routesDonation,
+    routesInstitution,
+    routesPublication
 }
 
 export default routes;
