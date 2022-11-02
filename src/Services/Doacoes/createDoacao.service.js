@@ -1,5 +1,6 @@
 import { createDoacao } from "../../Repositories/DoacaoRepository.js";
 import { getMetaById } from "../../Repositories/MetaRepository.js";
+import { getProdutoMetaById } from "../../Repositories/ProdutoMetaRepository.js";
 import { v4 as uuid } from "uuid";
 import { mailto } from "../../Libs/mailto.js";
 
@@ -8,9 +9,10 @@ export async function createDoacaoService(
 	value,
 	email_doador,
 	id_meta,
+	id_product
 ) {
 	const id = uuid();
-	const status = null;
+	const status = undefined;
 	const suspend = false;
 	if(id_meta){
 		const meta = await getMetaById(id_meta);
@@ -21,6 +23,10 @@ export async function createDoacaoService(
 		if(dateNow > meta.day_limit){
 			throw new Error("Essa meta já encerrou.");
 		}
+	}
+	if (id_product) {
+		const produto = await getProdutoMetaById(id_product)
+		value = produto.value;
 	}
 	try {
 		const doacao = await createDoacao(

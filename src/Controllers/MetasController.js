@@ -10,9 +10,9 @@ import { recoverMetaService } from "../Services/Metas/recoverMeta.service.js";
 import { listAllWithFilters } from "../Services/Metas/listMetaWithFilter.service.js";
 
 export async function postMeta(request, response) {
-	const { name, value, id_institution, description, day_limit } = request.body;
+	const { name, value, id_institution, descricao, dia_limite } = request.body;
 	try {
-		const meta = await createMetaService(name, value, id_institution, description, day_limit);
+		const meta = await createMetaService(name, value, id_institution, descricao, dia_limite);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);

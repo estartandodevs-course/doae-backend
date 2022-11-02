@@ -12,6 +12,8 @@ export async function createInstituicaoService(
 	telefone,
 	cep,
 	site,
+	email,
+	password,
 	verificado = false,
 ) {
 	const id = uuid();
@@ -31,7 +33,9 @@ export async function createInstituicaoService(
             identificador,
             site,
             verificado,
-			suspend
+			suspend,
+			email,
+			password
 		);
 		return instituicao;
 	} catch (e) {

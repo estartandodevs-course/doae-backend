@@ -9,6 +9,8 @@ export async function postInstituicao(request, response) {
   const {
     nome,
     cnpj,
+    email,
+    password,
     descricao,
     agencia,
     conta,
@@ -29,6 +31,8 @@ export async function postInstituicao(request, response) {
       telefone,
       cep,
       site,
+      email,
+      password,
       verificado
     );
     response.status(200).json(instituicao);

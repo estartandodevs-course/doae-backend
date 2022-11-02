@@ -13,6 +13,7 @@ export async function postDoacao(request, response) {
 		value,
 		email_doador,
 		id_meta,
+		id_product
 	} = request.body;
 	try {
 		const doacao = await createDoacaoService(
@@ -20,6 +21,7 @@ export async function postDoacao(request, response) {
 			value,
 			email_doador,
 			id_meta,
+			id_product
 		);
 		response.status(200).json(doacao);
 	} catch (e) {

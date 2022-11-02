@@ -16,6 +16,14 @@ InstituicaoModel.init(
             type: Sequelize.BOOLEAN,
             allowNull: false,
         },
+        email : {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        password : {
+            type: Sequelize.STRING,
+            allowNull: true
+        },
         pix: {
             type: Sequelize.STRING,
             allowNull: true,

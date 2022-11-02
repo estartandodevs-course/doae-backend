@@ -1,5 +1,5 @@
 import { createProdutoMeta } from "../../Repositories/ProdutoMetaRepository.js";
-import { listMetaById } from "../Metas/listMetaById.service.js"; 
+import { getMetaById } from "../../Repositories/MetaRepository.js"; 
 import { v4 as uuid } from "uuid";
 
 export async function createProdutoMetaService(
@@ -8,8 +8,8 @@ export async function createProdutoMetaService(
 	id_meta
 ) {
 	const id = uuid();
-	const meta = await listMetaById(id_meta);
-	const id_institution = meta.institution;
+	const meta = await getMetaById(id_meta);
+	const id_institution = meta.id_institution;
 	try {
 		const produto = await createProdutoMeta(id, name, value, id_meta, id_institution);
 		return produto;

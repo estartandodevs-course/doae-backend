@@ -13,12 +13,16 @@ export async function createInstituicao(
 	identificador,
 	site,
 	verificado,
-	suspend
+	suspend,
+	email,
+	password
 ) {
 	try {
 		const instituicao = await InstituicaoModel.create({
 			id,
 			nome,
+			email,
+			password,
 			cnpj,
 			descricao,
 			agencia,
@@ -29,7 +33,7 @@ export async function createInstituicao(
 			identificador,
 			site,
 			verificado,
-			suspend
+			suspend,
 		});
 		return instituicao;
 	} catch (e) {
