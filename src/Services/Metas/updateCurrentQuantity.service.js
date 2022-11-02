@@ -1,13 +1,13 @@
 import {
-	getMetaById,
+	getTargetById,
 	updateByIdCurrentQuantity,
-} from "../../Repositories/MetaRepository.js";
+} from "../../Repositories/TargetRepository.js";
 
 export async function updateByIdCurrentQuantityService(id, value, productId) {
 	let currentValue;
 	let newValue;
 	try {
-		currentValue = await getMetaById(id);
+		currentValue = await getTargetById(id);
 	} catch (e) {
 		console.log(e);
 		throw new Error(e.message);

@@ -1,6 +1,6 @@
 import MetaModel from "../Models/MetaModel.js";
 
-export async function createMeta(
+export async function createTarget(
 	id,
 	name,
 	value,
@@ -26,7 +26,7 @@ export async function createMeta(
 	}
 }
 
-export async function getMetaById(id) {
+export async function getTargetById(id) {
 	try {
 		const meta = await MetaModel.findOne({ id, suspend: false });
 		return meta;
@@ -35,7 +35,7 @@ export async function getMetaById(id) {
 	}
 }
 
-export async function getMetasByIdInstituicao(id_institution) {
+export async function getTargetByIdInstitution(id_institution) {
 	try {
 		const metaInstution = await MetaModel.find({
 			id_institution,
@@ -47,7 +47,7 @@ export async function getMetasByIdInstituicao(id_institution) {
 	}
 }
 
-export async function getAllMetas() {
+export async function getAllTarget() {
 	try {
 		const allMetas = await MetaModel.find({ suspend: false });
 		return allMetas;
@@ -56,16 +56,7 @@ export async function getAllMetas() {
 	}
 }
 
-export async function getMetasSuspend() {
-	try {
-		const allMetas = await MetaModel.find({ suspend: true });
-		return allMetas;
-	} catch (e) {
-		throw new Error(e.message);
-	}
-}
-
-export async function updateMetaById(id, name, value) {
+export async function updateTargetById(id, name, value) {
 	try {
 		const updateMeta = await MetaModel.updateOne({ id }, { name, value });
 		return updateMeta;
@@ -86,23 +77,11 @@ export async function updateByIdCurrentQuantity(id, newCurrentQuantity) {
 	}
 }
 
-export async function deleteMetaById(id) {
+export async function deleteTargetById(id) {
 	try {
 		const metaDelete = await MetaModel.updateOne(
 			{ id, suspend: false },
 			{ suspend: true }
-		);
-		return metaDelete;
-	} catch (e) {
-		throw new Error(e.message);
-	}
-}
-
-export async function recoverMetaById(id) {
-	try {
-		const metaDelete = await MetaModel.updateOne(
-			{ id, suspend: true },
-			{ suspend: false }
 		);
 		return metaDelete;
 	} catch (e) {

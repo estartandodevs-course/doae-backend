@@ -15,7 +15,7 @@ module.exports = {
 			},
       status: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: true
       },
       value: {
         type: Sequelize.FLOAT,

@@ -1,477 +1,573 @@
- {
+{
     "openapi": "3.0.0",
-    "info" : {
+    "info": {
         "title": "Doaê",
         "description": "Api de doação para instituições sociais",
         "version": "1.0.0"
     },
-    "basePath" : "/",
-
+    "server": [
+        {
+            "url": "http://localhost:1000/"
+        }
+    ],
+    "basePath": "/",
     "paths": {
-        "/instituicao/": {
+        "/institution": {
             "post": {
-                "tags": ["Instituição"],
-                "sumary": "Cria o perfil de uma instituicao",
-                "description": "Esta rota é responsável por criar um novo perfil de instituição",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "cnpj": {
-                                        "type": "string"
-                                    },
-                                    "cep": {
-                                        "type": "string"
-                                    },
-                                    "telefone": {
-                                        "type": "string"
-                                    },
-                                    "agência": {
-                                        "type": "string"
-                                    },
-                                    "conta": {
-                                        "type": "string"
-                                    },
-                                    "pix": {
-                                        "type": "string"
-                                    },
-                                    "descrição": {
-                                        "type": "string"
-                                    },
-                                    "site": {
-                                        "type": "string"
-                                    },
-                                    "logomarca": {
-                                        "type": "string"
-                                    },
-                                    "verificado": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-                                    "name": "institution name sample",
-                                    "email": "institution@email.com",
-                                    "cnpj": "00000000000000",
-                                    "agência": "0000",
-                                    "conta": "00000000000000000000",
-                                    "pix": "chavepix@email.com",
-                                    "telefone": "00 0000 0000",
-                                    "descrição": "essa é a descrição de uma instituição social fictícia",
-                                    "site": "https://www.instituiçãoficticia.com.br",
-                                    "logomarca": "foto.png",
-                                    "verificado": "verdadeiro"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Instituição criada com sucesso!"
-                    }
-                }
-            }
-        },
-        "/instituicao": {
-            "get": {
-                "tags": ["Instituição"],
-                "sumary": " Lista as instituições",
-                "description": "Esta rota é reponsável por listar as instituições",
-                "responses": {
-                    "201": {
-                        "description": "Lista de instituições encontrada!"
-                    }
-                }
-            }
-        },
-        "/instituicao/{id}": {
-            "get": {
-                "tags": ["Instituição"],
-                "sumary": " Lista as instituições por id específico",
-                "description": "Esta rota é reponsável por listar as instituições por seus respectivos id",
-                "responses": {
-                    "201": {
-                        "description": "Instituição encontrada!"
-                    }
-                }
-            }
-        },
-        "/updateInstituicao/{id}": {
-            "put": {
-                "tags": ["Instituição"],
-                "sumary": "Atualiza uma instituição",
-                "description": "Esta rota é responsável por atualizar dados de uma instituição",
-                "parameters": [
-                    {
-                        "in":"path",
-                        "id": "nome, cep, telefone, email, pix, descrição, site, logomarca",
-                        "description": "Atributos acima serão atualizados",
-                        "required": true
-                    }
+                "sumary": "Cadastro da instituição",
+                "description": "Essa rota será responsável por cadastrar as instituições",
+                "tags": [
+                    "Instituição"
                 ],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "cnpj": {
-                                        "type": "string"
-                                    },
-                                    "cep": {
-                                        "type": "string"
-                                    },
-                                    "telefone": {
-                                        "type": "string"
-                                    },
-                                    "agência": {
-                                        "type": "string"
-                                    },
-                                    "conta": {
-                                        "type": "string"
-                                    },
-                                    "pix": {
-                                        "type": "string"
-                                    },
-                                    "descrição": {
-                                        "type": "string"
-                                    },
-                                    "site": {
-                                        "type": "string"
-                                    },
-                                    "logomarca": {
-                                        "type": "string"
-                                    },
-                                    "verificado": {
-                                        "type": "string"
+                                "$ref": "#/components/schemas/institution"
+                            },
+                            "examples": {
+                                "institution": {
+                                    "value": {
+                                        "name":  "Lar das moças cegas",
+                                        "cnpj": "12123456000112",
+                                        "email": "contato@lardasmocascegas.com",
+                                        "password": "Lardasmocas@123",
+                                        "description": "Nosso objetivo é ajudar moças com deficiência visual.",
+                                        "agency": "0001",
+                                        "count": "000225558",
+                                        "pix": "12123456000112",
+                                        "phone": "2732560000",
+                                        "cep": "29190010",
+                                        "site": "lardasmocascegas.com"
                                     }
-                                },
-                                "example": {
-                                    "name": "institution name sample",
-                                    "email": "institution@email.com",
-                                    "cnpj": "00000000000000",
-                                    "agência": "0000",
-                                    "conta": "00000000000000000000",
-                                    "pix": "chavepix@email.com",
-                                    "telefone": "00 0000 0000",
-                                    "descrição": "essa é a descrição de uma instituição social fictícia",
-                                    "site": "https://www.instituiçãoficticia.com.br",
-                                    "logomarca": "foto.png",
-                                    "verificado": "verdadeiro"
                                 }
                             }
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Instituição atualizada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/institution"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "sumary": "Listas todas as instituicoes",
+                "description": "Essa rota será responsável por listar todas as instituições",
+                "tags": [
+                    "Instituição"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Parametro que define a pagina que você deseja buscar",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/institution"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/deleteInstituicao/{id}": {
-            "delete": {
-                "tags": ["Instituicao"],
-                "sumary": "Deleta uma instituição",
-                "description": "Esta rota é responsável por deletar dados de uma instituição",
+        "/institution/:id": {
+            "get": {
+                "sumary": "Lista a instituicao indicada",
+                "description": "Essa rota será responsável por listar uma instituicao",
+                "tags": [
+                    "Instituição"
+                ],
                 "parameters": [
                     {
-                        "in":"path",
                         "name": "id",
-                        "description": "Id da instituição que será deletada",
+                        "in": "params",
+                        "description": "Parametro que define a instituicao que você deseja buscar",
                         "required": true
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "Instituição deletada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/institution"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "sumary": "Atualização da instituicao",
+                "description": "Essa rota será responsável por atualizar as instituições",
+                "tags": [
+                    "Instituição"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id da instiuição a ser atualizada.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/institution"
+                            },
+                            "examples": {
+                                "institution": {
+                                    "value": {
+                                        "name":  "Lar das moças cegas",
+                                        "cnpj": "12123456000112",
+                                        "email": "contato@lardasmocascegas.com",
+                                        "password": "Lardasmocas@123",
+                                        "description": "Nosso objetivo é ajudar moças com deficiência visual.",
+                                        "agency": "0001",
+                                        "count": "000225558",
+                                        "pix": "12123456000112",
+                                        "phone": "2732560000",
+                                        "cep": "29190010",
+                                        "site": "lardasmocascegas.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/institution"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "sumary": "Remoção da instituicao",
+                "description": "Essa rota será responsável por remover as instituições",
+                "tags": [
+                    "Instituição"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id da instiuição a ser atualizada.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/institution"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/doacoes": {
+        "/target": {
             "post": {
-                "tags": ["Doações"],
-                "sumary": "Cadastra uma doação",
-                "description": "Esta rota é responsável por cadastrar doações",
+                "sumary": "Cadastro da meta",
+                "description": "Essa rota será responsável por cadastrar as metas",
+                "tags": [
+                    "Metas"
+                ],
+                "security": [{"bearerAuth": []}],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id_instituicao": {
-                                        "type": "string"
-                                    },
+                                "$ref": "#/components/schemas/target"
+                            },
+                            "examples": {
+                                "institution": {
                                     "value": {
-                                        "type": "number"
-                                    },
-                                    "email_doador": {
-                                        "type": "string"    
-                                    },
-                                    "id_meta": {
-                                        "type": "string"
-                                    },
-                                    "id_produto": {
-                                        "type": "string"
+                                        "name":  "Meta combatendo a fome",
+                                        "value": 15,
+                                        "id_institution": "KwCsnoKS0",
+                                        "description": "Uma meta para salvar o mundo da fome",
+                                        "day_limit": "2022-12-12T00:00:00.000+00:00"
                                     }
-                                },
-                                "example": {
-                                    "id_instituicao": "6co83a74-29a9-468a-ae96-3256d1d2634",
-                                    "value": 35.00,
-                                    "email_doador": "doador@email.com",
-                                    "id_meta": "5wo43a74-29a6-478a-ve96-3263d1d9429c",
-                                    "id_produto": "8ca92p71-99l6-468a-ae96-0329d1d2634"
                                 }
                             }
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Doação cadastrada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/target"
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        },
-        "/doacoes/list": {
+            },
             "get": {
-                "tags": ["Doações"],
-                "sumary": " Lista as doações cadastradas",
-                "description": "Esta rota é reponsável por listar as doações cadastradas",
+                "sumary": "Listas todas as metas",
+                "description": "Essa rota será responsável por listar todas as metas",
+                "tags": [
+                    "Metas"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Parametro que define a pagina que você deseja buscar",
+                        "required": false
+                    }
+                ],
                 "responses": {
-                    "201": {
-                        "description": "Lista de doações encontrada!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/target"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/doacoes/{id}": {
+        "/target/institution/:id": {
             "get": {
-                "tags": ["Doações"],
-                "sumary": " Lista as doações por id específico",
-                "description": "Esta rota é reponsável por listar as doações de um id específico",
+                "sumary": "Listas todas as metas pelo id da instituição",
+                "description": "Essa rota será responsável por listar todas as metas pelo id da instituição.",
+                "tags": [
+                    "Metas"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Parametro que define a pagina que você deseja buscar",
+                        "required": false
+                    },
+                    {
+                        "name": "id_institution",
+                        "in": "params",
+                        "description": "Parametro que define a instituicao",
+                        "required": true
+                    }
+                ],
                 "responses": {
-                    "201": {
-                        "description": "Doação encontrada!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/target"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/doacoes/instituicao/{id_instituicao}": {
+        "/target/:id": {
             "get": {
-                "tags": ["Doações"],
-                "sumary": " Lista as doações de uma instituição",
-                "description": "Esta rota é reponsável por listar as doações de uma instituição",
+                "sumary": "Lista a meta indicada",
+                "description": "Essa rota será responsável por listar uma meta",
+                "tags": [
+                    "Metas"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Parametro que define a meta que você deseja buscar",
+                        "required": true
+                    }
+                ],
                 "responses": {
-                    "201": {
-                        "description": "Lista de doações encontrada!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/target"
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        },
-        "/doacoes/metas/{id_meta}": {
-            "get": {
-                "tags": ["Doações"],
-                "sumary": " Lista as doações por id de meta",
-                "description": "Esta rota é reponsável por listar as doações de uma meta es´pecífica",
-                "responses": {
-                    "201": {
-                        "description": "Lista de doações encontrada!"
-                    }
-                }
-            }
-        },
-        "/updateDoacoes": {
+            },
             "put": {
-                "tags": ["Doações"],
-                "sumary": "Atualiza uma doação",
-                "description": "Esta rota é responsável por atualizar dados de uma doação",
-                "parameters": [
-                    {
-                        "in":"path",
-                        "name": "id",
-                        "description": "Id da doação que será atualizada",
-                        "required": true
-                    }
+                "sumary": "Atualização da meta",
+                "description": "Essa rota será responsável por atualizat as metas",
+                "tags": [
+                    "Metas"
                 ],
+                "security": [{"bearerAuth": []}],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "id_instituicao": {
-                                        "type": "string"
-                                    },
+                                "$ref": "#/components/schemas/target"
+                            },
+                            "examples": {
+                                "institution": {
                                     "value": {
-                                        "type": "number"
-                                    },
-                                    "email_doador": {
-                                        "type": "string"    
-                                    },
-                                    "id_meta": {
-                                        "type": "string"
-                                    },
-                                    "id_produto": {
-                                        "type": "string"
+                                        "name":  "Meta combatendo a fome",
+                                        "value": 15,
+                                        "description": "Uma meta para salvar o mundo da fome",
+                                        "day_limit": "2022-12-12T00:00:00.000+00:00"
                                     }
-                                },
-                                "example": {
-                                    "id_instituicao": "6co83a74-29a9-468a-ae96-3256d1d2634",
-                                    "value": 35.00,
-                                    "email_doador": "doador@email.com",
-                                    "id_meta": "5wo43a74-29a6-478a-ve96-3263d1d9429c",
-                                    "id_produto": "8ca92p71-99l6-468a-ae96-0329d1d2634"
                                 }
                             }
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Doação atualizada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/target"
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        },
-        "/deleteDoacoes": {
+            },
             "delete": {
-                "tags": ["Doações"],
-                "sumary": "Deleta uma doação",
-                "description": "Esta rota é responsável por deletar dados de uma doação",
+                "sumary": "Remoção da meta",
+                "description": "Essa rota será responsável por remover as metas",
+                "tags": [
+                    "Metas"
+                ],
+                "security": [{"bearerAuth": []}],
                 "parameters": [
                     {
-                        "in":"path",
                         "name": "id",
-                        "description": "Id da doação que será deletada",
+                        "in": "params",
+                        "description": "Define o id da meta a ser removida.",
                         "required": true
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "Doação deletada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/target"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/metas": {
+        "/target/quantity/:id": {
+            "put": {
+                "sumary": "Atualização da quatidade de doacoes da meta",
+                "description": "Essa rota será responsável por atualizar as metas",
+                "tags": [
+                    "Metas"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Id da meta a ser atualizada.",
+                        "required": true
+                    }
+                ],
+                "security": [{"bearerAuth": []}],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/target"
+                            },
+                            "examples": {
+                                "target": {
+                                    "value": {
+                                        "value": 15,
+                                        "product_id": ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/target"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product": {
             "post": {
-                "tags": ["Metas"],
-                "sumary": "Cadastra uma meta",
-                "description": "Esta rota é responsável por cadastrar metas",
+                "sumary": "Cadastro do produto",
+                "description": "Essa rota será responsável por cadastrar os produtos",
+                "tags": [
+                    "Produtos"
+                ],
+                "security": [{"bearerAuth": []}],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "nome": {
-                                        "type": "string"
-                                    },
+                                "$ref": "#/components/schemas/product"
+                            },
+                            "examples": {
+                                "institution": {
                                     "value": {
-                                        "type": "number"    
-                                    },
-                                    "day_limit": {
-                                        "type": "string"    
-                                    },
-                                    "id_instituicao": {
-                                        "type": "string"
-                                    },
-                                    "descrição": {
-                                        "type": "string"
+                                        "name":  "Feijão",
+                                        "value": 2,
+                                        "id_meta": "d7ac241a-1ec8-4fdc-9c0c-c74a62793759"
                                     }
-                                },
-                                "example": {
-	                                "nome": "cesta básica",
-	                                "value": 5000,
-	                                "limit": "10 de março de 2023",
-	                                "descrição": "Nosso alvo é distribuir cestas básicas para pelo menos 10 famílias em situação de carÊncia econômica" 
                                 }
                             }
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Meta cadastrada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/metas/list": {
+        "/product/meta/:id_meta": {
             "get": {
-                "tags": ["Metas"],
-                "sumary": " Lista as metas cadastradas",
-                "description": "Esta rota é reponsável por listar as metas cadastradas",
+                "sumary": "Lista o produto pelo id da meta",
+                "description": "Essa rota será responsável por listar produtos pelo id da meta passada.",
+                "tags": [
+                    "Produtos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id_meta",
+                        "in": "params",
+                        "description": "Parametro que define a meta que você deseja buscar",
+                        "required": true
+                    }
+                ],
                 "responses": {
-                    "201": {
-                        "description": "Lista de metas encontrada!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/metas/suspend": {
+        "/product/:id": {
             "get": {
-                "tags": ["Metas"],
-                "sumary": " Lista as metas ativas",
-                "description": "Esta rota é reponsável por listar as metas ativas",
+                "sumary": "Lista o produto pelo id",
+                "description": "Essa rota será responsável por listar produtos pelo id passado.",
+                "tags": [
+                    "Produtos"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Parametro que define o produto que você deseja buscar",
+                        "required": true
+                    }
+                ],
                 "responses": {
-                    "201": {
-                        "description": "Lista de metas encontrada!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        },
-        "/metas/{id}": {
-            "get": {
-                "tags": ["Metas"],
-                "sumary": " Lista as metas por id específico",
-                "description": "Esta rota é reponsável por listar as metas por seus respectivos ids",
-                "responses": {
-                    "201": {
-                        "description": "Meta encontrada!"
-                    }
-                }
-            }
-        },
-        "/metas/instituicao/{id_instituicao}": {
-            "get": {
-                "tags": ["Metas"],
-                "sumary": " Lista as metas por id da instituição",
-                "description": "Esta rota é reponsável por listar as metas pelo id de sua instituição",
-                "responses": {
-                    "201": {
-                        "description": "Lista de metas encontrada!"
-                    }
-                }
-            }
-        },
-        "/updateMetas/{id}": {
+            },
             "put": {
-                "tags": ["Metas"],
-                "sumary": "Atualiza uma meta",
-                "description": "Esta rota é responsável por atualizar dados de uma meta",
+                "sumary": "Atualiza o produto pelo id",
+                "description": "Essa rota será responsável por atualizar produtos pelo id passado.",
+                "tags": [
+                    "Produtos"
+                ],
+                "security": [{"bearerAuth": []}],
                 "parameters": [
                     {
-                        "in":"path",
                         "name": "id",
-                        "description": "Id da meta que será atualizada",
+                        "in": "params",
+                        "description": "Parametro que define o produto que você deseja buscar",
                         "required": true
                     }
                 ],
@@ -479,132 +575,176 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "nome": {
-                                        "type": "string"
-                                    },
+                                "$ref": "#/components/schemas/product"
+                            },
+                            "examples": {
+                                "institution": {
                                     "value": {
-                                        "type": "number"    
-                                    },
-                                    "day_limit": {
-                                        "type": "string"    
-                                    },
-                                    "id_instituicao": {
-                                        "type": "string"
-                                    },
-                                    "descrição": {
-                                        "type": "string"
+                                        "status": true
                                     }
-                                },
-                                "example": {
-	                                "nome": "cesta básica",
-	                                "value": 5000,
-	                                "limit": "10 de março de 2023",
-	                                "descrição": "Nosso alvo é distribuir cestas básicas para pelo menos 10 famílias em situação de carÊncia econômica" 
                                 }
                             }
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Meta atualizado com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        },
-        "/deleteMeta/{id}": {
+            },
             "delete": {
-                "tags": ["BankAccount"],
-                "sumary": "Deleta uma meta",
-                "description": "Esta rota é responsável por deletar dados de uma meta",
+                "sumary": "Remove o produto pelo id",
+                "description": "Essa rota será responsável por remover produtos pelo id passado.",
+                "tags": [
+                    "Produtos"
+                ],
+                "security": [{"bearerAuth": []}],
                 "parameters": [
                     {
-                        "in":"path",
                         "name": "id",
-                        "description": "Id da meta que será deletada",
+                        "in": "params",
+                        "description": "Parametro que define o produto que você deseja buscar",
                         "required": true
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "Meta deletada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/produtos": {
+        "/donation": {
             "post": {
-                "tags": ["Produtos"],
-                "sumary": "Cadastra um produto",
-                "description": "Esta rota é responsável por cadastrar produtos",
+                "sumary": "Cadastro do doação",
+                "description": "Essa rota será responsável por cadastrar as doações.",
+                "tags": [
+                    "Doação"
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "id_meta": {
-                                        "type": "string"
-                                    },
+                                "$ref": "#/components/schemas/donation"
+                            },
+                            "examples": {
+                                "institution": {
                                     "value": {
-                                        "type": "number"
+                                        "id_institution": "KwCsnoKS0",
+                                        "email_donator": "nataliasilva.bezerra18@gmail.com",
+                                        "id_meta": "d7ac241a-1ec8-4fdc-9c0c-c74a62793759",
+                                        "id_product": "14065727-627f-4af9-bb1b-10c657447804"
                                     }
-                                },
-                                "example": {
-                                    "name": "Arroz",
-                                    "id_meta": "5wo43a74-29a6-478a-ve96-23798kj3k549c",
-	                                "value": 5
                                 }
                             }
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Produto cadastrado com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/produtos/{id}": {
+        "/donation/meta/:id_meta": {
             "get": {
-                "tags": ["Produtos"],
-                "sumary": " Lista os produtos por seus respectivos ids",
-                "description": "Esta rota é reponsável por listar os produtos por seus respectivos ids",
+                "sumary": "Lista a doação pelo id da meta",
+                "description": "Essa rota será responsável por listar doações pelo id da meta passada.",
+                "tags": [
+                    "Doação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id_meta",
+                        "in": "params",
+                        "description": "Parametro que define a meta que você deseja buscar",
+                        "required": true
+                    }
+                ],
                 "responses": {
-                    "201": {
-                        "description": "Produtos encontrado!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/produtos/meta/{id_meta}": {
+        "/donation/institution/:id_institution": {
             "get": {
-                "tags": ["Produtos"],
-                "sumary": " Lista os produtos pelo id da meta",
-                "description": "Esta rota é reponsável por listar os produtos pelo id da meta",
+                "sumary": "Lista a doação pelo id da instituição",
+                "description": "Essa rota será responsável por listar doações pelo id da instituição passada.",
+                "tags": [
+                    "Doação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id_institution",
+                        "in": "params",
+                        "description": "Parametro que define a instituição que você deseja buscar",
+                        "required": true
+                    }
+                ],
                 "responses": {
-                    "201": {
-                        "description": "Lista os produtos encontrada!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/updateProdutos/{id}": {
+        "donation/:id": {
             "put": {
-                "tags": ["Produtos"],
-                "sumary": "Atualiza o produto",
-                "description": "Esta rota é responsável por atualizar um produto",
+                "sumary": "Atualização da doação",
+                "description": "Essa rota será responsável por atualizar as doações",
+                "tags": [
+                    "Doação"
+                ],
+                "security": [{"bearerAuth": []}],
                 "parameters": [
                     {
-                        "in":"path",
                         "name": "id",
-                        "description": "Id do produto que será atualizado",
+                        "in": "params",
+                        "description": "Define o id da doação a ser atualizada.",
                         "required": true
                     }
                 ],
@@ -612,57 +752,58 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "nome": {
-                                        "type": "string"
-                                    },
+                                "$ref": "#/components/schemas/donation"
+                            },
+                            "examples": {
+                                "donation": {
                                     "value": {
-                                        "type": "number"    
-                                    },
-                                    "day_limit": {
-                                        "type": "string"    
-                                    },
-                                    "id_instituicao": {
-                                        "type": "string"
-                                    },
-                                    "descrição": {
-                                        "type": "string"
+                                        "status": true
                                     }
-                                },
-                                "example": {
-	                                "nome": "cesta básica",
-	                                "value": 5000,
-	                                "limit": "10 de março de 2023",
-	                                "descrição": "Nosso alvo é distribuir cestas básicas para pelo menos 10 famílias em situação de carÊncia econômica" 
                                 }
                             }
                         }
                     }
                 },
                 "responses": {
-                    "201": {
-                        "description": "Produto atualizado com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
                     }
                 }
-            }
-        },
-        "/deleteProduto/{id}": {
+            },
             "delete": {
-                "tags": ["Produtos"],
-                "sumary": "Deleta um produção",
-                "description": "Esta rota é responsável por deletar um produto",
+                "sumary": "Remoção da doação",
+                "description": "Essa rota será responsável por remover as doações",
+                "tags": [
+                    "Doação"
+                ],
+                "security": [{"bearerAuth": []}],
                 "parameters": [
                     {
-                        "in":"path",
                         "name": "id",
-                        "description": "Id do produto que será deletado",
+                        "in": "params",
+                        "description": "Define o id da doação a ser atualizada.",
                         "required": true
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "Movimentação deletada com sucesso!"
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -671,20 +812,152 @@
     "components": {
         "securitySchemes": {
             "bearerAuth": {
-              "type": "http",
-              "scheme": "bearer",
-              "bearerFormat": "JWT"
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
             }
         },
         "schemas": {
-            "session-request": {
+            "institution": {
                 "type": "object",
                 "properties": {
-                  "email": { "type": "string" },
-                  "password": { "type": "string" }
+                    "id": {
+                        "type": "string"
+                    },
+                    "id_external": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "verified": {
+                        "type": "string"
+                    },
+                    "cnpj": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "agency": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "string"
+                    },
+                    "pix": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "cep": {
+                        "type": "string"
+                    },
+                    "site": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "suspend": {
+                        "type": "boolean"
+                    }
                 }
-              }
+            },
+            "target": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "number"
+                    },
+                    "id_institution": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "day_limit": {
+                        "type": "string"
+                    },
+                    "suspend": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "product": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "number"
+                    },
+                    "id_meta": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "boolean"
+                    },
+                    "suspend": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "donation": {
+                "type": "object",
+                "properties": {
+                    "id_institution": {
+                        "type": "string"
+                    },
+                    "email_donator": {
+                        "type": "number"
+                    },
+                    "id_meta": {
+                        "type": "string"
+                    },
+                    "id_product": {
+                        "type": "boolean"
+                    },
+                    "suspend": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            }
         }
     }
-    
 }

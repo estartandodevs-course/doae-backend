@@ -6,6 +6,7 @@ const databaseConfig = {
 	database: process.env.DB_DATABASE,
 	dialect: process.env.DB_TYPE,
 	host: process.env.DB_HOST,
+	port: process.env.DB_PORT,
 };
 
 export default databaseConfig;
