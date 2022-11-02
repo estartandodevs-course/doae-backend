@@ -20,8 +20,8 @@ import { Router } from "express";
 const routesInstitution = Router();
 
 routesInstitution.patch(
-	"/institution/logomarca",
-	upload.single("logomarca"),
+	"/institution/logo",
+	upload.single("logo"),
 	patchLogoInstitutionMidd,
 	updateLogoInstitution
 );
