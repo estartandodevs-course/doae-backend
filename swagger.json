@@ -732,7 +732,7 @@
                 }
             }
         },
-        "donation/:id": {
+        "/donation/:id": {
             "put": {
                 "sumary": "Atualização da doação",
                 "description": "Essa rota será responsável por atualizar as doações",
@@ -801,6 +801,199 @@
                                 "schema": {
                                     "type": "object",
                                     "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/publication": {
+            "post": {
+                "sumary": "Criação da publicação",
+                "description": "Essa rota será responsável por atualizar as publicações",
+                "tags": [
+                    "Publicação"
+                ],
+                "security": [{"bearerAuth": []}],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/publication"
+                            },
+                            "examples": {
+                                "donation": {
+                                    "value": {
+                                        "status": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/publication"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "sumary": "Listagem da publicação",
+                "description": "Essa rota será responsável por listagem as publicações",
+                "tags": [
+                    "Publicação"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/publication"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/publication/institution/:id": {
+            "get": {
+                "sumary": "Listagem da publicação",
+                "description": "Essa rota será responsável por listagem as publicações",
+                "tags": [
+                    "Publicação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id da instituicao a ser buscada.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/publication"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/publication/:id": {
+            "get": {
+                "sumary": "Listagem da publicação",
+                "description": "Essa rota será responsável por listagem as publicações",
+                "tags": [
+                    "Publicação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id da doação a ser buscada.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/publication"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "sumary": "Listagem da publicação",
+                "description": "Essa rota será responsável por listagem as publicações",
+                "tags": [
+                    "Publicação"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id da doação a ser buscada.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/publication"
+                            },
+                            "examples": {
+                                "publication": {
+                                    "value": {
+                                        "description": "Olá, olha o que fizemos essa semana!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/publication"
+                                }
+                            }
+                        }
+                    }
+                }
+            }, 
+            "delete": {
+                "sumary": "Remoção da publicação",
+                "description": "Essa rota será responsável por remover as publicações",
+                "tags": [
+                    "Publicação"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id da doação a ser removida.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/publication"
                                 }
                             }
                         }
@@ -945,6 +1138,32 @@
                         "type": "string"
                     },
                     "id_product": {
+                        "type": "boolean"
+                    },
+                    "suspend": {
+                        "type": "boolean"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "publication": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "midia": {
+                        "type": "number"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "id_institution": {
                         "type": "boolean"
                     },
                     "suspend": {

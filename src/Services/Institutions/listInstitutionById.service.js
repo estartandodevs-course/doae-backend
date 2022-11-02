@@ -1,5 +1,5 @@
-import { getInstitutionByIdExternal } from "../../Repositories/InstituticaoRepository.js";
-import { getenderecoByZipCode } from "../../Funcs/getenderecoByZipCode.js";
+import { getInstitutionByIdExternal } from "../../Repositories/InstitutionRepository.js";
+import { getAddressByZipCode } from "../../Funcs/getAddressByZipCode.js";
 
 export async function listInstitutionByIdService(id) {
 	try {
@@ -8,7 +8,7 @@ export async function listInstitutionByIdService(id) {
 			throw new Error('Instituição não foi encontrada.')
 		}
 		const json = institution.toJSON();
-		const endereco = await getenderecoByZipCode(json.cep);
+		const endereco = await getAddressByZipCode(json.cep);
 		return {
 			id: json.id_external,
 			verified: json.verified,

@@ -9,7 +9,7 @@ import {
 import { uploadFile } from "../Middlewares/multerMiddlewares.js";
 import {
 	postInstitutionMidd,
-	patchMidiaInstitutionMidd,
+	patchLogoInstitutionMidd,
 	idInstitutionMidd,
 } from "../Middlewares/institutionMiddlewares.js";
 
@@ -22,7 +22,7 @@ const routesInstitution = Router();
 routesInstitution.patch(
 	"/institution/logomarca",
 	upload.single("logomarca"),
-	patchMidiaInstitutionMidd,
+	patchLogoInstitutionMidd,
 	updateLogoInstitution
 );
 

@@ -1,22 +1,22 @@
-import ProdutoMetaModel from "../Models/ProdutoMetaModel.js";
+import ProductTargetModel from "../Models/ProductTargetModel.js";
 
 export async function createProductTarget(
 	id,
 	name,
 	value,
-	id_meta,
+	id_target,
 	id_institution
 ) {
 	try {
-		const newProdutoMeta = await ProdutoMetaModel.create({
+		const newProductTarget = await ProductTargetModel.create({
 			id,
 			name,
 			value,
-			id_meta,
+			id_target,
 			id_institution,
 			suspend: false,
 		});
-		return newProdutoMeta;
+		return newProductTarget;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -24,23 +24,23 @@ export async function createProductTarget(
 
 export async function getProductTargetById(id) {
 	try {
-		const produtoMeta = await ProdutoMetaModel.findOne({
+		const productTarget = await ProductTargetModel.findOne({
 			id: id,
 			suspend: false,
 		});
-		return produtoMeta;
+		return productTarget;
 	} catch (e) {
 		throw new Error(e.message);
 	}
 }
 
-export async function getProductTargetByIdMeta(idMeta) {
+export async function getProductTargetByIdMeta(idTarget) {
 	try {
-		const produtosMeta = await ProdutoMetaModel.find({
-			id_meta: idMeta,
+		const productTarget = await ProductTargetModel.find({
+			id_target: idTarget,
 			suspend: false,
 		});
-		return produtosMeta;
+		return productTarget;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -49,14 +49,14 @@ export async function getProductTargetByIdMeta(idMeta) {
 
 export async function updateProductTargetById(id, name, value) {
 	try {
-		const updateProdutoMeta = await ProdutoMetaModel.updateOne(
+		const updateProductTarget = await ProductTargetModel.updateOne(
 			{
 				id: id,
 				suspend: false,
 			},
 			{ name, value }
 		);
-		return updateProdutoMeta;
+		return updateProductTarget;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -64,11 +64,11 @@ export async function updateProductTargetById(id, name, value) {
 
 export async function deleteProductTargetById(id) {
 	try {
-		const deleteProdutoMeta = await ProdutoMetaModel.updateOne(
+		const deleteProductTarget = await ProductTargetModel.updateOne(
 			{ id: id, suspend: false },
 			{ suspend: true }
 		);
-		return deleteProdutoMeta;
+		return deleteProductTarget;
 	} catch (e) {
 		throw new Error(e.message);
 	}
