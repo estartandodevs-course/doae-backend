@@ -3,16 +3,16 @@ import databaseConfig from "../Configs/mysql_config.js";
 
 const sequelize = new Sequelize(databaseConfig);
 
-class InstituicaoModel extends Model {}
+class InstitutionModel extends Model {}
 
-InstituicaoModel.init(
+InstitutionModel.init(
 	{
         id: {
             type: Sequelize.UUID,
             allowNull: false,
             primaryKey: true,
         },
-        verificado: {
+        verified: {
             type: Sequelize.BOOLEAN,
             allowNull: false,
         },
@@ -28,19 +28,19 @@ InstituicaoModel.init(
             type: Sequelize.STRING,
             allowNull: true,
         },
-        agencia: {
+        agency: {
             type: Sequelize.INTEGER,
             allowNull: true,
         },
-        conta: {
+        count: {
             type: Sequelize.INTEGER,
             allowNull: true,
         },
-        nome: {
+        name: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        telefone: {
+        phone: {
             type: Sequelize.STRING,
             allowNull: false,
         },
@@ -48,15 +48,15 @@ InstituicaoModel.init(
             type: Sequelize.STRING,
             allowNull: false,
         },
-        identificador: {
+        ide_external: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        logomarca: {
+        logo: {
             type: Sequelize.STRING,
             allowNull: true,
         },
-        descricao: {
+        description: {
             type: Sequelize.STRING,
             allowNull: false,
         },
@@ -81,9 +81,9 @@ InstituicaoModel.init(
 	},
 	{
 		sequelize,
-		tableName: "instituicoes",
+		tableName: "institutions",
 		timestamps: true,
 	}
 );
 
-export default InstituicaoModel;
+export default InstitutionModel;
