@@ -13,6 +13,14 @@ module.exports = {
 				type: Sequelize.BOOLEAN,
 				allowNull: false,
 			},
+			email : {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
+			password : {
+				type: Sequelize.STRING,
+				allowNull: true
+			},
 			pix: {
 				type: Sequelize.STRING,
 				allowNull: true,
@@ -40,6 +48,7 @@ module.exports = {
 			identificador: {
 				type: Sequelize.STRING,
 				allowNull: false,
+				unique: true
 			},
 			logomarca: {
 				type: Sequelize.STRING,
