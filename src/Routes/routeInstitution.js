@@ -26,9 +26,9 @@ routesInstitution.patch(
 	updateLogoInstitution
 );
 
-routesInstitution.post("/institutions", postInstitutionMidd, postInstitution);
+routesInstitution.post("/institution", postInstitutionMidd, postInstitution);
 
-routesInstitution.get("/institutions", getInstitutions);
+routesInstitution.get("/institution", getInstitutions);
 
 routesInstitution.get(
 	"/institution/:id",

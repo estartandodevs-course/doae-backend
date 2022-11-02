@@ -19,22 +19,22 @@ import {
 
 const routesTarget = Router();
 
-routesTarget.post("/targets", postTargetMidd, postTarget);
+routesTarget.post("/target", postTargetMidd, postTarget);
 
-routesTarget.get("/targets/list", getTargetsMidd, getTargets);
+routesTarget.get("/target/list", getTargetsMidd, getTargets);
 
-routesTarget.get("/targets/:id", getIdTargetMidd, getTargetById);
+routesTarget.get("/target/:id", getIdTargetMidd, getTargetById);
 
 routesTarget.get(
-  "/targets/institution/:id_institution",
+  "/target/institution/:id_institution",
   getIdTargetInsMidd,
   getTargetByIdInstitution
 );
 
-routesTarget.put("/targets/:id", putTargetMidd, putTarget);
+routesTarget.put("/target/:id", putTargetMidd, putTarget);
 
-routesTarget.put("/targets/quantity/:id", putCurrentQuantMidd, putCurrentQuantity);
+routesTarget.put("/target/quantity/:id", putCurrentQuantMidd, putCurrentQuantity);
 
-routesTarget.delete("/targets/:id", getIdTargetMidd, deleteTarget);
+routesTarget.delete("/target/:id", getIdTargetMidd, deleteTarget);
 
 export default routesTarget;

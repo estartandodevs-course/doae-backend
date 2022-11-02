@@ -15,11 +15,11 @@ import {
 
 const routesProduct = Router();
 
-routesProduct.post("/products", postProductMidd, postProduct);
+routesProduct.post("/product", postProductMidd, postProduct);
 
-routesProduct.get("/products/:id", getIdProductsMidd, getProductById);
+routesProduct.get("/product/:id", getIdProductsMidd, getProductById);
 
-routesProduct.get("/products/meta/:id_meta", getProductIdTargetMidd, getProductsByIdTarget);
+routesProduct.get("/product/target/:id_target", getProductIdTargetMidd, getProductsByIdTarget);
 
 routesProduct.put("/products/:id", putProductMidd, putProducts);
 

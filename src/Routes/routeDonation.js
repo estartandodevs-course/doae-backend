@@ -21,18 +21,18 @@ import {
 
 const routesDonation = Router();
 
-routesDonation.post("/donations", postDonationMidd, postDonation);
+routesDonation.post("/donation", postDonationMidd, postDonation);
 
-routesDonation.get("/donations/list", getDonationsMidd, getDonations);
+routesDonation.get("/donation", getDonationsMidd, getDonations);
 
 routesDonation.get("/donation/:id", getIdDonationMidd, getDonationById);
 
-routesDonation.get("/donations/institution/:id_institution", getIdDonationsInsMidd, getDonationsByIdInstitution);
+routesDonation.get("/donation/institution/:id_institution", getIdDonationsInsMidd, getDonationsByIdInstitution);
 
-routesDonation.get("/donations/targets/:id_target", getIdDonationsTargetMidd, getDonationsByIdTarget);
+routesDonation.get("/donation/targets/:id_target", getIdDonationsTargetMidd, getDonationsByIdTarget);
 
 routesDonation.put("/donation/:id", putDonationMidd, putDonation);
 
-routesDonation.delete("/donations/:id", getIdDonationMidd, deleteDonation);
+routesDonation.delete("/donation/:id", getIdDonationMidd, deleteDonation);
 
 export default routesDonation;
