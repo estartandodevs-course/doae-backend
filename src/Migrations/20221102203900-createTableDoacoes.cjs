@@ -2,7 +2,7 @@
 
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-		queryInterface.createTable("doacoes", {
+		queryInterface.createTable("donations", {
 			id: {
 				type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -21,11 +21,11 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
-      email_doador: {
+      email_giver: {
         type: Sequelize.STRING,
         allowNull: false
       },
-			id_meta: {
+			id_target: {
 				type: Sequelize.STRING,
         allowNull: true,
 			},
@@ -47,6 +47,6 @@ module.exports = {
 	},
 
 	down: async (queryInterface, Sequelize) => {
-		queryInterface.dropTable("doacoes");
+		queryInterface.dropTable("donations");
 	},
 };

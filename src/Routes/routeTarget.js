@@ -21,7 +21,7 @@ const routesTarget = Router();
 
 routesTarget.post("/target", postTargetMidd, postTarget);
 
-routesTarget.get("/target/list", getTargetsMidd, getTargets);
+routesTarget.get("/target", getTargetsMidd, getTargets);
 
 routesTarget.get("/target/:id", getIdTargetMidd, getTargetById);
 
