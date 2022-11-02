@@ -2,6 +2,7 @@ import express from "express";
 import routes from "./Routes/index.js";
 import connectDatabase from "./Configs/mongodb.js";
 import initDatabase from "./Configs/mysql_init.js";
+import cors from "cors";
 class App {
 	server;
 
@@ -19,6 +20,12 @@ class App {
 
 	middleares() {
 		this.server.use(express.json());
+		this.server.use((req, res, next) => {
+			res.header("Access-Control-Allow-Origin", "*");
+			res.header("Access-Control-Allow-Methods", "*");
+			this.server.use(cors());
+			next();
+		});
 	}
 
 	routes() {
