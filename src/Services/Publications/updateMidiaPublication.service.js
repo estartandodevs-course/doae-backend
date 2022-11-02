@@ -1,13 +1,13 @@
-import { updateMidiaPostagem } from "../../Repositories/PostagemRepository.js";
+import { updateMidiaPublication } from "../../Repositories/PublicationRepository.js";
 import { uploadImage } from "../../Libs/uploadCloud.js";
 import fs from "fs";
 
-export async function updateMidiaPostagemService(id, midia) {
+export async function updateMidiaPublicationService(id, midia) {
 	try {
 		const logoImage = await uploadImage(midia);
 		const urlLogo = logoImage.url;
-		const postagem = await updateMidiaPostagem(id, urlLogo);
-		return postagem;
+		const publication = await updateMidiaPublication(id, urlLogo);
+		return publication;
 	} catch (e) {
 		console.log(e);
 		throw new Error(
