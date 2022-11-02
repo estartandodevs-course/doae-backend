@@ -3,9 +3,9 @@ import databaseConfig from "../Configs/mysql_config.js";
 
 const sequelize = new Sequelize(databaseConfig);
 
-class DoacaoModel extends Model {}
+class DonationModel extends Model {}
 
-DoacaoModel.init(
+DonationModel.init(
 	{
 		id: {
 			type: Sequelize.UUID,
@@ -25,11 +25,11 @@ DoacaoModel.init(
 			type: Sequelize.FLOAT,
 			allowNull: false,
 		},
-		email_doador: {
+		email_giver: {
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
-		id_meta: {
+		id_target: {
 			type: Sequelize.STRING,
 			allowNull: true,
 		},
@@ -44,9 +44,9 @@ DoacaoModel.init(
 	},
 	{
 		sequelize,
-		tableName: "doacoes",
+		tableName: "donations",
 		timestamps: true,
 	}
 );
 
-export default DoacaoModel;
+export default DonationModel;
