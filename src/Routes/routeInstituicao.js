@@ -28,7 +28,7 @@ routesInstituicao.patch(
 
 routesInstituicao.post("/instituicao", postInstituicaoMidd, postInstituicao);
 
-routesInstituicao.get("/instituicao", idInstituicaoMidd, getInstituicao);
+routesInstituicao.get("/instituicao", getInstituicao);
 
 routesInstituicao.get(
 	"/instituicao/:id",

@@ -24,7 +24,15 @@ export async function listInstituicaoService(page = 1) {
 		for (let i = 0; i < pagination.length; i++) {
 			const endereco = await getAddressByZipCode(pagination[i].cep);
             const newInst = {
-                ...pagination[i],
+                id: pagination[i].identificador,
+				nome: pagination[i].nome,
+				verificado: pagination[i].verificado,
+				pix: pagination[i].pix,
+				agencia: pagination[i].agencia,
+				conta: pagination[i].conta,
+				site: pagination[i].site,
+				descricao: pagination[i].descricao,
+				logomarca: pagination[i].logomarca,
                 rua: endereco.logradouro,
                 bairro: endereco.bairro,
                 cidade: endereco.localidade,
