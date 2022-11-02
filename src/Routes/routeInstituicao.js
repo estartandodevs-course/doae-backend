@@ -1,29 +1,47 @@
 import {
 	postInstituicao,
-    getInstituicao,
-    getInstituicaoById,
-    putInstituicao, 
-    deleteInstituicaoById,
-    updateFotoInstituicao
+	getInstituicao,
+	getInstituicaoById,
+	putInstituicao,
+	deleteInstituicaoById,
+	updateFotoInstituicao,
 } from "../Controllers/InstituicaoController.js";
 import { uploadFile } from "../Middlewares/multerMiddlewares.js";
+import {
+	postInstituicaoMidd,
+	patchMidiaInstituicaoMidd,
+	idInstituicaoMidd,
+} from "../Middlewares/instituicaoMiddlewares.js";
 
-const upload = uploadFile()
+const upload = uploadFile();
 
 import { Router } from "express";
 
 const routesInstituicao = Router();
 
-routesInstituicao.patch('/instituicao/logomarca', upload.single('logomarca'), updateFotoInstituicao);
+routesInstituicao.patch(
+	"/instituicao/logomarca",
+	upload.single("logomarca"),
+	patchMidiaInstituicaoMidd,
+	updateFotoInstituicao
+);
 
-routesInstituicao.post("/instituicao", postInstituicao);
+routesInstituicao.post("/instituicao", postInstituicaoMidd, postInstituicao);
 
-routesInstituicao.get("/instituicao", getInstituicao);
+routesInstituicao.get("/instituicao", idInstituicaoMidd, getInstituicao);
 
-routesInstituicao.get("/instituicao/:id", getInstituicaoById);
+routesInstituicao.get(
+	"/instituicao/:id",
+	idInstituicaoMidd,
+	getInstituicaoById
+);
 
-routesInstituicao.put("/instituicao/:id", putInstituicao);
+routesInstituicao.put("/instituicao/:id", idInstituicaoMidd, putInstituicao);
 
-routesInstituicao.delete("/instituicao/:id", deleteInstituicaoById);
+routesInstituicao.delete(
+	"/instituicao/:id",
+	idInstituicaoMidd,
+	deleteInstituicaoById
+);
 
 export default routesInstituicao;
