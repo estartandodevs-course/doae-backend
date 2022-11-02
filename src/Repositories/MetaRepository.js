@@ -13,7 +13,7 @@ export async function createMeta(
 		const newMeta = await MetaModel.create({
 			id,
 			name,
-			value,
+			target_value: value,
 			current_quantity,
 			id_institution,
 			description,
