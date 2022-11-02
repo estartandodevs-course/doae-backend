@@ -16,7 +16,7 @@ export async function createMeta(
 			target_value: value,
 			current_quantity,
 			id_institution,
-			descricao: description,
+			description,
 			day_limit,
 			suspend: false,
 		});

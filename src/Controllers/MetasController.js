@@ -5,14 +5,12 @@ import { listMetasByIdInstituicao } from "../Services/Metas/listMetaByIdInstitut
 import { updateMetaService } from "../Services/Metas/updateMeta.service.js";
 import { updateByIdCurrentQuantityService } from "../Services/Metas/updateCurrentQuantity.service.js";
 import { deleteMetaService } from "../Services/Metas/deleteMeta.service.js";
-import { listSuspendMetas } from "../Services/Metas/listMetaSuspend.service.js";
-import { recoverMetaService } from "../Services/Metas/recoverMeta.service.js";
 import { listAllWithFilters } from "../Services/Metas/listMetaWithFilter.service.js";
 
 export async function postMeta(request, response) {
-	const { name, value, id_institution, descricao, dia_limite } = request.body;
+	const { name, value, id_institution, description, day_limit } = request.body;
 	try {
-		const meta = await createMetaService(name, value, id_institution, descricao, dia_limite);
+		const meta = await createMetaService(name, value, id_institution, description, day_limit);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -29,16 +27,6 @@ export async function getMetas(request, response) {
 			const meta = await listAll(page);
 			response.status(200).json(meta);
 		}
-	} catch (e) {
-		response.status(400).json(e.message);
-	}
-}
-
-export async function getSuspendMetas(request, response) {
-	const { page } = request.query;
-	try {
-		const meta = await listSuspendMetas(page);
-		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
 	}
@@ -92,16 +80,6 @@ export async function deleteMeta(request, response) {
 	const { id } = request.params;
 	try {
 		const meta = await deleteMetaService(id);
-		response.status(200).json(meta);
-	} catch (e) {
-		response.status(400).json(e.message);
-	}
-}
-
-export async function recoverMeta(request, response) {
-	const { id } = request.params;
-	try {
-		const meta = await recoverMetaService(id);
 		response.status(200).json(meta);
 	} catch (e) {
 		response.status(400).json(e.message);
