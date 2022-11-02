@@ -1,9 +1,9 @@
 import { getProductTargetById } from "../../Repositories/ProductTargetRepository.js";
 
-export async function listProdutoByIdService(id) {
+export async function listProductByIdService(id) {
 	try {
-		const produto = await getProductTargetById(id);
-		return produto;
+		const product = await getProductTargetById(id);
+		return product;
 	} catch (e) {
 		console.log(e);
 		throw new Error(e.message);

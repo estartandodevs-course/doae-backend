@@ -1,12 +1,12 @@
 import * as yup from "yup";
 
-export async function postProdutoMidd(req, res, next)
+export async function postProductMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({
 		name: yup.string("Nome deve ser uma string.").required("Nome é obrigatório."),
 		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
-		id_meta: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
+		id_target: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
 	});
 
 	await schemaPost.validate(req.body).catch(err => {
@@ -22,7 +22,7 @@ export async function postProdutoMidd(req, res, next)
 	}
 }
 
-export async function getProdutoIdMetaMidd(req, res, next)
+export async function getProductIdTargetMidd(req, res, next)
 {
 	let response = true;
 	const schemaGet = yup.object().shape({
@@ -30,7 +30,7 @@ export async function getProdutoIdMetaMidd(req, res, next)
 	});
 
 	const schemaGet2 = yup.object().shape({
-		id_meta: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
+		id_target: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
 	});
 
 	await schemaGet.validate(req.query).catch(err => {
@@ -56,7 +56,7 @@ export async function getProdutoIdMetaMidd(req, res, next)
 
 //Essa função servirá tanto para getProductById como para deleteProduct
 
-export async function getIdProdutosMidd(req, res, next)
+export async function getIdProductsMidd(req, res, next)
 {
 	let response = true;
 	const schemaId = yup.object().shape({
@@ -77,7 +77,7 @@ export async function getIdProdutosMidd(req, res, next)
 
 }
 
-export async function putProdutoMidd(req, res, next)
+export async function putProductMidd(req, res, next)
 {
 	let response = true;
 	const schemaPut = yup.object().shape({

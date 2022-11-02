@@ -2,17 +2,17 @@ import { createProductTarget } from "../../Repositories/ProductTargetRepository.
 import { getTargetById } from "../../Repositories/TargetRepository.js"; 
 import { v4 as uuid } from "uuid";
 
-export async function createProdutoMetaService(
+export async function createProductTargetService(
 	name,
 	value,
-	id_meta
+	id_target
 ) {
 	const id = uuid();
-	const meta = await getTargetById(id_meta);
-	const id_institution = meta.id_institution;
+	const target = await getTargetById(id_target);
+	const id_institution = target.id_institution;
 	try {
-		const produto = await createProductTarget(id, name, value, id_meta, id_institution);
-		return produto;
+		const product = await createProductTarget(id, name, value, id_target, id_institution);
+		return product;
 	} catch (e) {
 		console.log(e);
 		throw new Error(e.message);

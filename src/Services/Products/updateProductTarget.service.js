@@ -1,9 +1,9 @@
 import { updateProductTargetById } from "../../Repositories/ProductTargetRepository.js";
 
-export async function updateProdutoMetaByIdService(id, name, value){
+export async function updateProductTargetByIdService(id, name, value){
     try {
-        const updateMeta = await updateProductTargetById(id, name, value);
-        return updateMeta;
+        const updateTarget = await updateProductTargetById(id, name, value);
+        return updateTarget;
     } catch(e){
         console.log(e);
         throw new Error(e.message);
