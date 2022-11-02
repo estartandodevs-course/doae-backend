@@ -20,26 +20,26 @@ import { Router } from "express";
 const routesInstituicao = Router();
 
 routesInstituicao.patch(
-	"/instituicao/logomarca",
+	"/institution/logomarca",
 	upload.single("logomarca"),
 	patchMidiaInstituicaoMidd,
 	updateFotoInstituicao
 );
 
-routesInstituicao.post("/instituicao", postInstituicaoMidd, postInstituicao);
+routesInstituicao.post("/institution", postInstituicaoMidd, postInstituicao);
 
-routesInstituicao.get("/instituicao", getInstituicao);
+routesInstituicao.get("/institution", getInstituicao);
 
 routesInstituicao.get(
-	"/instituicao/:id",
+	"/institution/:id",
 	idInstituicaoMidd,
 	getInstituicaoById
 );
 
-routesInstituicao.put("/instituicao/:id", idInstituicaoMidd, putInstituicao);
+routesInstituicao.put("/institution/:id", idInstituicaoMidd, putInstituicao);
 
 routesInstituicao.delete(
-	"/instituicao/:id",
+	"/institution/:id",
 	idInstituicaoMidd,
 	deleteInstituicaoById
 );

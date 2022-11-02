@@ -1,4 +1,4 @@
-import { getAllMetas } from "../../Repositories/MetaRepository.js";
+import { getAllTarget } from "../../Repositories/TargetRepository.js";
 import { listInstituicaoByIdService } from "../Instituicoes/listInstituicaoById.service.js";
 import { filterMetasByNameOfInstitution } from "../../Funcs/filterMetasByName.js";
 
@@ -8,7 +8,7 @@ export async function listAllWithFilters(page = 1, query) {
 	let initPage = page * perPage - perPage;
 
 	try {
-        const metas = await getAllMetas();
+        const metas = await getAllTarget();
 
         const newMetas = [];
 

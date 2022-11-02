@@ -1,8 +1,8 @@
-import { deleteProdutoMetaById } from "../../Repositories/ProdutoMetaRepository.js";
+import { deleteProductTargetById } from "../../Repositories/ProductTargetRepository.js";
 
 export async function deleteProdutoMetaByIdService(id){
     try {
-        const deleteMeta = await deleteProdutoMetaById(id);
+        const deleteMeta = await deleteProductTargetById(id);
         return deleteMeta;
     } catch(e){
         console.log(e);

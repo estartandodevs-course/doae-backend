@@ -6,7 +6,7 @@ import {
 	getDonationsByIdTarget,
 	putDonation,
 	deleteDonation,
-} from "../Controllers/DonationsController.js";
+} from "../Controllers/DonationController.js";
 
 import { Router } from "express";
 

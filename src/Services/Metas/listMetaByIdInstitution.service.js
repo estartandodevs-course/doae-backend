@@ -1,11 +1,11 @@
-import { getMetasByIdInstituicao } from "../../Repositories/MetaRepository.js";
+import { getTargetByIdInstitution } from "../../Repositories/TargetRepository.js";
 import { getInstituicaoByIdExternal } from "../../Repositories/InstituticaoRepository.js";
 
 export async function listMetasByIdInstituicao(id_institution, page = 1) {
   const perPage = 10;
   let initPage = page * perPage - perPage;
   try {
-    const metas = await getMetasByIdInstituicao(id_institution);
+    const metas = await getTargetByIdInstitution(id_institution);
     const newPagination = [];
 
 		let response = metas.slice(initPage, initPage + perPage);

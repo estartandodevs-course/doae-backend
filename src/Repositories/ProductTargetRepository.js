@@ -1,6 +1,6 @@
 import ProdutoMetaModel from "../Models/ProdutoMetaModel.js";
 
-export async function createProdutoMeta(
+export async function createProductTarget(
 	id,
 	name,
 	value,
@@ -22,7 +22,7 @@ export async function createProdutoMeta(
 	}
 }
 
-export async function getProdutoMetaById(id) {
+export async function getProductTargetById(id) {
 	try {
 		const produtoMeta = await ProdutoMetaModel.findOne({
 			id: id,
@@ -34,7 +34,7 @@ export async function getProdutoMetaById(id) {
 	}
 }
 
-export async function getProdutoMetasByIdMeta(idMeta) {
+export async function getProductTargetByIdMeta(idMeta) {
 	try {
 		const produtosMeta = await ProdutoMetaModel.find({
 			id_meta: idMeta,
@@ -47,7 +47,7 @@ export async function getProdutoMetasByIdMeta(idMeta) {
 }
 
 
-export async function updateProdutoMetaById(id, name, value) {
+export async function updateProductTargetById(id, name, value) {
 	try {
 		const updateProdutoMeta = await ProdutoMetaModel.updateOne(
 			{
@@ -62,7 +62,7 @@ export async function updateProdutoMetaById(id, name, value) {
 	}
 }
 
-export async function deleteProdutoMetaById(id) {
+export async function deleteProductTargetById(id) {
 	try {
 		const deleteProdutoMeta = await ProdutoMetaModel.updateOne(
 			{ id: id, suspend: false },

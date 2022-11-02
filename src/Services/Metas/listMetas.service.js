@@ -1,4 +1,4 @@
-import { getAllMetas } from "../../Repositories/MetaRepository.js";
+import { getAllTarget } from "../../Repositories/TargetRepository.js";
 import { getInstituicaoByIdExternal } from "../../Repositories/InstituticaoRepository.js";
 
 export async function listAll(page = 1, query = "") {
@@ -7,7 +7,7 @@ export async function listAll(page = 1, query = "") {
 	let initPage = page * perPage - perPage;
 
 	try {
-		const metas = await getAllMetas();
+		const metas = await getAllTarget();
 		const newPagination = [];
 
 		let response = metas.slice(initPage, initPage + perPage);
