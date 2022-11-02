@@ -1,9 +1,9 @@
 import { deleteProductTargetById } from "../../Repositories/ProductTargetRepository.js";
 
-export async function deleteProdutoMetaByIdService(id){
+export async function deleteProductTargetByIdService(id){
     try {
-        const deleteMeta = await deleteProductTargetById(id);
-        return deleteMeta;
+        const deleteTarget = await deleteProductTargetById(id);
+        return deleteTarget;
     } catch(e){
         console.log(e);
         throw new Error(e.message);
