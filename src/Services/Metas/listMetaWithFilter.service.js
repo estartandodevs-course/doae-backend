@@ -13,7 +13,7 @@ export async function listAllWithFilters(page = 1, query) {
         const newMetas = [];
 
         for (let i = 0; i < metas.length; i++) {
-            const arr_bool = filterMetasByNameOfInstituicao(query, metas.name);
+            const arr_bool = filterMetasByNameOfInstitution(query, metas.name);
             const words = query.length;
             let trues;
             arr_bool.map((item)=>{

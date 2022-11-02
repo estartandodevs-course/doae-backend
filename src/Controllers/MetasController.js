@@ -45,7 +45,17 @@ export async function getMetaById(request, response) {
 export async function getMetaByIdInstituicao(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
-	console.log(id_institution);
+	try {
+		const meta = await listMetasByIdInstituicao(id_institution, page);
+		response.status(200).json(meta);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
+
+export async function getMetaFilters(request, response) {
+	const { page } = request.query;
+	const { id_institution } = request.params;
 	try {
 		const meta = await listMetasByIdInstituicao(id_institution, page);
 		response.status(200).json(meta);

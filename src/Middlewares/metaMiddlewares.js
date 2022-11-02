@@ -6,7 +6,9 @@ export async function postMetaMidd(req, res, next)
 	const schemaPost = yup.object().shape({
 		name: yup.string("Nome deve ser uma string.").required("Nome é obrigatório."),
 		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
-		id_institution: yup.string("Id da instituição deve ser uma string.").required("Id da instituição é obrigatório.")
+		id_institution: yup.string("Id da instituição deve ser uma string.").required("Id da instituição é obrigatório."),
+		description: yup.string("Descrição da instituição deve ser uma string."),
+		day_limit: yup.date("Dia limite da instituição deve ser uma data.").required('Dia limite da instituição é obrigatório.'),
 	});
 
 	await schemaPost.validate(req.body).catch(err => {
