@@ -37,6 +37,17 @@ export async function updateMidiaPublication(
 	}
 }
 
+export async function getPublications() {
+	try {
+		const publications = await PublicationModel.findAll({
+			suspend: false
+		})
+		return publications;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
 export async function getPublicationById(id) {
 	try {
 		const publications = await PublicationModel.findOne({
@@ -60,7 +71,6 @@ export async function getPublicationsByIdInstitution(idInstitution) {
 		throw new Error(e.message);
 	}
 }
-
 
 export async function updatePublicationById(id, description) {
 	try {

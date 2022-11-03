@@ -8,7 +8,7 @@ export async function sessionService(email){
         }
         return {
             email: institution.email,
-            id: institution.identificador
+            id: institution.id_external
         };
     } catch (e) {
         console.log(e);

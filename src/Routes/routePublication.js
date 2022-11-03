@@ -2,6 +2,7 @@ import {
     postPublication,
     getPublicationById,
     getPublicationsByIdInstitution,
+    getPublications,
     putPublication,
     putMidiaPublication,
     deletePublication
@@ -24,6 +25,8 @@ import {
 const routesPublication = Router();
 
 routesPublication.post("/publication", postPublicationMidd, postPublication);
+
+routesPublication.get("/publication", getPublications);
 
 routesPublication.get("/publication/:id", getIdPublicationMidd, getPublicationById);
 
