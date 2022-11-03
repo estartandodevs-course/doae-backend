@@ -48,7 +48,7 @@ InstitutionModel.init(
             type: Sequelize.STRING,
             allowNull: false,
         },
-        ide_external: {
+        id_external: {
             type: Sequelize.STRING,
             allowNull: false,
         },
