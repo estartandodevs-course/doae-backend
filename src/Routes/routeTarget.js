@@ -15,7 +15,7 @@ import {
   getIdTargetInsMidd,
   putTargetMidd,
   putCurrentQuantMidd,
-} from "../Middlewares/TargetMiddlewares.js";
+} from "../Middlewares/targetMiddlewares.js";
 
 const routesTarget = Router();
 
