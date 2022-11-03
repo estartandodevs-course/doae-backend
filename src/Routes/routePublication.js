@@ -26,7 +26,7 @@ const routesPublication = Router();
 
 routesPublication.post("/publication", postPublicationMidd, postPublication);
 
-routesPublication.get("/publication/:id", getPublications);
+routesPublication.get("/publication", getPublications);
 
 routesPublication.get("/publication/:id", getIdPublicationMidd, getPublicationById);
 
