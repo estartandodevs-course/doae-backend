@@ -4,7 +4,6 @@ export async function postPublicationMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({
-		midia: yup.string("Midia deve ser uma string.").required("Midia é obrigatório."),
 		description: yup.string("Descricão deve ser uma string.").required("Descricão é obrigatório."),
 		id_institution: yup.string("Id da instituição deve ser uma string.").required("Id da instituição é obrigatório.")
 	});
@@ -21,8 +20,6 @@ export async function postPublicationMidd(req, res, next)
 		return;
 	}
 }
-
-//Essa função servirá tanto para getPublicationById como para deletePublication
 
 export async function getIdPublicationMidd(req, res, next)
 {
@@ -45,7 +42,7 @@ export async function getIdPublicationMidd(req, res, next)
 
 }
 
-export async function getPublicationByIdInstituicaoMidd(req, res, next)
+export async function getPublicationByIdInstitutionMidd(req, res, next)
 {
 	let response = true;
 	const schemaGet = yup.object().shape({
@@ -81,7 +78,6 @@ export async function putPublicationMidd(req, res, next)
 {
 	let response = true;
 	const schemaPut = yup.object().shape({
-		midia: yup.string("Midia deve ser uma string.").required("Midia é obrigatório."),
 		description: yup.string("Descrição deve ser uma string.").required("Descrição é obrigatório."),
 	});
 
@@ -112,15 +108,12 @@ export async function putPublicationMidd(req, res, next)
 export async function putMidiaPublicationMidd(req, res, next)
 {
 	let response = true;
+	
 	const schemaPutMidia = yup.object().shape({
-		midia: yup.string("Midia deve ser uma string.").required("Midia é obrigatório.")
+		midia: yup.required("Midia é obrigatório.")
 	});
 
 	const schemaPutMidia2 = yup.object().shape({
-		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
-	});
-
-  const schemaPath = yup.object().shape({
 		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
 	});
 
@@ -132,13 +125,6 @@ export async function putMidiaPublicationMidd(req, res, next)
 	});
 
 	await schemaPutMidia2.validate(req.query).catch(err => {
-		response = false;
-		return res.status(400).json({
-			error: err.errors
-		});
-	});
-
-  await schemaPath.validate(midia.path).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors

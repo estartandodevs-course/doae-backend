@@ -15,7 +15,7 @@ export async function createDonationService(
 	const status = undefined;
 	const suspend = false;
 	if(id_target){
-		const target = await getTargetById(id_meta);
+		const target = await getTargetById(id_target);
 		if(!target){
 			throw new Error('Não foi possível encontrar essa meta associada.')
 		}

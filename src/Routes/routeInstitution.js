@@ -20,15 +20,15 @@ import { Router } from "express";
 const routesInstitution = Router();
 
 routesInstitution.patch(
-	"/institution/logomarca",
-	upload.single("logomarca"),
+	"/institution/logo",
+	upload.single("logo"),
 	patchLogoInstitutionMidd,
 	updateLogoInstitution
 );
 
-routesInstitution.post("/institutions", postInstitutionMidd, postInstitution);
+routesInstitution.post("/institution", postInstitutionMidd, postInstitution);
 
-routesInstitution.get("/institutions", getInstitutions);
+routesInstitution.get("/institution", getInstitutions);
 
 routesInstitution.get(
 	"/institution/:id",

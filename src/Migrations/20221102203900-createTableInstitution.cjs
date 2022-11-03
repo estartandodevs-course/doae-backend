@@ -2,14 +2,14 @@
 
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-		queryInterface.createTable("instituicoes", {
+		queryInterface.createTable("institutions", {
 			id: {
 				type: Sequelize.UUID,
 				defaultValue: Sequelize.UUIDV4,
 				allowNull: false,
 				primaryKey: true,
 			},
-			verificado: {
+			verified: {
 				type: Sequelize.BOOLEAN,
 				allowNull: false,
 			},
@@ -25,19 +25,19 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: true,
 			},
-			agencia: {
+			agency: {
 				type: Sequelize.INTEGER,
 				allowNull: true,
 			},
-			conta: {
+			count: {
 				type: Sequelize.INTEGER,
 				allowNull: true,
 			},
-			nome: {
+			name: {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
-			telefone: {
+			phone: {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
@@ -45,16 +45,16 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
-			identificador: {
+			id_external: {
 				type: Sequelize.STRING,
 				allowNull: false,
 				unique: true
 			},
-			logomarca: {
+			logo: {
 				type: Sequelize.STRING,
 				allowNull: true,
 			},
-			descricao: {
+			description: {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
@@ -80,6 +80,6 @@ module.exports = {
 	},
 
 	down: async (queryInterface, Sequelize) => {
-		queryInterface.dropTable("instituicoes");
+		queryInterface.dropTable("institutions");
 	},
 };

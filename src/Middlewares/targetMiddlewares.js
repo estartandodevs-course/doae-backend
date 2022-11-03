@@ -24,8 +24,6 @@ export async function postTargetMidd(req, res, next)
 	}
 }
 
-//Essa função servirá tanto para getMetas como para getSuspendMetas
-
 export async function getTargetsMidd(req, res, next)
 {
 	let response = true;
@@ -45,8 +43,6 @@ export async function getTargetsMidd(req, res, next)
 		return;
 	}
 }
-
-//Essa função servirá tanto para getMetaById, recoverMetaa e deleteMeta
 
 export async function getIdTargetMidd(req, res, next)
 {

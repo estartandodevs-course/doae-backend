@@ -54,8 +54,6 @@ export async function getProductIdTargetMidd(req, res, next)
 	}
 }
 
-//Essa função servirá tanto para getProductById como para deleteProduct
-
 export async function getIdProductsMidd(req, res, next)
 {
 	let response = true;

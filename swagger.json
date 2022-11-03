@@ -475,7 +475,7 @@
                                     "value": {
                                         "name":  "Feijão",
                                         "value": 2,
-                                        "id_meta": "d7ac241a-1ec8-4fdc-9c0c-c74a62793759"
+                                        "id_target": "d7ac241a-1ec8-4fdc-9c0c-c74a62793759"
                                     }
                                 }
                             }
@@ -497,7 +497,7 @@
                 }
             }
         },
-        "/product/meta/:id_meta": {
+        "/product/meta/:id_target": {
             "get": {
                 "sumary": "Lista o produto pelo id da meta",
                 "description": "Essa rota será responsável por listar produtos pelo id da meta passada.",
@@ -506,7 +506,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "id_meta",
+                        "name": "id_target",
                         "in": "params",
                         "description": "Parametro que define a meta que você deseja buscar",
                         "required": true
@@ -649,7 +649,7 @@
                                     "value": {
                                         "id_institution": "KwCsnoKS0",
                                         "email_donator": "nataliasilva.bezerra18@gmail.com",
-                                        "id_meta": "d7ac241a-1ec8-4fdc-9c0c-c74a62793759",
+                                        "id_target": "d7ac241a-1ec8-4fdc-9c0c-c74a62793759",
                                         "id_product": "14065727-627f-4af9-bb1b-10c657447804"
                                     }
                                 }
@@ -672,7 +672,7 @@
                 }
             }
         },
-        "/donation/meta/:id_meta": {
+        "/donation/meta/:id_target": {
             "get": {
                 "sumary": "Lista a doação pelo id da meta",
                 "description": "Essa rota será responsável por listar doações pelo id da meta passada.",
@@ -681,7 +681,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "id_meta",
+                        "name": "id_target",
                         "in": "params",
                         "description": "Parametro que define a meta que você deseja buscar",
                         "required": true
@@ -1108,7 +1108,7 @@
                     "value": {
                         "type": "number"
                     },
-                    "id_meta": {
+                    "id_target": {
                         "type": "string"
                     },
                     "status": {
@@ -1134,7 +1134,7 @@
                     "email_donator": {
                         "type": "number"
                     },
-                    "id_meta": {
+                    "id_target": {
                         "type": "string"
                     },
                     "id_product": {

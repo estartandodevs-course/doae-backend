@@ -34,7 +34,7 @@ export async function getProductTargetById(id) {
 	}
 }
 
-export async function getProductTargetByIdMeta(idTarget) {
+export async function getProductTargetByIdTarget(idTarget) {
 	try {
 		const productTarget = await ProductTargetModel.find({
 			id_target: idTarget,

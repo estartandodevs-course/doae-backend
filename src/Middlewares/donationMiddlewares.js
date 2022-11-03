@@ -44,8 +44,6 @@ export async function getDonationsMidd(req, res, next)
 	}
 }
 
-//Essa função servirá tanto para getDoacaoById como para deleteDoacao
-
 export async function getIdDonationMidd(req, res, next)
 {
 	let response = true;
@@ -92,7 +90,7 @@ export async function getIdDonationsTargetMidd(req, res, next)
 {
 	let response = true;
 	const schemaIdTarget = yup.object().shape({
-		id_meta: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
+		id_target: yup.string("Id da meta deve ser uma string.").required("Id da meta é obrigatório.")
 	});
 
 	await schemaIdTarget.validate(req.params).catch(err => {

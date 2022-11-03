@@ -16,7 +16,7 @@ import { Router } from 'express';
 import {
   postPublicationMidd,
   getIdPublicationMidd,
-  getPublicationByIdInstituicaoMidd,
+  getPublicationByIdInstitutionMidd,
   putPublicationMidd,
   putMidiaPublicationMidd
 } from "../Middlewares/publicationMiddlewares.js";
@@ -27,7 +27,7 @@ routesPublication.post("/publication", postPublicationMidd, postPublication);
 
 routesPublication.get("/publication/:id", getIdPublicationMidd, getPublicationById);
 
-routesPublication.get("/publication/:id_institution", getPublicationByIdInstituicaoMidd, getPublicationsByIdInstitution);
+routesPublication.get("/publication/:id_institution", getPublicationByIdInstitutionMidd, getPublicationsByIdInstitution);
 
 routesPublication.put("publication/:id", putPublicationMidd, putPublication);
 
