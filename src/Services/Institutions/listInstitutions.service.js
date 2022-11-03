@@ -16,7 +16,7 @@ export async function listInstitutionsService(page = 1) {
 		if (response.length > 0) {
 			pagination = response;
 		} else {
-			pagination = doacoes.slice(0, 10);
+			pagination = response.slice(0, 10);
 		}
 
         const newPagination = [];
