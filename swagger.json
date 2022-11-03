@@ -7,7 +7,7 @@
     },
     "server": [
         {
-            "url": "hhttps://doae-api.onrender.com"
+            "url": "https://doae-api.onrender.com"
         }
     ],
     "basePath": "/",
