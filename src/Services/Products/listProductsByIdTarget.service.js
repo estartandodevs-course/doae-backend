@@ -1,4 +1,4 @@
-import { getProductTargetByIdMeta } from "../../Repositories/ProductTargetRepository.js";
+import { getProductTargetByIdTarget } from "../../Repositories/ProductTargetRepository.js";
 
 export async function listProductsByIdTargetService(id_target, page = 1) {
 	const perPage = 10;

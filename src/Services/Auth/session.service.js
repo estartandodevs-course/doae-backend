@@ -1,14 +1,14 @@
-import { getInstituicaoByEmail } from "../../Repositories/InstituticaoRepository.js";
+import { getInstitutionByEmail } from "../../Repositories/InstituticaoRepository.js";
 
 export async function sessionService(email){
     try {
-        const instituicao = await getInstituicaoByEmail(email);
-        if (!instituicao) {
+        const institution = await getInstitutionByEmail(email);
+        if (!institution) {
             throw new Error('Instuição não encontrada!');
         }
         return {
-            email: instituicao.email,
-            id: instituicao.identificador
+            email: institution.email,
+            id: institution.identificador
         };
     } catch (e) {
         console.log(e);

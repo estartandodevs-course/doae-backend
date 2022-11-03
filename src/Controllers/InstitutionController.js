@@ -53,7 +53,6 @@ export async function updateLogoInstitution(request, response) {
   }
 }
 
-//lista todas
 export async function getInstitutions(request, response) {
   const { page } = request.query;
   try {
@@ -64,7 +63,6 @@ export async function getInstitutions(request, response) {
   }
 }
 
-//lista por id
 export async function getInstitutionById(request, response) {
   const { id } = request.params;
   try {
@@ -75,7 +73,6 @@ export async function getInstitutionById(request, response) {
   }
 }
 
-//atualiza a instituicao
 export async function putInstitution(request, response) {
   const { id } = request.params;
   const {
@@ -105,7 +102,6 @@ export async function putInstitution(request, response) {
   }
 }
 
-//deleta instituicao
 export async function deleteInstitutionById(request, response) {
 	const { id } = request.params;
 	try {

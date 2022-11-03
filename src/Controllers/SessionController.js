@@ -8,8 +8,8 @@ export async function sessionControllerGoogle(req, res){
         return;
 	}
     try {
-        const instituicao = sessionService(user.email);
-        res.send(instituicao);
+        const institution = sessionService(user.email);
+        res.send(institution);
     } catch (e) {
         res.send(e);
     }
@@ -17,8 +17,8 @@ export async function sessionControllerGoogle(req, res){
 
 export async function sessionControllerAuth(req, res){
     try {
-        const instituicao = sessionService(user.email);
-        const token = jwt.sign(instituicao);
+        const institution = sessionService(user.email);
+        const token = jwt.sign(institution);
         res.send(token);
     } catch (e) {
         res.send('Não foi possível fazer o login da instituição, pois ela não está devidamente cadastrada!');

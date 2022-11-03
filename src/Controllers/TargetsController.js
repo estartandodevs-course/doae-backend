@@ -35,7 +35,7 @@ export async function getTargets(request, response) {
 export async function getTargetById(request, response) {
 	const { id } = request.params;
 	try {
-		const meta = await listTargetById(id);
+		const target = await listTargetById(id);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -57,7 +57,7 @@ export async function getTargetFilters(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	try {
-		const meta = await listTargetByIdInstitution(id_institution, page);
+		const target = await listTargetByIdInstitution(id_institution, page);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);
