@@ -4,108 +4,109 @@ import { listInstitutionsService } from "../Services/Institutions/listInstitutio
 import { listInstitutionByIdService } from "../Services/Institutions/listInstitutionById.service.js";
 import { updateInstitutionByIdService } from "../Services/Institutions/updateInstitution.service.js";
 import { updateLogoInstitutionService } from "../Services/Institutions/updateLogo.service.js";
+import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
 
 export async function postInstitution(request, response) {
-  const {
-    name,
-    cnpj,
-    email,
-    password,
-    description,
-    agency,
-    count,
-    pix,
-    phone,
-    cep,
-    site,
-    verified
-  } = request.body;
-  try {
-    const institution = await createInstitutionService(
-      name,
-    cnpj,
-    email,
-    password,
-    description,
-    agency,
-    count,
-    pix,
-    phone,
-    cep,
-    site,
-    verified
-    );
-    response.status(200).json(institution);
-  } catch (e) {
-    response.status(400).json(e.message);
-  }
+	const {
+		name,
+		cnpj,
+		email,
+		password,
+		description,
+		agency,
+		count,
+		pix,
+		phone,
+		cep,
+		site,
+		verified,
+	} = request.body;
+	try {
+		const institution = await createInstitutionService(
+			name,
+			cnpj,
+			email,
+			password,
+			description,
+			agency,
+			count,
+			pix,
+			phone,
+			cep,
+			site,
+			verified
+		);
+		response.status(200).json(institution);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
 }
 
 export async function updateLogoInstitution(request, response) {
-  const { id } = request.query;
-  const logo = request.file;
-  const path = logo.path;
-  try {
-    const institution = await updateLogoInstitutionService(id, path);
-    response.status(200).json(institution);
-  } catch (e) {
-    response.status(400).json(e.message);
-  }
+	const { id } = request.query;
+	const logo = request.file;
+	const path = logo.path;
+	try {
+		const id_institution = await getIdByIdExternal(id);
+		const institution = await updateLogoInstitutionService(
+			id_institution,
+			path
+		);
+		response.status(200).json(institution);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
 }
 
 export async function getInstitutions(request, response) {
-  const { page } = request.query;
-  try {
-    const institutions = await listInstitutionsService(page);
-    response.status(200).json(institutions);
-  } catch (e) {
-    response.status(400).json(e.message);
-  }
+	const { page } = request.query;
+	try {
+		const institutions = await listInstitutionsService(page);
+		response.status(200).json(institutions);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
 }
 
 export async function getInstitutionById(request, response) {
-  const { id } = request.params;
-  try {
-    const institution = await listInstitutionByIdService(id);
-    response.status(200).json(institution);
-  } catch (e) {
-    response.status(400).json(e.message);
-  }
+	const { id } = request.params;
+	try {
+		const id_institution = await getIdByIdExternal(id);
+		const institution = await listInstitutionByIdService(id_institution);
+		response.status(200).json(institution);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
 }
 
 export async function putInstitution(request, response) {
-  const { id } = request.params;
-  const {
-    name,
-    description,
-    phone,
-    cep,
-    site,
-    pix,
-    agency,
-    count,
-  } = request.body;
-  try {
-    const institution = await updateInstitutionByIdService(
-      name,
-    description,
-    phone,
-    cep,
-    site,
-    pix,
-    agency,
-    count,
-    );
-    response.status(200).json(institution);
-  } catch (e) {
-    response.status(400).json(e.message);
-  }
+	const { id } = request.params;
+	const { name, description, phone, cep, site, pix, agency, count } =
+		request.body;
+	try {
+		const id_institution = await getIdByIdExternal(id);
+		const institution = await updateInstitutionByIdService(
+			id_institution,
+			name,
+			description,
+			phone,
+			cep,
+			site,
+			pix,
+			agency,
+			count
+		);
+		response.status(200).json(institution);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
 }
 
 export async function deleteInstitutionById(request, response) {
 	const { id } = request.params;
 	try {
-		const institution = await deleteInstitutionByIdService(id);
+		const id_institution = await getIdByIdExternal(id);
+		const institution = await deleteInstitutionByIdService(id_institution);
 		response.status(200).json(institution);
 	} catch (e) {
 		response.status(400).json(e.message);

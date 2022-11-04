@@ -3,7 +3,7 @@ import {
 	updateByIdCurrentQuantity,
 } from "../../Repositories/TargetRepository.js";
 
-export async function updateByIdCurrentQuantityService(id, value, productId) {
+export async function updateByIdCurrentQuantityService(id, value) {
 	let currentValue;
 	let newValue;
 	try {

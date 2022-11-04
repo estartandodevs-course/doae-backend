@@ -1,9 +1,9 @@
-import { getInstitutionByIdExternal } from "../../Repositories/InstitutionRepository.js";
+import { getInstitutionById } from "../../Repositories/InstitutionRepository.js";
 import { getAddressByZipCode } from "../../Funcs/getAddressByZipCode.js";
 
 export async function listInstitutionByIdService(id) {
 	try {
-		const [ institution ] = await getInstitutionByIdExternal(id);
+		const [ institution ] = await getInstitutionById(id);
 		if (institution === undefined) {
 			throw new Error('Instituição não foi encontrada.')
 		}
