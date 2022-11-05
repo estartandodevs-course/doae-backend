@@ -1,4 +1,4 @@
-import { getProductsByIdInstitution } from "../../Repositories/ProductRepository.js";
+import { getProductsByIdInstitution } from "../../Repositories/ProductTargetRepository.js";
 
 export async function listProductByIdInstitutionService(id_institution, page = 1){
 	const perPage = 10;
