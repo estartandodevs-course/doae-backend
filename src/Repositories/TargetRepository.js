@@ -20,7 +20,7 @@ export async function createTarget(
 			day_limit,
 			suspend: false,
 		});
-		return newTrget;
+		return newTarget;
 	} catch (e) {
 		throw new Error(e.message);
 	}

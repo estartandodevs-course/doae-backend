@@ -5,11 +5,13 @@ import { listPublicationsByIdInstitutionService } from "../Services/Publications
 import { updatePublicationByIdService } from "../Services/Publications/updatePublication.service.js";
 import { updateMidiaPublicationService } from "../Services/Publications/updateMidiaPublication.service.js";
 import { listPublicationsService } from "../Services/Publications/listPublications.service.js";
+import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
 
 export async function postPublication(request, response) {
   const { midia, description, id_institution } = request.body;
   try {
-    const publication = await createPublicationService(midia, description, id_institution);
+	const id = await getIdByIdExternal(id_institution)
+    const publication = await createPublicationService(midia, description, id);
     response.status(200).json(publication);
   } catch (e) {
     response.status(400).json(e.message);
@@ -30,7 +32,8 @@ export async function getPublicationsByIdInstitution(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	try {
-		const publication = await listPublicationsByIdInstitutionService(id_institution, page);
+		const id = await getIdByIdExternal(id_institution)
+		const publication = await listPublicationsByIdInstitutionService(id, page);
 		response.status(200).json(publication);
 	} catch (e) {
 		response.status(400).json(e.message);

@@ -19,22 +19,21 @@ export async function createInstitution(
 ) {
   try {
     const institution = await InstitutionModel.create({
-      id,
-      name,
-      cnpj,
-      description,
-      agency,
-      count,
-      pix,
-      phone,
-      cep,
-      id_external,
-      site,
-      verified,
-      suspend,
-      email,
-      password,
-      suspend,
+      id: id,
+      verified: verified,
+      email: email,
+      password: password,
+      pix: pix,
+      agency: agency,
+      count: count,
+      name: name,
+      phone: phone,
+      cep: cep,
+      id_external: id_external,
+      description: description,
+      cnpj: cnpj,
+      site: site,
+      suspend: suspend,
     });
     return institution;
   } catch (e) {
@@ -85,7 +84,7 @@ export async function getInstitutionByIdExternal(id_external) {
 
 export async function getInstitutionByEmail(email) {
   try {
-    const institution = await InstitutionModel.findAll({
+    const institution = await InstitutionModel.findOne({
       where: {
         email: email,
         suspend: false,
@@ -109,7 +108,7 @@ export async function updateInstitution(
   count
 ) {
   try {
-    const insitution = await InstitutionModel.update(
+    const institution = await InstitutionModel.update(
       {
         name,
         description,

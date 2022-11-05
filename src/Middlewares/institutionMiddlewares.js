@@ -34,7 +34,7 @@ export async function patchLogoInstitutionMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({
-		logo: yup.required('Logo da instituição é obrigatório.'),
+		
 	});
 
 	await schemaPost.validate(req.file).catch(err => {

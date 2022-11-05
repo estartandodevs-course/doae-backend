@@ -1,10 +1,14 @@
 import admin from "firebase-admin";
+import fs from "fs";
+import path from "path";
 import yup from "yup";
 
-const serviceAccount = require("./doae-8e684-firebase-adminsdk-b63vi-690e675d83.json");
+const pathDir = path.resolve('json', 'firebase.json');
+
+const serviceAccount = fs.readFileSync(pathDir);
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert(JSON.parse(serviceAccount)),
 });
 
 export async function sessionMidd(req, res, next){

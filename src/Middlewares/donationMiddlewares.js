@@ -4,7 +4,7 @@ export async function postDonationMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({
-		email_giver: yup.string("Nome deve ser uma string.").required("Nome é obrigatório."),
+		email_giver: yup.string("Nome deve ser uma string.").required("Email é obrigatório."),
 		value: yup.number("valor deve ser um  número."),
 		id_target: yup.string("Id da meta deve ser uma string."),
 		id_product: yup.string("Id do produto deve ser uma string."),

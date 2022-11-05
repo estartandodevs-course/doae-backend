@@ -6,11 +6,13 @@ import { updateTargetService } from "../Services/Targets/updateTarget.service.js
 import { updateByIdCurrentQuantityService } from "../Services/Targets/updateCurrentQuantity.service.js";
 import { deleteTargetService } from "../Services/Targets/deleteTarget.service.js";
 import { listAllWithFilters } from "../Services/Targets/listTargetsWithFilter.service.js";
+import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
 
 export async function postTarget(request, response) {
 	const { name, value, id_institution, description, day_limit } = request.body;
 	try {
-		const target = await createTargetService(name, value, id_institution, description, day_limit);
+		const id = await getIdByIdExternal(id_institution)
+		const target = await createTargetService(name, value, id, description, day_limit);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -46,7 +48,8 @@ export async function getTargetByIdInstitution(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	try {
-		const target = await listTargetsByIdInstitution(id_institution, page);
+		const id = await getIdByIdExternal(id_institution)
+		const target = await listTargetsByIdInstitution(id, page);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -57,7 +60,8 @@ export async function getTargetFilters(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	try {
-		const target = await listTargetByIdInstitution(id_institution, page);
+		const id = await getIdByIdExternal(id_institution)
+		const target = await listTargetByIdInstitution(id, page);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);
