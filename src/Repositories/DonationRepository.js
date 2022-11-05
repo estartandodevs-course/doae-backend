@@ -27,7 +27,11 @@ export async function createDonation(
 
 export async function getDonations() {
 	try {
-		const donations = await DonationModel.findAll({});
+		const donations = await DonationModel.findAll({
+			where: {
+				suspend: false
+			}
+		});
 		return donations;
 	} catch (e) {
 		throw new Error(e.message);
@@ -39,6 +43,7 @@ export async function getDonationById(id) {
 		const donation = await DonationModel.findAll({
 			where: {
 				id: id,
+				suspend: false
 			},
 		});
 		return donation;

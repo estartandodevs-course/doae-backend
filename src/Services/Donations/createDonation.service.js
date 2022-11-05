@@ -15,10 +15,15 @@ export async function createDonationService(
 	const id = uuid();
 	const status = undefined;
 	const suspend = false;
-	if (id_product) {
-		const product = await getProductTargetById(id_product)
-		value = product.value;
+	let newValue = 0;
+	if(value === undefined){
+		const product = await getProductTargetById(id_product);
+		console.log(product);
+		newValue = product.value;
+	} else {
+		newValue = value;
 	}
+
 	if(id_target){
 		const target = await getTargetById(id_target);
 		if(!target){
@@ -28,9 +33,11 @@ export async function createDonationService(
 		if(dateNow > target.day_limit){
 			throw new Error("Essa meta já encerrou.");
 		}
+
 		try {
-			await updateByIdCurrentQuantityService(id_target, value);
+			await updateByIdCurrentQuantityService(id_target, newValue);
 		} catch (e) {
+			console.log(e);
 			throw new Error('Não possível salvar a doação.')
 		}
 	}
@@ -39,7 +46,7 @@ export async function createDonationService(
 			id,
 			id_institution,
 			status,
-			value,
+			newValue,
 			email_giver,
 			id_target,
 			suspend

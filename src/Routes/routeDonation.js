@@ -29,7 +29,7 @@ routesDonation.get("/donation/:id", getIdDonationMidd, getDonationById);
 
 routesDonation.get("/donation/institution/:id_institution", getIdDonationsInsMidd, getDonationsByIdInstitution);
 
-routesDonation.get("/donation/targets/:id_target", getIdDonationsTargetMidd, getDonationsByIdTarget);
+routesDonation.get("/donation/target/:id_target", getIdDonationsTargetMidd, getDonationsByIdTarget);
 
 routesDonation.put("/donation/:id", putDonationMidd, putDonation);
 
