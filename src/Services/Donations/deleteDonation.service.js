@@ -5,7 +5,7 @@ export async function deleteDonationService(id){
 	try {
 		const [ donationOld ] = await getDonationById(id);
 		const newValue = donationOld.value * -1;
-		if(donationOld.id_target){
+		if(donationOld.id_target && donationOld.status === true){
 			await updateByIdCurrentQuantityService(donationOld.id_target, newValue);
 		}
 		const donation = await deleteDonation(id);

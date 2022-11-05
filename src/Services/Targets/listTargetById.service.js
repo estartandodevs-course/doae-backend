@@ -14,7 +14,7 @@ export async function listTargetById(id) {
             "institution": institution.name,
             "createdAt": target.createdAt,
             "day_limit": target.day_limit,
-            "percent": percent,
+            "percent": `${percent}%`,
             "description": target.description
         }
 		return newObjectTargetFormat;

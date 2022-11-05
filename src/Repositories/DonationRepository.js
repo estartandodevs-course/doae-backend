@@ -52,6 +52,36 @@ export async function getDonationById(id) {
 	}
 }
 
+export async function getDonationRejectedByIdInstitution(id_institution) {
+	try {
+		const donation = await DonationModel.findAll({
+			where: {
+				id_institution: id_institution,
+				status: false,
+				suspend: false
+			},
+		});
+		return donation;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
+export async function getDonationAcceptedByIdInstitution(id_institution) {
+	try {
+		const donation = await DonationModel.findAll({
+			where: {
+				id_institution: id_institution,
+				status: true,
+				suspend: false
+			},
+		});
+		return donation;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
 export async function getDonationsByIdTarget(id_target) {
 	try {
 		const donations = await DonationModel.findAll({

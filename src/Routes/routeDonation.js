@@ -6,6 +6,7 @@ import {
 	getDonationsByIdTarget,
 	putDonation,
 	deleteDonation,
+	getStatusDonationsByIdInstitution
 } from "../Controllers/DonationController.js";
 
 import { Router } from "express";
@@ -28,6 +29,8 @@ routesDonation.get("/donation", getDonationsMidd, getDonations);
 routesDonation.get("/donation/:id", getIdDonationMidd, getDonationById);
 
 routesDonation.get("/donation/institution/:id_institution", getIdDonationsInsMidd, getDonationsByIdInstitution);
+
+routesDonation.get("/donation/status/:id_institution", getStatusDonationsByIdInstitution);
 
 routesDonation.get("/donation/target/:id_target", getIdDonationsTargetMidd, getDonationsByIdTarget);
 

@@ -6,6 +6,7 @@ import { listDonationsByIdInstitutionService } from "../Services/Donations/listD
 import { listDonationsByIdTargetService } from "../Services/Donations/listDonationsByIdTarget.service.js";
 import { updateStatusDonationService } from "../Services/Donations/updateDonation.service.js";
 import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
+import { listStatusDonationsByIdInstitutionService } from "../Services/Donations/listStatusDonationByIdInstitution.service.js";
 
 export async function postDonation(request, response) {
 	const {
@@ -40,6 +41,20 @@ export async function getDonations(request, response) {
 	}
 }
 
+export async function getStatusDonationsByIdInstitution(request, response) {
+	const { page } = request.query;
+	const { id_institution } = request.params;
+	const { status } = request.body;
+	try {
+		const id = await getIdByIdExternal(id_institution);
+		const donations = await listStatusDonationsByIdInstitutionService(id, status, page);
+		response.status(200).json(donations);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
+
+
 export async function getDonationById(request, response) {
 	const { id } = request.params;
 	try {
@@ -72,9 +87,9 @@ export async function getDonationsByIdTarget(request, response) {
 
 export async function putDonation(request, response) {
 	const { id } = request.params;
-	const { status } = request.body;
+	const { status, email_giver } = request.body;
 	try {
-		const donation = await updateStatusDonationService(id, status);
+		const donation = await updateStatusDonationService(id, status, email_giver);
 		response.status(200).json(donation);
 	} catch (e) {
 		response.status(400).json(e.message);

@@ -1,7 +1,6 @@
 import { createDonation } from "../../Repositories/DonationRepository.js";
 import { getTargetById } from "../../Repositories/TargetRepository.js";
 import { getProductTargetById } from "../../Repositories/ProductTargetRepository.js";
-import { updateByIdCurrentQuantityService } from "../Targets/updateCurrentQuantity.service.js";
 import { v4 as uuid } from "uuid";
 import { mailto } from "../../Libs/mailto.js";
 
@@ -32,13 +31,6 @@ export async function createDonationService(
 		const dateNow = new Date(); 
 		if(dateNow > target.day_limit){
 			throw new Error("Essa meta já encerrou.");
-		}
-
-		try {
-			await updateByIdCurrentQuantityService(id_target, newValue);
-		} catch (e) {
-			console.log(e);
-			throw new Error('Não possível salvar a doação.')
 		}
 	}
 	try {
