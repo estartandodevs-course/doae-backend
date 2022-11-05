@@ -21,8 +21,8 @@ routesProduct.get("/product/:id", getIdProductsMidd, getProductById);
 
 routesProduct.get("/product/target/:id_target", getProductIdTargetMidd, getProductsByIdTarget);
 
-routesProduct.put("/products/:id", putProductMidd, putProducts);
+routesProduct.put("/product/:id", putProductMidd, putProducts);
 
-routesProduct.delete("/products/:id", getIdProductsMidd, deleteProduct);
+routesProduct.delete("/product/:id", getIdProductsMidd, deleteProduct);
 
 export default routesProduct;
