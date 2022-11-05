@@ -12,6 +12,41 @@
     ],
     "basePath": "/",
     "paths": {
+        "/login/auth/oatuh2/:email/:password": {
+            "get": {
+                "sumary": "Login da instituição",
+                "description": "Essa rota será responsável por fazer login das intituições.",
+                "tags": [
+                    "Login"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "params",
+                        "description": "Define o email da instituição.",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "params",
+                        "description": "Define o password da instituição.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/institution": {
             "post": {
                 "sumary": "Cadastro da instituição",

@@ -1,12 +1,14 @@
-import { getInstitutionByEmail } from "../../Repositories/InstituticaoRepository.js";
+import { getInstitutionByEmail } from "../../Repositories/InstitutionRepository.js";
+import { hashPassword } from "../../Funcs/hashPassword.js";
 
 export async function sessionService(email, password){
+    const pass = await hashPassword(password);
     try {
         const institution = await getInstitutionByEmail(email);
         if (!institution) {
             throw new Error('Instuição não encontrada!');
         }
-        if (institution.password !== password){
+        if (institution.password !== pass){
             throw new Error('Senha incorreta.');
         }
         return {

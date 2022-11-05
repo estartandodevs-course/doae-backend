@@ -25,8 +25,6 @@ export async function postInstitution(request, response) {
 		const institution = await createInstitutionService(
 			name,
 			cnpj,
-			email,
-			password,
 			description,
 			agency,
 			count,
@@ -34,6 +32,8 @@ export async function postInstitution(request, response) {
 			phone,
 			cep,
 			site,
+			email,
+			password,
 			verified
 		);
 		response.status(200).json(institution);
@@ -98,6 +98,7 @@ export async function putInstitution(request, response) {
 		);
 		response.status(200).json(institution);
 	} catch (e) {
+		console.log(e);
 		response.status(400).json(e.message);
 	}
 }
