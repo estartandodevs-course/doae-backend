@@ -1,10 +1,10 @@
 import { getTargetById } from "../../Repositories/TargetRepository.js";
-import { getInstitutionByIdExternal } from "../../Repositories/InstitutionRepository.js";
+import { getInstitutionById } from "../../Repositories/InstitutionRepository.js";
 
 export async function listTargetById(id) {
 	try {
 		const target = await getTargetById(id);
-        const [ institution ] = await getInstitutionByIdExternal(target.id_institution);
+        const [ institution ] = await getInstitutionById(target.id_institution);
         const percent = (target.current_quantity * 100) / target.target_value;
         const newObjectTargetFormat = {
             "id": target.id,

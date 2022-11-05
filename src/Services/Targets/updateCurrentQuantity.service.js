@@ -2,12 +2,14 @@ import {
 	getTargetById,
 	updateByIdCurrentQuantity,
 } from "../../Repositories/TargetRepository.js";
+import { getProductTargetById } from "../../Repositories/ProductTargetRepository.js";
 
-export async function updateByIdCurrentQuantityService(id, value) {
+export async function updateByIdCurrentQuantityService(id, value, id_product) {
 	let currentValue;
 	let newValue;
 	try {
-		currentValue = await getTargetById(id);
+		const meta = await getTargetById(id);
+		currentValue = meta.current_quantity;
 	} catch (e) {
 		console.log(e);
 		throw new Error(e.message);
@@ -16,7 +18,8 @@ export async function updateByIdCurrentQuantityService(id, value) {
 	if (value) {
         newValue = value + currentValue;
 	} else {
-        const valueProduct = "mock";
+		const product = await getProductTargetById(id_product);
+        const valueProduct = product.value;
         newValue = valueProduct + currentValue;
     }
 
@@ -24,7 +27,6 @@ export async function updateByIdCurrentQuantityService(id, value) {
 		const target = await updateByIdCurrentQuantity(id, newValue);
 		return target;
 	} catch (e) {
-		console.log(e);
 		throw new Error(e.message);
 	}
 }

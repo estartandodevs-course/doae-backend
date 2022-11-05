@@ -100,12 +100,22 @@ export async function putTargetMidd(req, res, next)
 {
 	let response = true;
 	const schemaPut = yup.object().shape({
-		name: yup.string("Nome deve ser uma string.").required("Nome é obrigatório."),
-		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
 		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
 	});
 
-	await schemaPut.validate(req.params, req.body).catch(err => {
+	const schemaPut2 = yup.object().shape({
+		name: yup.string("Nome deve ser uma string.").required("Nome é obrigatório."),
+		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
+	});
+
+	await schemaPut.validate(req.params).catch(err => {
+		response = false;
+		return res.status(400).json({
+			error: err.errors
+		});
+	});
+
+	await schemaPut2.validate(req.body).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
@@ -122,12 +132,22 @@ export async function putCurrentQuantMidd(req, res, next)
 {
 	let response = true;
 	const schemaPutCurrentQuant = yup.object().shape({
-		productId: yup.string("Id do produto deve ser uma string.").required("Id do produto é obrigatório."),
-		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
 		id: yup.string("Id deve ser uma string.").required("Id é obrigatório.")
 	});
 
-	await schemaPutCurrentQuant.validate(req.params, req.body).catch(err => {
+	const schemaPutCurrentQuant2 = yup.object().shape({
+		productId: yup.string("Id do produto deve ser uma string."),
+		value: yup.number("valor deve ser um  número.").required("Valor é obrigatório."),
+	});
+
+	await schemaPutCurrentQuant.validate(req.params).catch(err => {
+		response = false;
+		return res.status(400).json({
+			error: err.errors
+		});
+	});
+
+	await schemaPutCurrentQuant2.validate(req.body).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors
