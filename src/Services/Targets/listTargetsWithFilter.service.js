@@ -57,7 +57,7 @@ export async function listAllWithFilters(page = 1, query) {
                 institution: institution.name, 
                 createdAt: response[i].createdAt,
                 day_limit: response[i].day_limit,
-                percent: percent,
+                percent: `${percent}%`,
             };
             newPagination.push(newObjectTargetFormat);
         }
