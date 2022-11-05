@@ -110,7 +110,7 @@ export async function putMidiaPublicationMidd(req, res, next)
 	let response = true;
 	
 	const schemaPutMidia = yup.object().shape({
-		midia: yup.required("Midia é obrigatório.")
+	
 	});
 
 	const schemaPutMidia2 = yup.object().shape({
@@ -124,7 +124,7 @@ export async function putMidiaPublicationMidd(req, res, next)
 		});
 	});
 
-	await schemaPutMidia2.validate(req.query).catch(err => {
+	await schemaPutMidia2.validate(req.params).catch(err => {
 		response = false;
 		return res.status(400).json({
 			error: err.errors

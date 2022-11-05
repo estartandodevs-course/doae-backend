@@ -3,13 +3,15 @@ import PublicationModel from "../Models/PublicationModel.js";
 export async function createPublication(
 	id,
 	description,
-	id_institution
+	id_institution,
+	midia
 ) {
 	try {
 		const newPublications = await PublicationModel.create({
 			id,
 			description,
 			id_institution,
+			midia,
 			suspend: false,
 		});
 		return newPublications;
@@ -24,12 +26,12 @@ export async function updateMidiaPublication(
 ) {
 	try {
 		const newPublications = await PublicationModel.updateOne(
-		{
-			id: id	
-		},
-		{
-			midia: midia
-		}
+			{
+				id: id
+			},
+			{
+				midia: midia
+			}
 		);
 		return newPublications;
 	} catch (e) {
@@ -39,7 +41,7 @@ export async function updateMidiaPublication(
 
 export async function getPublications() {
 	try {
-		const publications = await PublicationModel.findAll({
+		const publications = await PublicationModel.find({
 			suspend: false
 		})
 		return publications;
