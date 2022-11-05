@@ -1,6 +1,7 @@
 import { createProductTargetService } from "../Services/Products/createProductTarget.service.js";
 import { listProductsByIdTargetService } from "../Services/Products/listProductsByIdTarget.service.js";
 import { listProductByIdService } from "../Services/Products/listProductById.service.js";
+import { listProductsByIdInstitutionService } from "../Services/Products/listProductByIdInstitution.service.js";
 import { updateProductTargetByIdService } from "../Services/Products/updateProductTarget.service.js";
 import { deleteProductTargetByIdService } from "../Services/Products/deleteProductById.service.js";
 
@@ -29,6 +30,17 @@ export async function getProductsByIdTarget(request, response){
 	const { page } = request.query;
 	try {
 		const products = await listProductsByIdTargetService(id_target, page);
+		response.status(200).json(products);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
+
+export async function getProductsByIdInstitution(request, response){
+	const { id_institution } = request.params;
+	const { page } = request.query;
+	try {
+		const products = await listProductsByIdInstitutionService(id_institution, page);
 		response.status(200).json(products);
 	} catch (e) {
 		response.status(400).json(e.message);

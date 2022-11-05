@@ -2,7 +2,7 @@ import {
     postPublication,
     getPublicationById,
     getPublicationsByIdInstitution,
-    getPublications,
+    getPublicationsAll,
     putPublication,
     putMidiaPublication,
     deletePublication
@@ -26,16 +26,16 @@ const routesPublication = Router();
 
 routesPublication.post("/publication", postPublicationMidd, postPublication);
 
-routesPublication.get("/publication", getPublications);
+routesPublication.get("/publication", getPublicationsAll);
 
 routesPublication.get("/publication/:id", getIdPublicationMidd, getPublicationById);
 
-routesPublication.get("/publication/:id_institution", getPublicationByIdInstitutionMidd, getPublicationsByIdInstitution);
+routesPublication.get("/publication/institution/:id_institution", getPublicationByIdInstitutionMidd, getPublicationsByIdInstitution);
 
-routesPublication.put("publication/:id", putPublicationMidd, putPublication);
+routesPublication.put("/publication/:id", putPublicationMidd, putPublication);
 
-routesPublication.patch("publication/midia/:id",  upload.single('midia'), putMidiaPublicationMidd, putMidiaPublication);
+routesPublication.patch("/publication/midia/:id",  upload.single('midia'), putMidiaPublicationMidd, putMidiaPublication);
 
-routesPublication.delete("publication/:id", getIdPublicationMidd, deletePublication);
+routesPublication.delete("/publication/:id", getIdPublicationMidd, deletePublication);
 
 export default routesPublication;
