@@ -46,6 +46,18 @@ export async function getProductTargetByIdTarget(idTarget) {
 	}
 }
 
+export async function getProductsByIdInstitution(id_institution) {
+	try {
+		const productInstitution = await ProductModel.find({
+			id_institution,
+			suspend: false,
+		});
+		return productInstitution;
+	} catch (e) {
+		throw new Error(e.message);
+	}
+}
+
 
 export async function updateProductTargetById(id, name, value) {
 	try {

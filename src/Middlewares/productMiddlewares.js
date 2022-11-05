@@ -54,6 +54,38 @@ export async function getProductIdTargetMidd(req, res, next)
 	}
 }
 
+export async function getProductIdInstitutionMidd(req, res, next)
+{
+	let response = true;
+	const schemaGet = yup.object().shape({
+		page: yup.number("Valor deve ser um número.")
+	});
+
+	const schemaGet2 = yup.object().shape({
+		id_institution: yup.string("Id da instituição deve ser uma string.").required("Id da instituição é obrigatório.")
+	});
+
+	await schemaGet.validate(req.query).catch(err => {
+		response = false;
+		return res.status(400).json({
+			error: err.errors
+		});
+	});
+
+	await schemaGet2.validate(req.params).catch(err => {
+		response = false;
+		return res.status(400).json({
+			error: err.errors
+		});
+	});
+
+	if(response){
+		next();
+	} else {
+		return;
+	}
+}
+
 export async function getIdProductsMidd(req, res, next)
 {
 	let response = true;
