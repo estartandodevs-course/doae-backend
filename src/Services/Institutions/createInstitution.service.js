@@ -1,6 +1,7 @@
 import { createInstitution } from "../../Repositories/InstitutionRepository.js";
 import { hashPassword } from "../../Funcs/hashPassword.js";
 import { v4 as uuid } from "uuid";
+import { mailto } from "../../Libs/mailto.js";
 import shortid from "shortid";
 
 export async function createInstitutionService(
@@ -39,6 +40,7 @@ export async function createInstitutionService(
       email,
       pass
     );
+		await mailto("bem_vindo", email_giver);
     return institution;
   } catch (e) {
     throw new Error(e.message);
