@@ -36,6 +36,7 @@ class App {
 		this.server.use(routes.routesInstitution);
 		this.server.use(routes.routesPublication);
 		this.server.use(routes.routesSession);
+		this.server.use(routes.routeProductToTarget);
 	}
 }
 

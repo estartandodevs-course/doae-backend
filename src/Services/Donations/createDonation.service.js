@@ -15,7 +15,6 @@ export async function createDonationService(
 	const status = undefined;
 	const suspend = false;
 	let newValue = 0;
-	//sinalizar
 	if(value === undefined){
 		const product = await getProductById(id_product);
 		console.log(product);
@@ -34,6 +33,7 @@ export async function createDonationService(
 			throw new Error("Essa meta já encerrou.");
 		}
 	}
+	
 	try {
 		const donation = await createDonation(
 			id,

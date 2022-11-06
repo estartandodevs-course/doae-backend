@@ -14,7 +14,7 @@ export async function updateByIdCurrentQuantityService(id, value, id_product) {
 		console.log(e);
 		throw new Error(e.message);
 	}
-	//sinalizar
+
 	if (value) {
         newValue = value + currentValue;
 	} else {

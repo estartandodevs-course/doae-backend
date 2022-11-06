@@ -4,6 +4,7 @@ import routesDonation from "./routeDonation.js";
 import routesInstitution from "./routeInstitution.js";
 import routesPublication from "./routePublication.js";
 import routesSession from "./routeSession.js";
+import routeProductToTarget from "./routeProductToTarget.js";
 
 const routes = {
     routesTarget,
@@ -11,7 +12,8 @@ const routes = {
     routesDonation,
     routesInstitution,
     routesPublication,
-    routesSession
+    routesSession,
+    routeProductToTarget
 }
 
 export default routes;
