@@ -1,10 +1,10 @@
-import { getProductTargetByIdTarget } from "../../Repositories/ProductTargetRepository.js";
+import { getProductByIdTarget } from "../../Repositories/ProductRepository.js";
 
 export async function listProductsByIdTargetService(id_target, page = 1) {
 	const perPage = 10;
 	let initPage  = (page * perPage) - perPage;
 	try {
-		const products = await getProductTargetByIdTarget(id_target);
+		const products = await getProductByIdTarget(id_target);
 		const response  = products.slice(initPage, (initPage + perPage));
 		if (response.length > 0) {
 			return response;

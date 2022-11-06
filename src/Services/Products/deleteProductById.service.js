@@ -1,8 +1,8 @@
-import { deleteProductTargetById } from "../../Repositories/ProductTargetRepository.js";
+import { deleteProductById } from "../../Repositories/ProductRepository.js";
 
-export async function deleteProductTargetByIdService(id){
+export async function deleteProductByIdService(id){
     try {
-        const deleteTarget = await deleteProductTargetById(id);
+        const deleteTarget = await deleteProductById(id);
         return deleteTarget;
     } catch(e){
         console.log(e);

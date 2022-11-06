@@ -1,4 +1,7 @@
-import { updateMidiaPublication } from "../../Repositories/PublicationRepository.js";
+import {
+	updateMidiaPublication,
+	getPublicationById,
+} from "../../Repositories/PublicationRepository.js";
 import { uploadImage } from "../../Libs/uploadCloud.js";
 import fs from "fs";
 
@@ -6,7 +9,8 @@ export async function updateMidiaPublicationService(id, midia) {
 	try {
 		const logoImage = await uploadImage(midia);
 		const urlLogo = logoImage.url;
-		const publication = await updateMidiaPublication(id, urlLogo);
+		const publicationLogo = await updateMidiaPublication(id, urlLogo);
+		const publication = await getPublicationById(id);
 		return publication;
 	} catch (e) {
 		console.log(e);

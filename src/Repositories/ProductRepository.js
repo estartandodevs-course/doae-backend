@@ -1,6 +1,6 @@
-import ProductTargetModel from "../Models/ProductTargetModel.js";
+import ProductModel from "../Models/ProductModel.js";
 
-export async function createProductTarget(
+export async function createProduct(
 	id,
 	name,
 	value,
@@ -8,7 +8,7 @@ export async function createProductTarget(
 	id_institution
 ) {
 	try {
-		const newProductTarget = await ProductTargetModel.create({
+		const newProduct = await ProductModel.create({
 			id,
 			name,
 			value,
@@ -16,31 +16,31 @@ export async function createProductTarget(
 			id_institution,
 			suspend: false,
 		});
-		return newProductTarget;
+		return newProduct;
 	} catch (e) {
 		throw new Error(e.message);
 	}
 }
 
-export async function getProductTargetById(id) {
+export async function getProductById(id) {
 	try {
-		const productTarget = await ProductTargetModel.findOne({
+		const product = await ProductModel.findOne({
 			id: id,
 			suspend: false,
 		});
-		return productTarget;
+		return product;
 	} catch (e) {
 		throw new Error(e.message);
 	}
 }
 
-export async function getProductTargetByIdTarget(idTarget) {
+export async function getProductByIdTarget(idTarget) {
 	try {
-		const productTarget = await ProductTargetModel.find({
+		const product = await ProductModel.find({
 			id_target: idTarget,
 			suspend: false,
 		});
-		return productTarget;
+		return product;
 	} catch (e) {
 		throw new Error(e.message);
 	}
@@ -59,28 +59,28 @@ export async function getProductsByIdInstitution(id_institution) {
 }
 
 
-export async function updateProductTargetById(id, name, value) {
+export async function updateProductById(id, name, value) {
 	try {
-		const updateProductTarget = await ProductTargetModel.updateOne(
+		const updateProduct = await ProductModel.updateOne(
 			{
 				id: id,
 				suspend: false,
 			},
 			{ name, value }
 		);
-		return updateProductTarget;
+		return updateProduct;
 	} catch (e) {
 		throw new Error(e.message);
 	}
 }
 
-export async function deleteProductTargetById(id) {
+export async function deleteProductById(id) {
 	try {
-		const deleteProductTarget = await ProductTargetModel.updateOne(
+		const deleteProduct = await ProductModel.updateOne(
 			{ id: id, suspend: false },
 			{ suspend: true }
 		);
-		return deleteProductTarget;
+		return deleteProduct;
 	} catch (e) {
 		throw new Error(e.message);
 	}

@@ -30,26 +30,6 @@ export async function postInstitutionMidd(req, res, next)
 	}
 }
 
-export async function patchLogoInstitutionMidd(req, res, next)
-{	
-	let response = true;
-	const schemaPost = yup.object().shape({
-		
-	});
-
-	await schemaPost.validate(req.file).catch(err => {
-		response = false;
-		return res.status(400).json({
-			error: err.errors
-		});
-	});
-	if(response){
-		next();
-	} else {
-		return;
-	}
-}
-
 export async function idInstitutionMidd(req, res, next)
 {	
 	let response = true;
