@@ -2,18 +2,19 @@ import * as yup from 'yup';
 
 export async function postInstitutionMidd(req, res, next)
 {	
+	console.log(req.body);
 	let response = true;
 	const schemaPost = yup.object().shape({
-		name: yup.string('Nome deve ser uma string').required('Nome da instituição é obrigatório.'),
-		cnpj: yup.string().required('CNPJ da instituição é obrigatório.'),
-		email: yup.string().required('Email da instituição é obrigatório.'),
-		password: yup.string().required('Senha da instituição é obrigatório.'),
-		description: yup.string().required('Descrição da instituição é obrigatório.'),
+		name: yup.string('Nome deve ser uma string'),
+		cnpj: yup.string(),
+		email: yup.string(),
+		password: yup.string(),
+		description: yup.string(),
 		agency: yup.string(),
 		count: yup.string(),
 		pix: yup.string(),
-		phone: yup.string().required('Telefone da instituição é obrigatório.'),
-		cep: yup.string().required('CEP da instituição é obrigatório.'),
+		phone: yup.string(),
+		cep: yup.string(),
 		site: yup.string(),
 	});
 

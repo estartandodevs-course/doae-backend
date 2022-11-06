@@ -21,6 +21,8 @@ export async function postInstitution(request, response) {
 		site,
 		verified,
 	} = request.body;
+	const logo = request.file;
+	const path = logo.path;
 	try {
 		const institution = await createInstitutionService(
 			name,
@@ -34,6 +36,7 @@ export async function postInstitution(request, response) {
 			site,
 			email,
 			password,
+			path,
 			verified
 		);
 		response.status(200).json(institution);

@@ -7,8 +7,7 @@ export async function updateLogoInstitutionService(id, logo) {
     const urlLogo = logoImage.url;
 	try {
 		const logo = await updateInstitutionLogo(id, urlLogo);
-		const institution = await getInstitutionById(id);
-		return institution;
+		return logo;
 	} catch (e) {
 		throw new Error(e.message);
 	} finally {

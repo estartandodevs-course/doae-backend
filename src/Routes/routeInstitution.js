@@ -24,7 +24,7 @@ routesInstitution.patch(
 	updateLogoInstitution
 );
 
-routesInstitution.post("/institution", postInstitutionMidd, postInstitution);
+routesInstitution.post("/institution", postInstitutionMidd, upload.single("logo"), postInstitution);
 
 routesInstitution.get("/institution", getInstitutions);
 
