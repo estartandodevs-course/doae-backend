@@ -21,8 +21,6 @@ export async function postInstitution(request, response) {
 		site,
 		verified,
 	} = request.body;
-	const logo = request.file;
-	const path = logo.path;
 	try {
 		const institution = await createInstitutionService(
 			name,
@@ -38,12 +36,23 @@ export async function postInstitution(request, response) {
 			password,
 			verified
 		);
-		const id_institution = await getIdByIdExternal(institution.id);
-		const institutionLogo = await updateLogoInstitutionService(
+		response.status(200).json(institution);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
+
+export async function updateLogoInstitution(request, response) {
+	const { id } = request.query;
+	const logo = request.file;
+	const path = logo.path;
+	try {
+		const id_institution = await getIdByIdExternal(id);
+		const institution = await updateLogoInstitutionService(
 			id_institution,
 			path
 		);
-		response.status(200).json(institutionLogo);
+		response.status(200).json(institution);
 	} catch (e) {
 		response.status(400).json(e.message);
 	}

@@ -3,11 +3,13 @@ import {
 	getInstitutions,
 	getInstitutionById,
 	putInstitution,
-	deleteInstitutionById
+	deleteInstitutionById,
+	updateLogoInstitution,
 } from "../Controllers/InstitutionController.js";
 import { uploadFile } from "../Middlewares/multerMiddlewares.js";
 import {
 	postInstitutionMidd,
+	patchLogoInstitutionMidd,
 	idInstitutionMidd,
 } from "../Middlewares/institutionMiddlewares.js";
 
@@ -17,7 +19,14 @@ import { Router } from "express";
 
 const routesInstitution = Router();
 
-routesInstitution.post("/institution", postInstitutionMidd, upload.single("logo"), postInstitution);
+routesInstitution.patch(
+	"/institution/logo",
+	upload.single("logo"),
+	patchLogoInstitutionMidd,
+	updateLogoInstitution
+);
+
+routesInstitution.post("/institution", postInstitutionMidd, postInstitution);
 
 routesInstitution.get("/institution", getInstitutions);
 

@@ -8,17 +8,14 @@ import { listPublicationsService } from "../Services/Publications/listPublicatio
 import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
 
 export async function postPublication(request, response) {
-	const { description, id_institution } = request.body;
-	const midia = request.file;
-	const path = midia.path;
-	try {
-		const id = await getIdByIdExternal(id_institution);
-		const publication = await createPublicationService(description, id);
-		const publicationLogo = await updateMidiaPublicationService(id, path);
-		response.status(200).json(publicationLogo);
-	} catch (e) {
-		response.status(400).json(e.message);
-	}
+  const { description, id_institution, midia } = request.body;
+  try {
+	const id = await getIdByIdExternal(id_institution)
+    const publication = await createPublicationService(description, id, midia);
+    response.status(200).json(publication);
+  } catch (e) {
+    response.status(400).json(e.message);
+  }
 }
 
 export async function getPublicationById(request, response) {
@@ -35,7 +32,7 @@ export async function getPublicationsByIdInstitution(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	try {
-		const id = await getIdByIdExternal(id_institution);
+		const id = await getIdByIdExternal(id_institution)
 		const publication = await listPublicationsByIdInstitutionService(id, page);
 		response.status(200).json(publication);
 	} catch (e) {
@@ -67,8 +64,7 @@ export async function putPublication(request, response) {
 export async function putMidiaPublication(request, response) {
 	const { id } = request.params;
 	const midia = request.file;
-	const path = midia.path;
-
+    const path = midia.path;
 	try {
 		const publication = await updateMidiaPublicationService(id, path);
 		response.status(200).json(publication);
