@@ -24,7 +24,7 @@ import {
 
 const routesPublication = Router();
 
-routesPublication.post("/publication", postPublicationMidd, postPublication);
+routesPublication.post("/publication", postPublicationMidd, upload.single('midia'), postPublication);
 
 routesPublication.get("/publication", getPublicationsAll);
 

@@ -3,9 +3,9 @@ import { uploadImage } from "../../Libs/uploadCloud.js";
 import fs from "fs";
 
 export async function updateLogoInstitutionService(id, logo) {
-    const logoImage = await uploadImage(logo);
-    const urlLogo = logoImage.url;
 	try {
+		const logoImage = await uploadImage(logo);
+		const urlLogo = logoImage.url;
 		const logo = await updateInstitutionLogo(id, urlLogo);
 		return logo;
 	} catch (e) {
