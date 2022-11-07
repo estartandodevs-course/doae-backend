@@ -1,15 +1,10 @@
-import { getDonationAcceptedByIdInstitution, getDonationRejectedByIdInstitution } from "../../Repositories/DonationRepository.js";
+import { getDonationStatusByIdInstitution } from "../../Repositories/DonationRepository.js";
 
 export async function listStatusDonationsByIdInstitutionService(id_institution, status, page = 1){
 	const perPage = 10;
 	let initPage  = (page * perPage) - perPage;
 	try {
-        let donations;
-        if(status === true){
-            donations = await getDonationAcceptedByIdInstitution(id_institution);
-        } else {
-            donations = await getDonationRejectedByIdInstitution(id_institution);
-        }
+		const donations = await getDonationStatusByIdInstitution(id_institution,status);
 		const response  = donations.slice(initPage, (initPage + perPage));
 		if (response.length > 0) {
 			return response;
