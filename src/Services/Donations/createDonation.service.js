@@ -1,6 +1,6 @@
 import { createDonation } from "../../Repositories/DonationRepository.js";
 import { getTargetById } from "../../Repositories/TargetRepository.js";
-import { getProductTargetById } from "../../Repositories/ProductTargetRepository.js";
+import { getProductById } from "../../Repositories/ProductRepository.js";
 import { v4 as uuid } from "uuid";
 import { mailto } from "../../Libs/mailto.js";
 
@@ -16,7 +16,7 @@ export async function createDonationService(
 	const suspend = false;
 	let newValue = 0;
 	if(value === undefined){
-		const product = await getProductTargetById(id_product);
+		const product = await getProductById(id_product);
 		console.log(product);
 		newValue = product.value;
 	} else {
@@ -33,6 +33,7 @@ export async function createDonationService(
 			throw new Error("Essa meta já encerrou.");
 		}
 	}
+	
 	try {
 		const donation = await createDonation(
 			id,

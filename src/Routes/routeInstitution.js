@@ -5,11 +5,11 @@ import {
 	putInstitution,
 	deleteInstitutionById,
 	updateLogoInstitution,
+	putCredentialsInstitution
 } from "../Controllers/InstitutionController.js";
 import { uploadFile } from "../Middlewares/multerMiddlewares.js";
 import {
 	postInstitutionMidd,
-	patchLogoInstitutionMidd,
 	idInstitutionMidd,
 } from "../Middlewares/institutionMiddlewares.js";
 
@@ -22,11 +22,10 @@ const routesInstitution = Router();
 routesInstitution.patch(
 	"/institution/logo",
 	upload.single("logo"),
-	patchLogoInstitutionMidd,
 	updateLogoInstitution
 );
 
-routesInstitution.post("/institution", postInstitutionMidd, postInstitution);
+routesInstitution.post("/institution", postInstitutionMidd, upload.single("logo"), postInstitution);
 
 routesInstitution.get("/institution", getInstitutions);
 
@@ -37,6 +36,8 @@ routesInstitution.get(
 );
 
 routesInstitution.put("/institution/:id", idInstitutionMidd, putInstitution);
+
+routesInstitution.put("/institution/crdentials/:id", idInstitutionMidd, putCredentialsInstitution);
 
 routesInstitution.delete(
 	"/institution/:id",

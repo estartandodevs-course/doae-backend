@@ -4,8 +4,8 @@ export async function postPublicationMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({
-		description: yup.string("Descricão deve ser uma string.").required("Descricão é obrigatório."),
-		id_institution: yup.string("Id da instituição deve ser uma string.").required("Id da instituição é obrigatório.")
+		description: yup.string("Descricão deve ser uma string."),
+		id_institution: yup.string("Id da instituição deve ser uma string.")
 	});
 
 	await schemaPost.validate(req.body).catch(err => {

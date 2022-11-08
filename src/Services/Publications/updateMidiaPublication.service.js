@@ -1,4 +1,6 @@
-import { updateMidiaPublication } from "../../Repositories/PublicationRepository.js";
+import {
+	updateMidiaPublication
+} from "../../Repositories/PublicationRepository.js";
 import { uploadImage } from "../../Libs/uploadCloud.js";
 import fs from "fs";
 

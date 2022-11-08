@@ -5,6 +5,7 @@ import { listInstitutionByIdService } from "../Services/Institutions/listInstitu
 import { updateInstitutionByIdService } from "../Services/Institutions/updateInstitution.service.js";
 import { updateLogoInstitutionService } from "../Services/Institutions/updateLogo.service.js";
 import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
+import { updateCredentialsInstitutionService } from "../Services/Institutions/updateCredentials.service.js";
 
 export async function postInstitution(request, response) {
 	const {
@@ -21,6 +22,8 @@ export async function postInstitution(request, response) {
 		site,
 		verified,
 	} = request.body;
+	const logo = request.file;
+	const path = logo.path;
 	try {
 		const institution = await createInstitutionService(
 			name,
@@ -34,6 +37,7 @@ export async function postInstitution(request, response) {
 			site,
 			email,
 			password,
+			path,
 			verified
 		);
 		response.status(200).json(institution);
@@ -95,6 +99,23 @@ export async function putInstitution(request, response) {
 			pix,
 			agency,
 			count
+		);
+		response.status(200).json(institution);
+	} catch (e) {
+		console.log(e);
+		response.status(400).json(e.message);
+	}
+}
+
+export async function putCredentialsInstitution(request, response) {
+	const { id } = request.params;
+	const { email, password } = request.body;
+	try {
+		const id_institution = await getIdByIdExternal(id);
+		const institution = await updateCredentialsInstitutionService(
+			id_institution,
+			email,
+			password
 		);
 		response.status(200).json(institution);
 	} catch (e) {

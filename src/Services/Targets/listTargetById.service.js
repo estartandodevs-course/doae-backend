@@ -11,7 +11,7 @@ export async function listTargetById(id) {
             "name": target.name,
             "target_value": target.target_value,
             "current_quantity": target.current_quantity,
-            "institution": institution.name,
+            "institution": institution.id_external,
             "createdAt": target.createdAt,
             "day_limit": target.day_limit,
             "percent": `${percent}%`,

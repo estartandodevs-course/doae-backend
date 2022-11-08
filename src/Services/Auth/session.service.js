@@ -2,8 +2,8 @@ import { getInstitutionByEmail } from "../../Repositories/InstitutionRepository.
 import { hashPassword } from "../../Funcs/hashPassword.js";
 
 export async function sessionService(email, password){
-    const pass = await hashPassword(password);
     try {
+        const pass = await hashPassword(password);
         const institution = await getInstitutionByEmail(email);
         if (!institution) {
             throw new Error('Instuição não encontrada!');

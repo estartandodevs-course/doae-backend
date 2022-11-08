@@ -15,7 +15,8 @@ export async function createInstitution(
   verified,
   suspend,
   email,
-  password
+  password,
+  logo
 ) {
   try {
     const institution = await InstitutionModel.create({
@@ -33,6 +34,7 @@ export async function createInstitution(
       description: description,
       cnpj: cnpj,
       site: site,
+      logo: logo,
       suspend: suspend,
     });
     return institution;
@@ -118,6 +120,29 @@ export async function updateInstitution(
         pix,
         agency,
         count,
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+    return institution;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
+export async function updateCredentialsInstitution(
+  id,
+  email,
+  password
+) {
+  try {
+    const institution = await InstitutionModel.update(
+      {
+        email,
+        password
       },
       {
         where: {

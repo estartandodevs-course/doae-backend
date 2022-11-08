@@ -81,9 +81,9 @@ export async function putTarget(request, response) {
 
 export async function putCurrentQuantity(request, response) {
 	const { id } = request.params;
-	const { value, productId } = request.body;
+	const { value, id_product } = request.body;
 	try {
-		const target = await updateByIdCurrentQuantityService(id, value, productId);
+		const target = await updateByIdCurrentQuantityService(id, value, id_product);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);

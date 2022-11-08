@@ -2,7 +2,7 @@ import {
 	getTargetById,
 	updateByIdCurrentQuantity,
 } from "../../Repositories/TargetRepository.js";
-import { getProductTargetById } from "../../Repositories/ProductTargetRepository.js";
+import { getProductById } from "../../Repositories/ProductRepository.js";
 
 export async function updateByIdCurrentQuantityService(id, value, id_product) {
 	let currentValue;
@@ -18,7 +18,7 @@ export async function updateByIdCurrentQuantityService(id, value, id_product) {
 	if (value) {
         newValue = value + currentValue;
 	} else {
-		const product = await getProductTargetById(id_product);
+		const product = await getProductById(id_product);
         const valueProduct = product.value;
         newValue = valueProduct + currentValue;
     }
