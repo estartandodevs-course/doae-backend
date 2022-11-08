@@ -4,7 +4,6 @@ export async function createProduct(
 	id,
 	name,
 	value,
-	id_target,
 	id_institution
 ) {
 	try {
@@ -12,7 +11,6 @@ export async function createProduct(
 			id,
 			name,
 			value,
-			id_target,
 			id_institution,
 			suspend: false,
 		});
@@ -26,18 +24,6 @@ export async function getProductById(id) {
 	try {
 		const product = await ProductModel.findOne({
 			id: id,
-			suspend: false,
-		});
-		return product;
-	} catch (e) {
-		throw new Error(e.message);
-	}
-}
-
-export async function getProductByIdTarget(idTarget) {
-	try {
-		const product = await ProductModel.find({
-			id_target: idTarget,
 			suspend: false,
 		});
 		return product;

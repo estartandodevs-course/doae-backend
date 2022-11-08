@@ -1,5 +1,4 @@
 import { deleteTargetById } from "../../Repositories/TargetRepository.js";
-import { listProductsByIdTargetService } from "../Products/listProductsByIdTarget.service.js";
 
 export async function deleteTargetService(id) {
 	try {

@@ -4,7 +4,6 @@ const productSchema = new mongoose.Schema({
     id: String,
     name: String,
     value: Number,
-    id_target: String,
     id_institution: String,
     suspend: Boolean
 }, {

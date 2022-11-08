@@ -133,6 +133,29 @@ export async function updateInstitution(
   }
 }
 
+export async function updateCredentialsInstitution(
+  id,
+  email,
+  password
+) {
+  try {
+    const institution = await InstitutionModel.update(
+      {
+        email,
+        password
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+    return institution;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
 export async function updateInstitutionLogo(id, logo) {
   try {
     const institution = await InstitutionModel.update(

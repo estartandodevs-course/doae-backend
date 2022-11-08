@@ -5,6 +5,7 @@ import {
 	putInstitution,
 	deleteInstitutionById,
 	updateLogoInstitution,
+	putCredentialsInstitution
 } from "../Controllers/InstitutionController.js";
 import { uploadFile } from "../Middlewares/multerMiddlewares.js";
 import {
@@ -35,6 +36,8 @@ routesInstitution.get(
 );
 
 routesInstitution.put("/institution/:id", idInstitutionMidd, putInstitution);
+
+routesInstitution.put("/institution/crdentials/:id", idInstitutionMidd, putCredentialsInstitution);
 
 routesInstitution.delete(
 	"/institution/:id",

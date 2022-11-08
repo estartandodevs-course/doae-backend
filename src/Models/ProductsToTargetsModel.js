@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const productsToTargetsSchema = new mongoose.Schema({
     id: String,
     id_target: String,
-    id_productsToTargets: String
+    id_product: String
 }, {
     timestamps: true
 })
