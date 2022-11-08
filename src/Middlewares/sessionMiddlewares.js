@@ -3,28 +3,28 @@ import fs from "fs";
 import path from "path";
 import yup from "yup";
 
-const pathDir = path.resolve('json', 'firebase.json');
+// const pathDir = path.resolve('json', 'firebase.json');
 
-const serviceAccount = fs.readFileSync(pathDir);
+// const serviceAccount = fs.readFileSync(pathDir);
 
-admin.initializeApp({
-    credential: admin.credential.cert(JSON.parse(serviceAccount)),
-});
+// admin.initializeApp({
+//     credential: admin.credential.cert(JSON.parse(serviceAccount)),
+// });
 
-export async function sessionMidd(req, res, next){
-    const authHeader = req.headers["authorization"];
-    if(!authHeader){
-        return res.send('Unathorized');
-    }
-	let idToken = authHeader.split("Bearer ")[1];
-	try {
-		const decodeToken = await admin.auth().verifyIdToken(idToken);
-		req["currentUser"] = decodeToken;
-	} catch (e) {
-		console.log(e);
-	}
-	next();
-}
+// export async function sessionMidd(req, res, next){
+//     const authHeader = req.headers["authorization"];
+//     if(!authHeader){
+//         return res.send('Unathorized');
+//     }
+// 	let idToken = authHeader.split("Bearer ")[1];
+// 	try {
+// 		const decodeToken = await admin.auth().verifyIdToken(idToken);
+// 		req["currentUser"] = decodeToken;
+// 	} catch (e) {
+// 		console.log(e);
+// 	}
+// 	next();
+// }
 
 export async function sessionAuthTokenMidd(req, res, next){
 	let response = true;
