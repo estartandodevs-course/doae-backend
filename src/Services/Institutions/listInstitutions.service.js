@@ -33,10 +33,10 @@ export async function listInstitutionsService(page = 1) {
 				site: pagination[i].site,
 				description: pagination[i].description,
 				logo: pagination[i].logo,
-                rua: endereco.logradouro,
-                bairro: endereco.bairro,
-                cidade: endereco.localidade,
-                estado: endereco.uf,
+				street: endereco.logradouro,
+				neighborhood: endereco.bairro,
+				city: endereco.localidade,
+				state: endereco.uf
             };
 			newPagination.push(newInst);
 		}
