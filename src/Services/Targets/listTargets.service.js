@@ -28,7 +28,7 @@ export async function listAll(page = 1, query = "") {
         createdAt: response[i].createdAt,
         description: response[i].description,
         day_limit: response[i].day_limit,
-        percent: `${percent}%`,
+        percent: percent,
       };
       newPagination.push(newObjectTargetFormat);
     }
