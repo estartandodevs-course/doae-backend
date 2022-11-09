@@ -6,7 +6,8 @@ import {
 	getDonationsByIdTarget,
 	putDonation,
 	deleteDonation,
-	getStatusDonationsByIdInstitution
+	getStatusDonationsByIdInstitution,
+	getSumDonations
 } from "../Controllers/DonationController.js";
 
 import { Router } from "express";
@@ -25,6 +26,8 @@ const routesDonation = Router();
 routesDonation.post("/donation", postDonationMidd, postDonation);
 
 routesDonation.get("/donation", getDonationsMidd, getDonations);
+
+routesDonation.get("/donation/sum", getSumDonations);
 
 routesDonation.get("/donation/:id", getIdDonationMidd, getDonationById);
 

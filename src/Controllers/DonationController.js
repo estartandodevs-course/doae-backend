@@ -7,6 +7,7 @@ import { listDonationsByIdTargetService } from "../Services/Donations/listDonati
 import { updateStatusDonationService } from "../Services/Donations/updateDonation.service.js";
 import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
 import { listStatusDonationsByIdInstitutionService } from "../Services/Donations/listStatusDonationByIdInstitution.service.js";
+import { sumDonationsService } from "../Services/Donations/sumDonation.service.js";
 
 export async function postDonation(request, response) {
 	const {
@@ -35,6 +36,15 @@ export async function getDonations(request, response) {
 	const { page } = request.query;
 	try {
 		const donations = await listDonationsService(page);
+		response.status(200).json(donations);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
+
+export async function getSumDonations(request, response) {
+	try {
+		const donations = await sumDonationsService();
 		response.status(200).json(donations);
 	} catch (e) {
 		response.status(400).json(e.message);
