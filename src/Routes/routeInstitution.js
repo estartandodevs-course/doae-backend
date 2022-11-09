@@ -37,7 +37,7 @@ routesInstitution.get(
 
 routesInstitution.put("/institution/:id", idInstitutionMidd, putInstitution);
 
-routesInstitution.put("/institution/crdentials/:id", idInstitutionMidd, putCredentialsInstitution);
+routesInstitution.put("/institution/credentials/:id", idInstitutionMidd, putCredentialsInstitution);
 
 routesInstitution.delete(
 	"/institution/:id",
