@@ -7,7 +7,7 @@
     },
     "server": [
         {
-            "url": "http://localhost:1000/"
+            "url": "https://doae-api.onrender.com"
         }
     ],
     "basePath": "/",
