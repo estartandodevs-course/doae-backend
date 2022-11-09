@@ -27,7 +27,7 @@ export async function listTargetsByIdInstitution(id_institution, page = 1) {
         createdAt: response[i].createdAt,
         description: response[i].description,
         day_limit: response[i].day_limit,
-        percent:`${percent}%`,
+        percent: percent,
       };
       newPagination.push(newObjectTargetFormat);
     }
