@@ -25,10 +25,10 @@ export async function listInstitutionByIdService(id) {
 			site: json.site,
 			createdAt: json.createdAt,
 			updatedAt: json.updatedAt,
-			rua: endereco.logradouro,
-			bairro: endereco.bairro,
-			cidade: endereco.localidade,
-			estado: endereco.uf,
+			street: endereco.logradouro,
+			neighborhood: endereco.bairro,
+			city: endereco.localidade,
+			state: endereco.uf,
 		};
 	} catch (e) {
 		throw new Error(e.message);
