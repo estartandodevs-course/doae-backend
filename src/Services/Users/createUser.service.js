@@ -1,7 +1,7 @@
 import { createUser } from "../../Repositories/UserRepository.js";
 import { hashPassword } from "../../Funcs/hashPassword.js";
 import { v4 as uuid } from "uuid";
-//import { mailto } from "../../Libs/mailto.js";
+import { mailto } from "../../Libs/mailto.js";
 
 export async function createUserService(
 	id,
@@ -20,7 +20,7 @@ export async function createUserService(
             pass,
             suspend
 		);
-		//await mailto("bem_vindo", email);
+		await mailto("welcome", email);
 		return user;
 	} catch (e) {
 		throw new Error(e.message);
