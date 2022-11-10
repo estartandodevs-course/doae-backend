@@ -1,20 +1,12 @@
 import * as yup from 'yup';
 
-export async function postInstitutionMidd(req, res, next)
+export async function postUserMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({
 		name: yup.string('Nome deve ser uma string'),
-		cnpj: yup.string(),
 		email: yup.string(),
 		password: yup.string(),
-		description: yup.string(),
-		agency: yup.string(),
-		count: yup.string(),
-		pix: yup.string(),
-		phone: yup.string(),
-		cep: yup.string(),
-		site: yup.string(),
 	});
 
 	await schemaPost.validate(req.body).catch(err => {
@@ -30,7 +22,7 @@ export async function postInstitutionMidd(req, res, next)
 	}
 }
 
-export async function idInstitutionMidd(req, res, next)
+export async function idUserMidd(req, res, next)
 {	
 	let response = true;
 	const schemaPost = yup.object().shape({

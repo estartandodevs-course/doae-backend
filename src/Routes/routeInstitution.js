@@ -5,13 +5,14 @@ import {
 	putInstitution,
 	deleteInstitutionById,
 	updateLogoInstitution,
-	putCredentialsInstitution
+	putCredentialsInstitution,
 } from "../Controllers/InstitutionController.js";
 import { uploadFile } from "../Middlewares/multerMiddlewares.js";
 import {
 	postInstitutionMidd,
 	idInstitutionMidd,
 } from "../Middlewares/institutionMiddlewares.js";
+import { requiredToken } from "../Middlewares/sessionMiddlewares.js";
 
 const upload = uploadFile();
 
@@ -21,11 +22,18 @@ const routesInstitution = Router();
 
 routesInstitution.patch(
 	"/institution/logo",
+	requiredToken,
 	upload.single("logo"),
 	updateLogoInstitution
 );
 
-routesInstitution.post("/institution", postInstitutionMidd, upload.single("logo"), postInstitution);
+routesInstitution.post(
+	"/institution",
+	requiredToken,
+	postInstitutionMidd,
+	upload.single("logo"),
+	postInstitution
+);
 
 routesInstitution.get("/institution", getInstitutions);
 
@@ -35,12 +43,18 @@ routesInstitution.get(
 	getInstitutionById
 );
 
-routesInstitution.put("/institution/:id", idInstitutionMidd, putInstitution);
+routesInstitution.put("/institution/:id", requiredToken, idInstitutionMidd, putInstitution);
 
-routesInstitution.put("/institution/crdentials/:id", idInstitutionMidd, putCredentialsInstitution);
+routesInstitution.put(
+	"/institution/credentials/:id",
+	requiredToken,
+	idInstitutionMidd,
+	putCredentialsInstitution
+);
 
 routesInstitution.delete(
 	"/institution/:id",
+	requiredToken,
 	idInstitutionMidd,
 	deleteInstitutionById
 );

@@ -2,6 +2,9 @@ import admin from "firebase-admin";
 import fs from "fs";
 import path from "path";
 import yup from "yup";
+import jwt from "jsonwebtoken";
+
+const secret = process.env.SECRET;
 
 // const pathDir = path.resolve('json', 'firebase.json');
 
@@ -44,4 +47,19 @@ export async function sessionAuthTokenMidd(req, res, next){
 	} else {
 		return;
 	}
+}
+
+export async function requiredToken(req, res, next){
+	const auth = req.headers['authorization'];
+	const token = auth.split('')[1];
+	const verified = jwt.verify(token, secret);
+	if(verified){
+		next();
+	} else {
+		return res.status(403).json({ message: "Não autorizado."});
+	}
+}
+
+export async function authorization(){
+	
 }

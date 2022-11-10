@@ -207,6 +207,100 @@
                     }
                 }
             },
+            "/institution/credentials/:id":{
+                "put": {
+                    "sumary": "Atualização das credenciais da instituicao",
+                    "description": "Essa rota será responsável por atualizar as credenciais das instituições",
+                    "tags": [
+                        "Instituição"
+                    ],
+                    "security": [{"bearerAuth": []}],
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "params",
+                            "description": "Define o id da instiuição a ser atualizada.",
+                            "required": true
+                        }
+                    ],
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/institution"
+                                },
+                                "examples": {
+                                    "institution": {
+                                        "value": {
+                                            "email": "contato@lardasmocascegas.com",
+                                            "password": "Lardasmocas@123"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "OK",
+                            "content": {
+                                "application/json":{
+                                    "schema": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/institution"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            "/institution/logo":{
+                "patch": {
+                    "sumary": "Atualização da logo da instituicao",
+                    "description": "Essa rota será responsável por atualizar a logo das instituições",
+                    "tags": [
+                        "Instituição"
+                    ],
+                    "security": [{"bearerAuth": []}],
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "params",
+                            "description": "Define o id da instiuição a ser atualizada.",
+                            "required": true
+                        }
+                    ],
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/institution"
+                                },
+                                "examples": {
+                                    "institution": {
+                                        "value": {
+                                            "": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "OK",
+                            "content": {
+                                "application/json":{
+                                    "schema": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/institution"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "delete": {
                 "sumary": "Remoção da instituicao",
                 "description": "Essa rota será responsável por remover as instituições",
@@ -230,6 +324,180 @@
                                 "schema": {
                                     "type": "object",
                                     "$ref": "#/components/schemas/institution"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "post": {
+                "sumary": "Cadastro de usuário",
+                "description": "Essa rota será responsável por cadastrar os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name":  "Brenda Brito",
+                                        "email": "bbritob8@gmail.com",
+                                        "password": "br3nd4br1t0!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "sumary": "Listas todas os usuários",
+                "description": "Essa rota será responsável por listar todas os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Parametro que define a pagina que você deseja buscar",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/:id": {
+            "get": {
+                "sumary": "Lista o usuário indicado",
+                "description": "Essa rota será responsável por listar um usuário específico",
+                "tags": [
+                    "Usuário"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Parametro que define o usuário que você deseja buscar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "sumary": "Atualização do usuário",
+                "description": "Essa rota será responsável por atualizar os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id do usuário a ser atualizado.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name":  "Brenda Brito",
+                                        "email": "bbritob8@gmail.com",
+                                        "password": "br3nd4br1t0!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "sumary": "Remoção do usuário",
+                "description": "Essa rota será responsável por remover os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id do usuário a ser atualizado.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
                                 }
                             }
                         }
@@ -373,6 +641,7 @@
                     }
                 }
             },
+
             "put": {
                 "sumary": "Atualização da meta",
                 "description": "Essa rota será responsável por atualizat as metas",
@@ -413,6 +682,54 @@
                     }
                 }
             },
+            "/target/quantity/:id": {
+                "put": {
+                    "sumary": "Atualização da quatidade de doacoes da meta",
+                    "description": "Essa rota será responsável por atualizar as metas",
+                    "tags": [
+                        "Metas"
+                    ],
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "params",
+                            "description": "Id da meta a ser atualizada.",
+                            "required": true
+                        }
+                    ],
+                    "security": [{"bearerAuth": []}],
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/target"
+                                },
+                                "examples": {
+                                    "target": {
+                                        "value": {
+                                            "value": 15,
+                                            "product_id": ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "OK",
+                            "content": {
+                                "application/json":{
+                                    "schema": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/target"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "delete": {
                 "sumary": "Remoção da meta",
                 "description": "Essa rota será responsável por remover as metas",
@@ -428,54 +745,6 @@
                         "required": true
                     }
                 ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json":{
-                                "schema": {
-                                    "type": "object",
-                                    "$ref": "#/components/schemas/target"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/target/quantity/:id": {
-            "put": {
-                "sumary": "Atualização da quatidade de doacoes da meta",
-                "description": "Essa rota será responsável por atualizar as metas",
-                "tags": [
-                    "Metas"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "params",
-                        "description": "Id da meta a ser atualizada.",
-                        "required": true
-                    }
-                ],
-                "security": [{"bearerAuth": []}],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/target"
-                            },
-                            "examples": {
-                                "target": {
-                                    "value": {
-                                        "value": 15,
-                                        "product_id": ""
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -532,18 +801,18 @@
                 }
             }
         },
-        "/product/meta/:id_target": {
+        "/product/institution/:id_institution": {
             "get": {
-                "sumary": "Lista o produto pelo id da meta",
-                "description": "Essa rota será responsável por listar produtos pelo id da meta passada.",
+                "sumary": "Lista o produto pelo id da instituição",
+                "description": "Essa rota será responsável por listar produtos pelo id da instituição passada.",
                 "tags": [
                     "Produtos"
                 ],
                 "parameters": [
                     {
-                        "name": "id_target",
+                        "name": "id_institution",
                         "in": "params",
-                        "description": "Parametro que define a meta que você deseja buscar",
+                        "description": "Parametro que define a instituição que você deseja buscar",
                         "required": true
                     }
                 ],
@@ -666,6 +935,139 @@
                 }
             }
         },
+        "/relation": {
+            "post": {
+                "sumary": "Criação de relação meta e produto",
+                "description": "Essa rota será responsável por cadastrar a relação meta e produto",
+                "tags": [
+                    "Relação"
+                ],
+                "security": [{"bearerAuth": []}],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product"
+                            },
+                            "examples": {
+                                "institution": {
+                                    "value": {
+                                        "id_product":"14065727-627f-4af9-bb1b-10c657447804",
+                                        "id_target": "d7ac241a-1ec8-4fdc-9c0c-c74a62793759"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/relation/target/:id_target":{
+            "get": {
+                "sumary": "Lista o produto pelo id da meta",
+                "description": "Essa rota será responsável por listar produtos pelo id da meta passado.",
+                "tags": [
+                    "Relação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id_target",
+                        "in": "params",
+                        "description": "Parametro que define a meta que você deseja buscar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/relation/product/:id_product":{
+            "get": {
+                "sumary": "Lista o produto pelo id do produto",
+                "description": "Essa rota será responsável por listar produtos pelo id passado.",
+                "tags": [
+                    "Relação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id_product",
+                        "in": "params",
+                        "description": "Parametro que define o produto que você deseja buscar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        },
+        "/relation/:id":{
+            "delete": {
+                "sumary": "Remove a relação pelo id",
+                "description": "Essa rota será responsável por remover relações pelo id passado.",
+                "tags": [
+                    "Relações"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Parametro que define a relação que você deseja buscar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        },
         "/donation": {
             "post": {
                 "sumary": "Cadastro do doação",
@@ -719,6 +1121,36 @@
                         "name": "id_target",
                         "in": "params",
                         "description": "Parametro que define a meta que você deseja buscar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/donation/status/:id_institution": {
+            "get": {
+                "sumary": "Lista a doação pelo status e id da instituição",
+                "description": "Essa rota será responsável por listar doações aceitas ou rejeitadas pela instituição.",
+                "tags": [
+                    "Doação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id_institution",
+                        "in": "params",
+                        "description": "Parametro que define a instituição que você deseja buscar",
                         "required": true
                     }
                 ],
@@ -813,6 +1245,35 @@
                     }
                 }
             },
+            "get": {
+                "sumary": "Lista a doação pelo id",
+                "description": "Essa rota será responsável por listar doações pelo id passado.",
+                "tags": [
+                    "Doação"
+                ],
+                "parameters": [
+                    {
+                        "name": "id_donation",
+                        "in": "params",
+                        "description": "Parametro que define a doação que você deseja buscar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/donation"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
             "delete": {
                 "sumary": "Remoção da doação",
                 "description": "Essa rota será responsável por remover as doações",
@@ -842,11 +1303,11 @@
                     }
                 }
             }
-        },
+        ,
         "/publication": {
             "post": {
                 "sumary": "Criação da publicação",
-                "description": "Essa rota será responsável por atualizar as publicações",
+                "description": "Essa rota será responsável por criar as publicações",
                 "tags": [
                     "Publicação"
                 ],
@@ -883,7 +1344,7 @@
             },
             "get": {
                 "sumary": "Listagem da publicação",
-                "description": "Essa rota será responsável por listagem as publicações",
+                "description": "Essa rota será responsável por listagem das publicações",
                 "tags": [
                     "Publicação"
                 ],
@@ -962,8 +1423,8 @@
                 }
             },
             "put": {
-                "sumary": "Listagem da publicação",
-                "description": "Essa rota será responsável por listagem as publicações",
+                "sumary": "Atualização da publicação",
+                "description": "Essa rota será responsável por atualizar as publicações",
                 "tags": [
                     "Publicação"
                 ],
@@ -1030,6 +1491,53 @@
                                     "type": "object",
                                     "$ref": "#/components/schemas/publication"
                                 }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ,
+    "/publication/midia/:id":{
+        "put": {
+            "sumary": "Atualização da mídia da publicação",
+            "description": "Essa rota será responsável por atualizar a mídia das publicações",
+            "tags": [
+                "Publicação"
+            ],
+            "security": [{"bearerAuth": []}],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "params",
+                    "description": "Define o id da publicação a ser buscada.",
+                    "required": true
+                }
+            ],
+            "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/publication"
+                        },
+                        "examples": {
+                            "publication": {
+                                "value": {
+                                    "":""
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/publication"
                             }
                         }
                     }
@@ -1156,6 +1664,17 @@
                         "type": "string"
                     },
                     "updatedAt": {
+                        "type": "string"
+                    }
+                }
+            },
+            "relation": {
+                "type": "object",
+                "properties": {
+                    "id_target": {
+                        "type": "string"
+                    },
+                    "id_product":{
                         "type": "string"
                     }
                 }

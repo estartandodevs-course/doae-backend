@@ -16,10 +16,11 @@ import {
   putTargetMidd,
   putCurrentQuantMidd,
 } from "../Middlewares/targetMiddlewares.js";
+import { requiredToken } from "../Middlewares/sessionMiddlewares.js";
 
 const routesTarget = Router();
 
-routesTarget.post("/target", postTargetMidd, postTarget);
+routesTarget.post("/target", requiredToken, postTargetMidd, postTarget);
 
 routesTarget.get("/target", getTargetsMidd, getTargets);
 
@@ -31,10 +32,10 @@ routesTarget.get(
   getTargetByIdInstitution
 );
 
-routesTarget.put("/target/:id", putTargetMidd, putTarget);
+routesTarget.put("/target/:id", requiredToken, putTargetMidd, putTarget);
 
-routesTarget.put("/target/quantity/:id", putCurrentQuantMidd, putCurrentQuantity);
+routesTarget.put("/target/quantity/:id", requiredToken, putCurrentQuantMidd, putCurrentQuantity);
 
-routesTarget.delete("/target/:id", getIdTargetMidd, deleteTarget);
+routesTarget.delete("/target/:id", requiredToken, getIdTargetMidd, deleteTarget);
 
 export default routesTarget;
