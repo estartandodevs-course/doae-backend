@@ -331,6 +331,180 @@
                 }
             }
         },
+        "/user": {
+            "post": {
+                "sumary": "Cadastro de usuário",
+                "description": "Essa rota será responsável por cadastrar os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name":  "Brenda Brito",
+                                        "email": "bbritob8@gmail.com",
+                                        "password": "br3nd4br1t0!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "sumary": "Listas todas os usuários",
+                "description": "Essa rota será responsável por listar todas os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Parametro que define a pagina que você deseja buscar",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/:id": {
+            "get": {
+                "sumary": "Lista o usuário indicado",
+                "description": "Essa rota será responsável por listar um usuário específico",
+                "tags": [
+                    "Usuário"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Parametro que define o usuário que você deseja buscar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "sumary": "Atualização do usuário",
+                "description": "Essa rota será responsável por atualizar os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id do usuário a ser atualizado.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/user"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name":  "Brenda Brito",
+                                        "email": "bbritob8@gmail.com",
+                                        "password": "br3nd4br1t0!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "sumary": "Remoção do usuário",
+                "description": "Essa rota será responsável por remover os usuários",
+                "tags": [
+                    "Usuário"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id do usuário a ser atualizado.",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/user"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/target": {
             "post": {
                 "sumary": "Cadastro da meta",

@@ -12,7 +12,7 @@ const routesUser = Router();
 
 routesInstitution.post("/user",  postUser);
 
-routesInstitution.get("/users", getUsers);
+routesInstitution.get("/user", getUsers);
 
 routesInstitution.get("/user/:id", getUserById );
 
