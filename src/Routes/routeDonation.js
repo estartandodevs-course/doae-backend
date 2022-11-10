@@ -20,25 +20,26 @@ import {
 	getIdDonationsTargetMidd,
 	putDonationMidd
 } from '../Middlewares/donationMiddlewares.js'
+import { requiredToken } from "../Middlewares/sessionMiddlewares.js";
 
 const routesDonation = Router();
 
-routesDonation.post("/donation", postDonationMidd, postDonation);
+routesDonation.post("/donation", requiredToken, postDonationMidd, postDonation);
 
-routesDonation.get("/donation", getDonationsMidd, getDonations);
+routesDonation.get("/donation", requiredToken, getDonationsMidd, getDonations);
 
 routesDonation.get("/donation/sum", getSumDonations);
 
-routesDonation.get("/donation/:id", getIdDonationMidd, getDonationById);
+routesDonation.get("/donation/:id", requiredToken, getIdDonationMidd, getDonationById);
 
-routesDonation.get("/donation/institution/:id_institution", getIdDonationsInsMidd, getDonationsByIdInstitution);
+routesDonation.get("/donation/institution/:id_institution", requiredToken, getIdDonationsInsMidd, getDonationsByIdInstitution);
 
 routesDonation.get("/donation/status/:id_institution", getStatusDonationsByIdInstitution);
 
-routesDonation.get("/donation/target/:id_target", getIdDonationsTargetMidd, getDonationsByIdTarget);
+routesDonation.get("/donation/target/:id_target", requiredToken, getIdDonationsTargetMidd, getDonationsByIdTarget);
 
-routesDonation.put("/donation/:id", putDonationMidd, putDonation);
+routesDonation.put("/donation/:id", requiredToken, putDonationMidd, putDonation);
 
-routesDonation.delete("/donation/:id", getIdDonationMidd, deleteDonation);
+routesDonation.delete("/donation/:id", requiredToken, getIdDonationMidd, deleteDonation);
 
 export default routesDonation;
