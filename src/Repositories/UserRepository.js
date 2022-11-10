@@ -51,7 +51,7 @@ export async function updateUser(id, name, email, password) {
                 suspend: false   
             },
             {
-                id, name, email, password
+            	name, email, password
             }
         )
 		return user;
