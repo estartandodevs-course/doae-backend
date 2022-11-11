@@ -19,6 +19,6 @@ routesInstitution.get("/user/:id", idUserMidd, getUserById );
 
 routesInstitution.put("/user/:id", idUserMidd, putUser);
 
-routesInstitution.delete("/user/:id", idUserMidd, deleteUserById );
+routesInstitution.delete("/user/:id", idUserMidd, deleteUserById);
 
 export default routesUser;

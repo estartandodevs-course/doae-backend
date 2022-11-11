@@ -1,5 +1,5 @@
 import { getAllTargets } from "../../Repositories/TargetRepository.js";
-import { getInstitutionById } from "../../Repositories/InstitutionRepository.js";
+import { getInstitutionByIdExternal } from "../../Repositories/InstitutionRepository.js";
 
 export async function listAll(page = 1, query = "") {
 	const perPage = 10;
@@ -11,13 +11,17 @@ export async function listAll(page = 1, query = "") {
 		const newPagination = [];
 
 		let response = targets.slice(initPage, initPage + perPage);
-  
+    console.log(response)
 		if (response.length <= 0) {
       response = targets.slice(0, 10);
     }
+
+    if (response.length == 0) {
+      return [];
+    }
     
     for (let i = 0; i < response.length; i++) {
-      const [ institution ] = await getInstitutionById(response[i].id_institution);
+      const [ institution ] = await getInstitutionByIdExternal(response[i].id_institution);
       const percent = (response[i].current_quantity * 100) / response[i].target_value;
       const newObjectTargetFormat = {
         id: response[i].id,

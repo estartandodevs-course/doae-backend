@@ -7,7 +7,8 @@ import {
 	putDonation,
 	deleteDonation,
 	getStatusDonationsByIdInstitution,
-	getSumDonations
+	getSumDonations,
+	getSumDonationsStatusByIdInstitution
 } from "../Controllers/DonationController.js";
 
 import { Router } from "express";
@@ -24,7 +25,7 @@ import { requiredToken } from "../Middlewares/sessionMiddlewares.js";
 
 const routesDonation = Router();
 
-routesDonation.post("/donation", requiredToken, postDonationMidd, postDonation);
+routesDonation.post("/donation", postDonationMidd, postDonation);
 
 routesDonation.get("/donation", requiredToken, getDonationsMidd, getDonations);
 
@@ -34,7 +35,9 @@ routesDonation.get("/donation/:id", requiredToken, getIdDonationMidd, getDonatio
 
 routesDonation.get("/donation/institution/:id_institution", requiredToken, getIdDonationsInsMidd, getDonationsByIdInstitution);
 
-routesDonation.get("/donation/status/:id_institution", getStatusDonationsByIdInstitution);
+routesDonation.get("/donation/:status/:id_institution", getStatusDonationsByIdInstitution);
+
+routesDonation.get("/donation/sum/:status/:id_institution", getSumDonationsStatusByIdInstitution);
 
 routesDonation.get("/donation/target/:id_target", requiredToken, getIdDonationsTargetMidd, getDonationsByIdTarget);
 

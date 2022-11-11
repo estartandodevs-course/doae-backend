@@ -8,6 +8,7 @@ import { updateStatusDonationService } from "../Services/Donations/updateDonatio
 import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js";
 import { listStatusDonationsByIdInstitutionService } from "../Services/Donations/listStatusDonationByIdInstitution.service.js";
 import { sumDonationsService } from "../Services/Donations/sumDonation.service.js";
+import { sumDonationsStatusByIdInstitutionService } from "../Services/Donations/sumDonationStatusByIdInstitution.service.js"
 
 export async function postDonation(request, response) {
 	const {
@@ -53,8 +54,7 @@ export async function getSumDonations(request, response) {
 
 export async function getStatusDonationsByIdInstitution(request, response) {
 	const { page } = request.query;
-	const { id_institution } = request.params;
-	const { status } = request.body;
+	const { id_institution, status } = request.params;
 	try {
 		const id = await getIdByIdExternal(id_institution);
 		const donations = await listStatusDonationsByIdInstitutionService(id, status, page);
@@ -64,6 +64,17 @@ export async function getStatusDonationsByIdInstitution(request, response) {
 	}
 }
 
+export async function getSumDonationsStatusByIdInstitution(request, response) {
+	const { page } = request.query;
+	const { id_institution, status } = request.params;
+	try {
+		const id = await getIdByIdExternal(id_institution);
+		const sum = await sumDonationsStatusByIdInstitutionService(id, status, page);
+		response.status(200).json(sum);
+	} catch (e) {
+		response.status(400).json(e.message);
+	}
+}
 
 export async function getDonationById(request, response) {
 	const { id } = request.params;
