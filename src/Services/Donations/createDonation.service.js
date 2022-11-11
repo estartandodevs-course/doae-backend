@@ -17,7 +17,6 @@ export async function createDonationService(
 	let newValue = 0;
 	if(value === undefined){
 		const product = await getProductById(id_product);
-		console.log(product);
 		newValue = product.value;
 	} else {
 		newValue = value;
@@ -42,6 +41,7 @@ export async function createDonationService(
 			newValue,
 			email_giver,
 			id_target,
+			id_product,
 			suspend
 		);
 		await mailto("doacao_realizada", email_giver);

@@ -4,22 +4,8 @@ import jwt from "jsonwebtoken";
 
 const secret = process.env.SECRET;
 
-export async function sessionControllerGoogle(req, res){
-    const user = req["currentUser"];
-	if (!user) {
-		res.send("Usuário não encontrado!");
-        return;
-	}
-    try {
-        const institution = sessionService(user.email);
-        res.send(institution);
-    } catch (e) {
-        res.send(e);
-    }
-}
-
 export async function sessionControllerAuth(req, res){
-    const { email, password } = req.params;
+    const { email, password } = req.body;
     try {
         const institution = await sessionService(email, password);
         const token = jwt.sign(institution, secret);

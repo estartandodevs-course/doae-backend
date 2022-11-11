@@ -11,8 +11,7 @@ import { getIdByIdExternal } from "../Services/Auth/getIdByIdExternal.service.js
 export async function postTarget(request, response) {
 	const { name, value, id_institution, description, day_limit } = request.body;
 	try {
-		const id = await getIdByIdExternal(id_institution)
-		const target = await createTargetService(name, value, id, description, day_limit);
+		const target = await createTargetService(name, value, id_institution, description, day_limit);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);
@@ -48,8 +47,7 @@ export async function getTargetByIdInstitution(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	try {
-		const id = await getIdByIdExternal(id_institution)
-		const target = await listTargetsByIdInstitution(id, page);
+		const target = await listTargetsByIdInstitution(id_institution, page);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);

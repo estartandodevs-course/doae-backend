@@ -9,7 +9,7 @@ export async function listPublicationsByIdInstitutionService(id_institution, pag
 		if (response.length > 0) {
 			return response;
 		} else {
-			return publications.slice(0, 10);
+			return publications.slice(publications.length - 10, 10);
 		}
 	} catch (e) {
 		console.log(e);

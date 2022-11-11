@@ -20,19 +20,18 @@ import { Router } from "express";
 
 const routesInstitution = Router();
 
+routesInstitution.post(
+	"/institution",
+	postInstitutionMidd,
+	upload.single("logo"),
+	postInstitution
+);
+
 routesInstitution.patch(
 	"/institution/logo",
 	requiredToken,
 	upload.single("logo"),
 	updateLogoInstitution
-);
-
-routesInstitution.post(
-	"/institution",
-	requiredToken,
-	postInstitutionMidd,
-	upload.single("logo"),
-	postInstitution
 );
 
 routesInstitution.get("/institution", getInstitutions);
@@ -43,11 +42,15 @@ routesInstitution.get(
 	getInstitutionById
 );
 
-routesInstitution.put("/institution/:id", requiredToken, idInstitutionMidd, putInstitution);
+routesInstitution.put(
+	"/institution/:id",
+	requiredToken,
+	idInstitutionMidd,
+	putInstitution
+);
 
 routesInstitution.put(
 	"/institution/credentials/:id",
-	requiredToken,
 	idInstitutionMidd,
 	putCredentialsInstitution
 );

@@ -15,7 +15,7 @@ export async function listUsersService(page = 1) {
 		if (response.length > 0) {
 			pagination = response;
 		} else {
-			pagination = response.slice(0, 10);
+			pagination = response.slice(response.length - 10, 10);
 		}
 
         const newPagination = [];

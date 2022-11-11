@@ -9,7 +9,7 @@ export async function listDonationsByIdTargetService(id_target, page = 1){
 		if (response.length > 0) {
 			return response;
 		} else {
-			return donations.slice(0, 10);
+			return donations.slice(donations.length - 10, 10);
 		}
 	} catch (e) {
 		throw new Error(e.message);

@@ -98,6 +98,20 @@ export async function getInstitutionByEmail(email) {
   }
 }
 
+export async function getInstitutionByCNPJ(CNPJ) {
+  try {
+    const institution = await InstitutionModel.findOne({
+      where: {
+        cnpj: CNPJ,
+        suspend: false,
+      },
+    });
+    return institution;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+}
+
 export async function updateInstitution(
   id,
   name,

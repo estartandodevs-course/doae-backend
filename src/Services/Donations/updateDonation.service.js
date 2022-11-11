@@ -9,10 +9,10 @@ export async function updateStatusDonationService(id, status){
 		const donation = await updateDonation(id, status);
 		if(status === true){
 			await mailto("doacao_aceita", donationOld.email_giver);
-			await sendCPmail(donationOld.email_giver, donationOld.value);
 			if (donationOld.id_target) {
 				await updateByIdCurrentQuantityService(donationOld.id_target, donationOld.value);
 			}
+			await sendCPmail(donationOld.email_giver, donationOld.value);
 		} else {
 			await mailto("doacao_rejeitada", donationOld.email_giver);
 			if(donationOld.status === true){
