@@ -42,7 +42,7 @@ export async function listAllWithFilters(page = 1, query) {
 		let response = newTargets.slice(initPage, initPage + perPage);
   
 		if (response.length <= 0) {
-            response = targets.slice(0, 10);
+            response = targets.slice(targets.length - 10, 10);
         }
         
         for (let i = 0; i < response.length; i++) {

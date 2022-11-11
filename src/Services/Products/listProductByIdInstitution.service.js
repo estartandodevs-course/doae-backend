@@ -9,7 +9,7 @@ export async function listProductByIdInstitutionService(id_institution, page = 1
 		if (response.length > 0) {
 			return response;
 		} else {
-			return products.slice(0, 10);
+			return products.slice(products.length - 10, 10);
 		}
 	} catch (e) {
 		throw new Error(e.message);

@@ -13,7 +13,7 @@ export async function listAll(page = 1, query = "") {
 		let response = targets.slice(initPage, initPage + perPage);
     console.log(response)
 		if (response.length <= 0) {
-      response = targets.slice(0, 10);
+      response = targets.slice(targets.length - 10, 10);
     }
 
     if (response.length == 0) {
