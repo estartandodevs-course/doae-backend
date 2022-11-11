@@ -1066,7 +1066,6 @@
                     }
                 }
             }
-        }
         },
         "/donation": {
             "post": {
@@ -1274,36 +1273,35 @@
                 }
             }
         },
-            "delete": {
-                "sumary": "Remoção da doação",
-                "description": "Essa rota será responsável por remover as doações",
-                "tags": [
-                    "Doação"
-                ],
-                "security": [{"bearerAuth": []}],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "params",
-                        "description": "Define o id da doação a ser atualizada.",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json":{
-                                "schema": {
-                                    "type": "object",
-                                    "$ref": "#/components/schemas/donation"
-                                }
+        "delete": {
+            "sumary": "Remoção da doação",
+            "description": "Essa rota será responsável por remover as doações",
+            "tags": [
+                "Doação"
+            ],
+            "security": [{"bearerAuth": []}],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "params",
+                    "description": "Define o id da doação a ser atualizada.",
+                    "required": true
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "content": {
+                        "application/json":{
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/donation"
                             }
                         }
                     }
                 }
             }
-        ,
+        },
         "/publication": {
             "post": {
                 "sumary": "Criação da publicação",
@@ -1496,48 +1494,48 @@
                     }
                 }
             }
-        }
-    ,
-    "/publication/midia/:id":{
-        "put": {
-            "sumary": "Atualização da mídia da publicação",
-            "description": "Essa rota será responsável por atualizar a mídia das publicações",
-            "tags": [
-                "Publicação"
-            ],
-            "security": [{"bearerAuth": []}],
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "params",
-                    "description": "Define o id da publicação a ser buscada.",
-                    "required": true
-                }
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "$ref": "#/components/schemas/publication"
-                        },
-                        "examples": {
-                            "publication": {
-                                "value": {
-                                    "":""
+        },
+        "/publication/midia/:id":{
+            "put": {
+                "sumary": "Atualização da mídia da publicação",
+                "description": "Essa rota será responsável por atualizar a mídia das publicações",
+                "tags": [
+                    "Publicação"
+                ],
+                "security": [{"bearerAuth": []}],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "description": "Define o id da publicação a ser buscada.",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/publication"
+                            },
+                            "examples": {
+                                "publication": {
+                                    "value": {
+                                        "":""
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            },
-            "responses": {
-                "200": {
-                    "description": "OK",
-                    "content": {
-                        "application/json":{
-                            "schema": {
-                                "type": "object",
-                                "$ref": "#/components/schemas/publication"
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/publication"
+                                }
                             }
                         }
                     }
