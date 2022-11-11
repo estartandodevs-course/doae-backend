@@ -47,8 +47,7 @@ export async function getTargetByIdInstitution(request, response) {
 	const { page } = request.query;
 	const { id_institution } = request.params;
 	try {
-		const id = await getIdByIdExternal(id_institution)
-		const target = await listTargetsByIdInstitution(id, page);
+		const target = await listTargetsByIdInstitution(id_institution, page);
 		response.status(200).json(target);
 	} catch (e) {
 		response.status(400).json(e.message);

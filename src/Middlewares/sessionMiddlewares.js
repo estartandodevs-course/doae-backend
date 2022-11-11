@@ -1,5 +1,6 @@
 import yup from "yup";
 import jwt from "jsonwebtoken";
+import 'dotenv/config';
 
 const secret = process.env.SECRET;
 
@@ -25,9 +26,11 @@ export async function sessionAuthTokenMidd(req, res, next){
 
 export async function requiredToken(req, res, next){
 	const auth = req.headers['authorization'];
-	const token = auth.split('')[1];
+	if(!auth) {
+		return res.status(403).json({ message: "Não autorizado."});
+	}
+	const token = auth.split(' ')[1];
 	const verified = jwt.verify(token, secret);
-	console.log(verified)
 	if(verified){
 		next();
 	} else {

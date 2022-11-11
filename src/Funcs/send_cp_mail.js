@@ -20,9 +20,10 @@ export async function sendCPmail(mail, value){
         </html>`;
     const text =` Seu cupom chegou!! Como promeitdo, aqui está seu cupom, para usar nas lojas parceiras. ${coupon.name}. Use esse mesmo email no momento da compra para validar o cupom =)`;
     try {
-        const mail = await mailto('nobody', mail, html, text);
-        return mail;
+        const mailSend = await mailto('', mail, html, text);
+        return mailSend;
     } catch (e) {
+        console.log(e);
         throw new Error('Não foi possível enviar o cupom;')
     }
 }

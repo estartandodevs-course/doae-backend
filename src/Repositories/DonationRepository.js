@@ -7,6 +7,7 @@ export async function createDonation(
 	value,
 	email_giver,
 	id_target,
+	id_product,
 	suspend
 ) {
 	try {
@@ -17,6 +18,7 @@ export async function createDonation(
 			value,
 			email_giver,
 			id_target,
+			id_product,
 			suspend,
 		});
 		return donation;

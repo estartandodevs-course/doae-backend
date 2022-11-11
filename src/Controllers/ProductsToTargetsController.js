@@ -5,9 +5,9 @@ import { listProductsToTargetsByIdTargetAndProductService } from "../Services/Pr
 import { deleteProductsToTargetsService } from "../Services/ProductsToTargets/deleteProductsToTargets.service.js"
 
 export async function postProductsToTargets(request, response){
-    const { id_target, id_product } = request.body;
+    const { id_target, id_product, id_institution } = request.body;
     try {
-        const relation = await createProductsToTargetsService(id_target, id_product);
+        const relation = await createProductsToTargetsService(id_target, id_product, id_institution);
         response.status(201).json(relation); 
     }  catch (e) {
         response.status(400).send("Não foi possível associar esse produto a meta.");

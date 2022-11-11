@@ -1,4 +1,4 @@
-import { createInstitution } from "../../Repositories/InstitutionRepository.js";
+import { createInstitution, getInstitutionByEmail, getInstitutionByCNPJ } from "../../Repositories/InstitutionRepository.js";
 import { hashPassword } from "../../Funcs/hashPassword.js";
 import { uploadImage } from "../../Libs/uploadCloud.js";
 import { v4 as uuid } from "uuid";
@@ -26,6 +26,11 @@ export async function createInstitutionService(
 	const suspend = false;
 	const pass = await hashPassword(password);
 	try {
+		const isExistsMail = await getInstitutionByEmail(email);
+		const isExistsCnpj = await getInstitutionByCNPJ(cnpj);
+		if (isExistsMail || isExistsCnpj) {
+			throw new Error('Email ou CNPJ já cadastrado!');
+		}
 		const logoImage = await uploadImage(logo);
 		const urlLogo = logoImage.url;
 		const institution = await createInstitution(
