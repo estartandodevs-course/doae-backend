@@ -13,7 +13,7 @@
     "basePath": "/",
     "paths": {
         "/login/auth": {
-            "get": {
+            "post": {
                 "sumary": "Login da instituição",
                 "description": "Essa rota será responsável por fazer login das intituições.",
                 "tags": [
@@ -774,7 +774,7 @@
                 "sumary": "Remove a relação pelo id",
                 "description": "Essa rota será responsável por remover relações pelo id passado.",
                 "tags": [
-                    "Relações"
+                    "Relação"
                 ],
                 "security": [{"bearerAuth": []}],
                 "parameters": [
